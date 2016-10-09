@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<!--
+		Copyright (C) 2016 Opsmate, Inc.
+
+		This Source Code Form is subject to the terms of the Mozilla
+		Public License, v. 2.0. If a copy of the MPL was not distributed
+		with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+		This software is distributed WITHOUT A WARRANTY OF ANY KIND.
+		See the Mozilla Public License for details.
+	-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>CAA Record Generator</title>
+		<meta name="robots" content="noarchive" />
+		<link rel="icon" type="image/png" href="https://sslmate.com/assets/img/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+			window.onload = function() { init_caa_helper(document.getElementById('caa_form'), document.getElementById('caa_output')); };
+		</script>
+	</head>
+	<body>
+		<div id="root">
+			<div id="masthead">
+				<h1>CAA Record Generator</h1>
+				<p class="by">By <a href="https://sslmate.com">SSLMate</a></p>
+			</div>
+
+			<div class="caa_helper">
+				<form id="caa_form">
+					<p>
+						<label>Domain name: </label><input type="text" name="domain"/>
+					</p>
+
+					<table>
+						<thead>
+							<tr>
+								<td></td>
+								<td colspan="2">Type of certificate</td>
+							</tr>
+							<tr>
+								<td></td>
+								<th>Non-Wildcard</th>
+								<th>Wildcard</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Comodo</th>
+								<td><input type="checkbox" name="issue" value="comodoca.com"/></td>
+								<td><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
+							</tr>
+							<tr>
+								<th>DigiCert</th>
+								<td><input type="checkbox" name="issue" value="digicert.com"/></td>
+								<td><input type="checkbox" name="issuewild" value="digicert.com"/></td>
+							</tr>
+							<tr>
+								<th>Entrust</th>
+								<td><input type="checkbox" name="issue" value="entrust.net"/></td>
+								<td><input type="checkbox" name="issuewild" value="entrust.net"/></td>
+							</tr>
+							<tr>
+								<th>GeoTrust</th>
+								<td><input type="checkbox" name="issue" value="geotrust.com"/></td>
+								<td><input type="checkbox" name="issuewild" value="geotrust.com"/></td>
+							</tr>
+							<tr>
+								<th>Let's Encrypt</th>
+								<td><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
+								<td><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
+							</tr>
+							<tr>
+								<th>Symantec</th>
+								<td><input type="checkbox" name="issue" value="symantec.com"/></td>
+								<td><input type="checkbox" name="issuewild" value="symantec.com"/></td>
+							</tr>
+							<tr>
+								<th>Thawte</th>
+								<td><input type="checkbox" name="issue" value="thawte.com"/></td>
+								<td><input type="checkbox" name="issuewild" value="thawte.com"/></td>
+							</tr>
+						</tbody>
+					</table>
+					<p>
+						<label>Send incident reports to (email or URL): </label><input type="text" name="iodef"/> (optional)
+					</p>
+				</form>
+
+				<div class="output" id="caa_output">
+				</div>
+
+				<div class="about">
+					<div>
+						<h2>What is CAA?</h2>
+
+						<p>
+							CAA is a standard that lets you control what certificate
+							authorities (CAs) are allowed to issue certificates for your domain.
+							You can use CAA to reduce your exposure to vulnerabilities in
+							certificate authority validation systems and to enforce
+							certificate procurement policies.
+						</p>
+
+						<p>
+							To use CAA, you publish a set of CAA records in
+							your domain's DNS that list the CAs which
+							you authorize to issue certificates.  Before issuing
+							a certificate, the CA checks your CAA records
+							and blocks the request if they are not listed.
+						</p>
+
+						<p>
+							This page helps you set up CAA for your domain.  Enter
+							your domain name above and check off which CAs
+							you authorize.  You can separately authorize
+							the ability to issue wildcard and non-wildcard
+							certificates.
+						</p>
+					</div>
+
+					<div>
+						<h2>Who Supports CAA?</h2>
+
+						<p>
+							The following CAs respect CAA records.  "Hard" means the CA rejects requests
+							that don't comply with the CAA records.  "Soft" means they may issue non-compliant certificates
+							after further review.
+						</p>
+						<!--
+						<table>
+							<thead>
+								<tr>
+									<th>CA</th>
+									<th>Policy</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Comodo</th>
+									<td>Soft</td>
+								</tr>
+								<tr>
+									<th>DigiCert</th>
+									<td>Soft</td>
+								</tr>
+							</tbody>
+						</table>
+						-->
+						<ul>
+							<li>Comodo (soft)</li>
+							<li>DigiCert (soft)</li>
+							<li>Entrust (soft)</li>
+							<li>Let's Encrypt (hard)</li>
+							<li>Symantec/GeoTrust/Thawte</li>
+						</ul>
+
+						<p>
+							The following DNS servers support
+							CAA records:
+						</p>
+						<ul>
+							<li>BIND (Note: prior to version 9.9.6 you must specify the record in raw form)</li>
+							<li>Google Cloud DNS</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

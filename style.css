@@ -1,0 +1,43 @@
+/*
+ * Copyright (C) 2016 Opsmate, Inc.
+ * 
+ * This Source Code Form is subject to the terms of the Mozilla
+ * Public License, v. 2.0. If a copy of the MPL was not distributed
+ * with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * 
+ * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
+ * See the Mozilla Public License for details.
+ */
+html, body { color: black; background: white; font-family: sans-serif; }
+a:link { color: #00A; }
+a:visited { color: #639; }
+a[href]:hover, a[href]:focus { color: #06F; }
+a:active { color: #669; }
+a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
+
+#masthead { text-align: center; margin: 2em 0; }
+#masthead p.by { margin: 0.5em 0 0 0; }
+#masthead h1 { font-size: 200%; margin: 0; }
+#root { max-width: 800px; margin: 0 auto; font-size: 120%; }
+.caa_helper input[type=text] { color: #444; border-radius: 3px; padding: 0.3em 0.4em; background-color: #fff; border: 1px solid #ccc; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); transition: border linear .2s, box-shadow linear .2s; }
+.caa_helper input[type=text]:focus { border-color: rgba(82, 108, 236, 0.8); box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 108, 236, 0.6); }
+.caa_helper form { background: #eee; padding: 0.4em; border: solid #999 1px; border-radius: 3px; }
+.caa_helper form p { margin: 0; }
+.caa_helper form table { margin: 1em 0; border-collapse: collapse; }
+.caa_helper form td, .caa_helper form th { padding: 0.3em 0.5em; }
+.caa_helper form th { font-weight: bold; }
+.caa_helper form tbody th { text-align: right; }
+.caa_helper form thead th { text-align: center; }
+.caa_helper form thead th { border-bottom: solid #333 1px; }
+.caa_helper form td { text-align: center; }
+.caa_helper h2 { margin: 0 0 0.5em 0; }
+.caa_helper .output { margin-top: 2em; }
+.caa_helper .output > div { margin: 0 0 2em 0; }
+.caa_helper .output pre { background: #eee; padding: 0.4em; overflow: auto; border: solid #999 1px; border-radius: 3px; font-size: 83%; margin: 0; }
+.caa_helper .output ul { padding: 0 0 0 1em; }
+.caa_helper .output li { padding: 0; margin: 0.5em 0; }
+.caa_helper .output li span { white-space: pre; font-family: monospace; background: #f3f3f3; border: solid #bbb 1px; border-radius: 3px; padding: 0 0.2em; }
+.caa_helper .about { text-align: justify; }
+.caa_helper .about p { line-height: 170%; text-align: justify; }
+.caa_helper .about li { margin: 0.4em 0; }
+.caa_helper .about > div { margin: 0 0 2em 0; }
