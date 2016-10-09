@@ -19,6 +19,8 @@ a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
 #masthead p.by { margin: 0.5em 0 0 0; }
 #masthead h1 { font-size: 200%; margin: 0; }
 #root { max-width: 800px; margin: 0 auto; font-size: 120%; }
+#github_ribbon { display: block; position: absolute; top: 0; right: 0; width: 149px; height: 149px; background: url(github_ribbon.png) left; }
+#github_ribbon:hover { background-position: right; }
 .caa_helper input[type=text] { color: #444; border-radius: 3px; padding: 0.3em 0.4em; background-color: #fff; border: 1px solid #ccc; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); transition: border linear .2s, box-shadow linear .2s; }
 .caa_helper input[type=text]:focus { border-color: rgba(82, 108, 236, 0.8); box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 108, 236, 0.6); }
 .caa_helper form { background: #eee; padding: 0.4em; border: solid #999 1px; border-radius: 3px; }
