@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_helper (form, output) {
+function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_generic) {
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -110,7 +110,7 @@ function init_caa_helper (form, output) {
 		}
 		return records;
 	}
-	function set_output (elts) {
+	function set_output (output, elts) {
 		while (output.hasChildNodes()) {
 			output.removeChild(output.firstChild);
 		}
@@ -133,54 +133,37 @@ function init_caa_helper (form, output) {
 		return text;
 	}
 	function create_zonefile_config (domain, records) {
-		var div = document.createElement("div");
-		var h = document.createElement("h2");
-		h.appendChild(document.createTextNode("BIND (9.9.6+)"));
-		div.appendChild(h);
-		var pre = document.createElement("pre");
-		pre.appendChild(document.createTextNode(format_zone_file(domain, records)));
-		div.appendChild(pre);
-		return div;
+		return [ document.createTextNode(format_zone_file(domain, records)) ];
 	}
 	function create_rfc3597_config (domain, records) {
-		var div = document.createElement("div");
-		var h = document.createElement("h2");
-		h.appendChild(document.createTextNode("BIND (Legacy)"));
-		div.appendChild(h);
-		var pre = document.createElement("pre");
-		pre.appendChild(document.createTextNode(format_rfc3597_zone_file(domain, records)));
-		div.appendChild(pre);
-		return div;
+		return [ document.createTextNode(format_rfc3597_zone_file(domain, records)) ];
 	}
 	function create_generic_config (domain, records) {
-		var div = document.createElement("div");
-		var h = document.createElement("h2");
-		h.appendChild(document.createTextNode("Generic"));
-		div.appendChild(h);
-		var ul = document.createElement("ul");
+		var elts = [];
 		for (var i = 0; i < records.length; ++i) {
 			var li = document.createElement("li");
 			var span = document.createElement("span");
 			span.appendChild(document.createTextNode(records[i].format()));
 			li.appendChild(span);
-			ul.appendChild(li);
+			elts.push(li);
 		}
-		div.appendChild(ul);
-		return div;
+		return elts;
 	}
 	function display_records (domain, records) {
-		var elts = [];
-		elts.push(create_zonefile_config(domain, records));
-		elts.push(create_rfc3597_config(domain, records));
-		elts.push(create_generic_config(domain, records));
-		set_output(elts);
+		set_output(output_zonefile, create_zonefile_config(domain, records));
+		set_output(output_rfc3597, create_rfc3597_config(domain, records));
+		set_output(output_generic, create_generic_config(domain, records));
+		output.style.display = "block";
+	}
+	function hide_output () {
+		output.style.display = "none";
 	}
 	function refresh () {
 		var domain = form["domain"].value;
 		if (domain != "") {
 			display_records(ensure_trailing_dot(domain), make_records(aggregate("issue"), aggregate("issuewild"), get_iodef_array()));
 		} else {
-			set_output([]);
+			hide_output();
 		}
 	}
 

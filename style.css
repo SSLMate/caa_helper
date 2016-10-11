@@ -23,7 +23,7 @@ a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
 #github_ribbon:hover { background-position: right; }
 .caa_helper input[type=text] { color: #444; border-radius: 3px; padding: 0.3em 0.4em; background-color: #fff; border: 1px solid #ccc; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); transition: border linear .2s, box-shadow linear .2s; }
 .caa_helper input[type=text]:focus { border-color: rgba(82, 108, 236, 0.8); box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 108, 236, 0.6); }
-.caa_helper form { background: #eee; padding: 0.4em; border: solid #999 1px; border-radius: 3px; }
+.caa_helper form { background: #eee; padding: 0.4em; border: solid #999 1px; border-radius: 3px; margin: 0 0 2em 0; }
 .caa_helper form p { margin: 0; }
 .caa_helper form table { margin: 1em 0; border-collapse: collapse; }
 .caa_helper form td, .caa_helper form th { padding: 0.3em 0.5em; }
@@ -33,12 +33,14 @@ a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
 .caa_helper form thead th { border-bottom: solid #333 1px; }
 .caa_helper form td { text-align: center; }
 .caa_helper h2 { margin: 0 0 0.5em 0; }
-.caa_helper .output { margin-top: 2em; }
+.caa_helper .output { display: none; }
 .caa_helper .output > div { margin: 0 0 2em 0; }
 .caa_helper .output pre { background: #eee; padding: 0.4em; overflow: auto; border: solid #999 1px; border-radius: 3px; font-size: 83%; margin: 0; }
 .caa_helper .output ul { padding: 0 0 0 1em; }
 .caa_helper .output li { padding: 0; margin: 0.5em 0; }
 .caa_helper .output li span { white-space: pre; font-family: monospace; background: #f3f3f3; border: solid #bbb 1px; border-radius: 3px; padding: 0 0.2em; }
+.caa_helper .output h2 { margin-bottom: 0; }
+.caa_helper .output p.software { font-style: italic; margin: 0.4em 0 1em 0; font-size: 83%; }
 .caa_helper .about { text-align: justify; }
 .caa_helper .about p { line-height: 170%; text-align: justify; }
 .caa_helper .about li { margin: 0.4em 0; }
