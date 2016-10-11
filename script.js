@@ -125,14 +125,14 @@ function init_caa_helper (form, output) {
 		}
 		return text;
 	}
-	function format_legacy_zone_file (domain, records) {
+	function format_rfc3597_zone_file (domain, records) {
 		var text = "";
 		for (var i = 0; i < records.length; ++i) {
 			text += domain + "\tTYPE257\t" + make_unknown_record(records[i].encode()) + "\n";
 		}
 		return text;
 	}
-	function create_bind_config (domain, records) {
+	function create_zonefile_config (domain, records) {
 		var div = document.createElement("div");
 		var h = document.createElement("h2");
 		h.appendChild(document.createTextNode("BIND (9.9.6+)"));
@@ -142,13 +142,13 @@ function init_caa_helper (form, output) {
 		div.appendChild(pre);
 		return div;
 	}
-	function create_legacy_bind_config (domain, records) {
+	function create_rfc3597_config (domain, records) {
 		var div = document.createElement("div");
 		var h = document.createElement("h2");
 		h.appendChild(document.createTextNode("BIND (Legacy)"));
 		div.appendChild(h);
 		var pre = document.createElement("pre");
-		pre.appendChild(document.createTextNode(format_legacy_zone_file(domain, records)));
+		pre.appendChild(document.createTextNode(format_rfc3597_zone_file(domain, records)));
 		div.appendChild(pre);
 		return div;
 	}
@@ -170,8 +170,8 @@ function init_caa_helper (form, output) {
 	}
 	function display_records (domain, records) {
 		var elts = [];
-		elts.push(create_bind_config(domain, records));
-		elts.push(create_legacy_bind_config(domain, records));
+		elts.push(create_zonefile_config(domain, records));
+		elts.push(create_rfc3597_config(domain, records));
 		elts.push(create_generic_config(domain, records));
 		set_output(elts);
 	}
