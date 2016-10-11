@@ -99,7 +99,8 @@
 						<h2>What is CAA?</h2>
 
 						<p>
-							CAA is a standard that lets you control what certificate
+							CAA is a <a href="https://tools.ietf.org/html/rfc6844">standard</a>
+							that lets you control what certificate
 							authorities (CAs) are allowed to issue certificates for your domain.
 							You can use CAA to reduce your exposure to vulnerabilities in
 							certificate authority validation systems and to enforce
@@ -164,7 +165,7 @@
 							CAA records:
 						</p>
 						<ul>
-							<li>BIND (Note: prior to version 9.9.6 you must specify the record in raw form)</li>
+							<li>BIND (Note: prior to version 9.9.6 you must specify the record in hex per <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a>)</li>
 							<li>Google Cloud DNS</li>
 						</ul>
 					</div>
