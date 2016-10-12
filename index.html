@@ -94,10 +94,22 @@
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
+								<th>Izenpe</th>
+								<td><input type="checkbox" name="issue" value="izenpe.com"/></td> <!-- TODO: confirm domain -->
+								<td><input type="checkbox" name="issuewild" value="izenpe.com"/></td>
+								<td></td>
+							</tr>
+							<tr>
 								<th>Let's Encrypt</th>
 								<td><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
 								<td><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
 								<td></td>
+							</tr>
+							<tr>
+								<th>QuoVadis</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
 								<th>Symantec</th>
@@ -106,10 +118,28 @@
 								<td></td>
 							</tr>
 							<tr>
+								<th>StartCom</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
+							</tr>
+							<tr>
 								<th>Thawte <span class="owner">Symantec</span></th>
 								<td><input type="checkbox" name="issue" value="thawte.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="thawte.com"/></td>
 								<td></td>
+							</tr>
+							<tr>
+								<th>Trustwave</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
+							</tr>
+							<tr>
+								<th>WoSign</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 						</tbody>
 					</table>
@@ -203,6 +233,7 @@
 							<li>Comodo (soft)</li>
 							<li>DigiCert (soft)</li>
 							<li>Entrust (soft)</li>
+							<li>Izenpe (soft)</li>
 							<li>Let's Encrypt (hard)</li>
 							<li>Symantec/GeoTrust/Thawte</li>
 						</ul>
