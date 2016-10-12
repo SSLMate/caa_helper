@@ -41,48 +41,75 @@
 							<tr>
 								<td></td>
 								<td colspan="2">Type of certificate</td>
+								<td></td>
 							</tr>
 							<tr>
 								<td></td>
 								<th>Non-Wildcard</th>
 								<th>Wildcard</th>
+								<td></td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
+								<th>Amazon</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
+							</tr>
+							<tr>
 								<th>Comodo</th>
 								<td><input type="checkbox" name="issue" value="comodoca.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th>DigiCert</th>
 								<td><input type="checkbox" name="issue" value="digicert.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="digicert.com"/></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th>Entrust</th>
 								<td><input type="checkbox" name="issue" value="entrust.net"/></td>
 								<td><input type="checkbox" name="issuewild" value="entrust.net"/></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th>GeoTrust</th>
 								<td><input type="checkbox" name="issue" value="geotrust.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="geotrust.com"/></td>
+								<td></td>
+							</tr>
+							<tr>
+								<th>GlobalSign</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
+							</tr>
+							<tr>
+								<th>GoDaddy</th>
+								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
 								<th>Let's Encrypt</th>
 								<td><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
 								<td><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th>Symantec</th>
 								<td><input type="checkbox" name="issue" value="symantec.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="symantec.com"/></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th>Thawte</th>
 								<td><input type="checkbox" name="issue" value="thawte.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="thawte.com"/></td>
+								<td></td>
 							</tr>
 						</tbody>
 					</table>

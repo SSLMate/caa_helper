@@ -13,7 +13,7 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		var items = [];
 		var inputs = form[input_name];
 		for (var i = 0; i < inputs.length; ++i) {
-			if (inputs[i].checked) {
+			if (inputs[i].checked && !inputs[i].disabled) {
 				items.push(inputs[i].value);
 			}
 		}
