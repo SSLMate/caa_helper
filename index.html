@@ -31,6 +31,21 @@
 			</div>
 
 			<div class="caa_helper">
+				<div class="overview">
+					<p>
+						CAA is a type of DNS record that lets you control which certificate authorities
+						can issue certificates for your domain.  Enter your domain name, check off the
+						certificate authorities that you authorize, and publish the generated DNS
+						records.  You can separately authorize the ability to issue wildcard and non-wildcard
+						certificates.
+					</p>
+
+					<p>
+						Note that some certificate authorities do not respect CAA records
+						and therefore cannot be unchecked.
+					</p>
+				</div>
+
 				<form id="caa_form">
 					<p>
 						<label>Domain name: </label><input type="text" name="domain" value="example.com"/>
