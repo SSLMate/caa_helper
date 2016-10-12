@@ -32,6 +32,9 @@ a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
 .caa_helper form thead th { text-align: center; }
 .caa_helper form thead th { border-bottom: solid #333 1px; }
 .caa_helper form td { text-align: center; }
+.caa_helper form .owner { font-size: 66%; font-variant: small-caps; color: #666; }
+.caa_helper form .owner:before { content: "("; }
+.caa_helper form .owner:after { content: ")"; }
 .caa_helper h2 { margin: 0 0 0.5em 0; }
 .caa_helper td.nosupport { font-size: 83%; color: #555; }
 .caa_helper .output { display: none; }
