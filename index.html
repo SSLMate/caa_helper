@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 	<!--
 		Copyright (C) 2016 Opsmate, Inc.
 
 		This Source Code Form is subject to the terms of the Mozilla
 		Public License, v. 2.0. If a copy of the MPL was not distributed
-		with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+		with this file, You can obtain one at https://www.mozilla.org/en-US/MPL/2.0/.
 
 		This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 		See the Mozilla Public License for details.
 	-->
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>CAA Record Generator</title>
-		<meta name="robots" content="noarchive" />
-		<link rel="icon" type="image/png" href="https://sslmate.com/assets/img/favicon.png" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
-			window.onload = function() { init_caa_helper(document.getElementById('caa_form'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_generic')); };
+		<meta name="robots" content="noarchive">
+		<link rel="icon" href="https://sslmate.com/assets/img/favicon.png" type="image/png">
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+		<script>
+			window.onload = function () {
+				init_caa_helper(document.getElementById('caa_form'),
+								document.getElementById('caa_output'),
+								document.getElementById('caa_output_zonefile'),
+								document.getElementById('caa_output_rfc3597'),
+								document.getElementById('caa_output_generic'));
+			};
 		</script>
 	</head>
 	<body>
@@ -53,9 +59,9 @@
 				</div>
 
 				<form id="caa_form">
-					<p>
-						<label>Domain name: </label><input type="text" name="domain" value="example.com"/>
-					</p>
+					<label>Domain name:</label>
+					<input type="text" name="domain" placeholder="example.com"/>
+
 
 					<table>
 						<thead>
@@ -172,7 +178,7 @@
 				<div class="output" id="caa_output">
 					<div>
 						<h2>Standard BIND Zone File</h2>
-						<p class="software">For BIND &#x2265;9.9.6, PowerDNS &#x2265;4.0.0, NSD &#x2265;4.0.1, Knot DNS &#x2265;2.2.0</p>
+						<p class="software">For BIND ≥9.9.6, PowerDNS ≥4.0.0, NSD ≥4.0.1, Knot DNS ≥2.2.0</p>
 
 						<pre id="caa_output_zonefile"></pre>
 					</div>
@@ -266,8 +272,8 @@
 						<ul>
 							<li>BIND (Prior to version 9.9.6 use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
 							<li>NSD (Prior to version 4.0.1 use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
-							<li>PowerDNS &#x2265;4.0.0</li>
-							<li>Knot DNS &#x2265;2.2.0</li>
+							<li>PowerDNS ≥4.0.0</li>
+							<li>Knot DNS ≥2.2.0</li>
 							<li>Google Cloud DNS</li>
 						</ul>
 						<p>
