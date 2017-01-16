@@ -84,7 +84,23 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 			return bytes;
 		};
 	}
-	function decode_record (bytes) { // TODO
+	function decode_record (bytes) {
+		function decode_string (bytes) {
+			var str = "";
+			for (var i = 0; i < bytes.length; ++i) {
+				str += String.fromCharCode(bytes[i]);
+			}
+			return str;
+		}
+
+		if (bytes.length < 2) {
+			return null;
+		}
+		var flags = bytes[0];
+		var tag_len = bytes[1];
+		var tag = decode_string(bytes.slice(2, 2 + tag_len));
+		var value = decode_string(bytes.slice(2 + tag_len));
+		return new Record(flags, tag, value);
 	}
 	function make_records (issue, issuewild, iodef) {
 		var records = [];
