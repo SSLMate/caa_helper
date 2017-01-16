@@ -102,29 +102,38 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		var value = decode_string(bytes.slice(2 + tag_len));
 		return new Record(flags, tag, value);
 	}
-	function make_records (issue, issuewild, iodef) {
-		var records = [];
-		var i;
-		if (issue.length == 0) {
-			records.push(new Record(0, "issue", ";"));
-		} else {
-			for (i = 0; i < issue.length; ++i) {
-				records.push(new Record(0, "issue", issue[i]));
-			}
-		}
-		if (!array_equals(issue, issuewild)) {
-			if (issuewild.length == 0) {
-				records.push(new Record(0, "issuewild", ";"));
+	function Policy (issue, issuewild, iodef) {
+		this.issue = issue;
+		this.issuewild = issuewild;
+		this.iodef = iodef;
+
+		this.make_records = function () {
+			var records = [];
+			var i;
+			if (this.issue.length == 0) {
+				records.push(new Record(0, "issue", ";"));
 			} else {
-				for (i = 0; i < issuewild.length; ++i) {
-					records.push(new Record(0, "issuewild", issuewild[i]));
+				for (i = 0; i < this.issue.length; ++i) {
+					records.push(new Record(0, "issue", this.issue[i]));
 				}
 			}
-		}
-		for (i = 0; i < iodef.length; ++i) {
-			records.push(new Record(0, "iodef", iodef[i]));
-		}
-		return records;
+			if (!array_equals(this.issue, this.issuewild)) {
+				if (this.issuewild.length == 0) {
+					records.push(new Record(0, "issuewild", ";"));
+				} else {
+					for (i = 0; i < this.issuewild.length; ++i) {
+						records.push(new Record(0, "issuewild", this.issuewild[i]));
+					}
+				}
+			}
+			for (i = 0; i < this.iodef.length; ++i) {
+				records.push(new Record(0, "iodef", this.iodef[i]));
+			}
+			return records;
+		};
+	}
+	function make_policy_from_form () {
+		return new Policy(aggregate("issue"), aggregate("issuewild"), get_iodef_array());
 	}
 	function set_output (output, elts) {
 		while (output.hasChildNodes()) {
@@ -177,7 +186,7 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 	function refresh () {
 		var domain = form["domain"].value;
 		if (domain != "") {
-			display_records(ensure_trailing_dot(domain), make_records(aggregate("issue"), aggregate("issuewild"), get_iodef_array()));
+			display_records(ensure_trailing_dot(domain), make_policy_from_form().make_records());
 		} else {
 			hide_output();
 		}
