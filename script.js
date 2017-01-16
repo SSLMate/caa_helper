@@ -19,17 +19,6 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		}
 		return items;
 	}
-	function get_iodef_array () {
-		var value = form["iodef"].value;
-		if (value != "") {
-			if (value.indexOf("mailto:") == 0 || value.indexOf("http:") == 0 || value.indexOf("https:") == 0) {
-				return [ value ];
-			} else {
-				return [ "mailto:" + value ];
-			}
-		}
-		return [];
-	}
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -126,14 +115,14 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 					}
 				}
 			}
-			for (i = 0; i < this.iodef.length; ++i) {
-				records.push(new Record(0, "iodef", this.iodef[i]));
+			if (this.iodef != "") {
+				records.push(new Record(0, "iodef", this.iodef));
 			}
 			return records;
 		};
 	}
 	function make_policy_from_form () {
-		return new Policy(aggregate("issue"), aggregate("issuewild"), get_iodef_array());
+		return new Policy(aggregate("issue"), aggregate("issuewild"), form["iodef"].value);
 	}
 	function set_output (output, elts) {
 		while (output.hasChildNodes()) {
