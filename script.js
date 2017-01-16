@@ -120,9 +120,80 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 			}
 			return records;
 		};
+		this.to_form = function () {
+			function set_checkboxes (input_name, items) {
+				var inputs = form[input_name];
+				for (var i = 0; i < inputs.length; ++i) {
+					if (!inputs[i].disabled) {
+						inputs[i].checked = items.indexOf(inputs[i].value) != -1;
+					}
+				}
+			}
+			set_checkboxes("issue", this.issue);
+			set_checkboxes("issuewild", this.issuewild);
+			form["iodef"].value = this.iodef;
+		};
 	}
 	function make_policy_from_form () {
 		return new Policy(aggregate("issue"), aggregate("issuewild"), form["iodef"].value);
+	}
+	function InvalidRecordError (message) {
+		this.message = message;
+	}
+	function PolicyCompatError (message) {
+		this.message = message;
+	}
+	function make_policy_from_records (records) {
+		function parse_issue_property (str) {
+			var re = /^[ \t]*([-.0-9a-zA-Z]*)[ \t]*(;(([ \t]*[0-9a-zA-Z]+=[\x21-\x7E]*)*)[ \t]*)?$/;
+			var m = re.exec(str);
+			if (!m) {
+				throw new InvalidRecordError("The issue or issuewild property is malformed");
+			}
+			if (m[3] && m[3] != "") {
+				throw new PolicyCompatError("issue and issuewild parameters are not supported");
+			}
+			return m[1];
+		}
+
+		var has_issue = false;
+		var issue = [];
+		var has_issuewild = false;
+		var issuewild = [];
+		var iodef = "";
+
+		for (var i = 0; i < records.length; ++i) {
+			var record = records[i];
+			if (record.tag == "issue") {
+				var domain = parse_issue_property(record.value);
+				if (domain != "") {
+					issue.push(domain);
+				}
+				has_issue = true;
+			} else if (record.tag == "issuewild") {
+				var domain = parse_issue_property(record.value);
+				if (domain != "") {
+					issuewild.push(domain);
+				}
+				has_issuewild = true;
+			} else if (record.tag == "iodef") {
+				if (iodef != "") {
+					throw new PolicyCompatError("At most one iodef property is supported");
+				}
+				iodef = record.value;
+			} else {
+				throw new PolicyCompatError("The " + record.tag + " property is not supported (only issue, issuewild, and iodef are supported)");
+			}
+		}
+
+		if (!has_issue) {
+			if (has_issuewild || iodef != "") {
+				throw new PolicyCompatError("Policies without at least one issue property are not supported");
+			}
+			return null;
+		}
+
+		return new Policy(issue, has_issuewild ? issuewild : issue, iodef);
 	}
 	function set_output (output, elts) {
 		while (output.hasChildNodes()) {
