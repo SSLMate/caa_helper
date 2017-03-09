@@ -206,14 +206,14 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 	function format_zone_file (domain, records) {
 		var text = "";
 		for (var i = 0; i < records.length; ++i) {
-			text += domain + "\tCAA\t" + records[i].format() + "\n";
+			text += domain + "\tIN\tCAA\t" + records[i].format() + "\n";
 		}
 		return text;
 	}
 	function format_rfc3597_zone_file (domain, records) {
 		var text = "";
 		for (var i = 0; i < records.length; ++i) {
-			text += domain + "\tTYPE257\t" + make_unknown_record(records[i].encode()) + "\n";
+			text += domain + "\tIN\tTYPE257\t" + make_unknown_record(records[i].encode()) + "\n";
 		}
 		return text;
 	}
