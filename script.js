@@ -91,6 +91,20 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		var value = decode_string(bytes.slice(2 + tag_len));
 		return new Record(flags, tag, value);
 	}
+	function iodef_from_form (value) {
+		if (value == "" || value.indexOf("mailto:") == 0 || value.indexOf("http:") == 0 || value.indexOf("https:") == 0) {
+			return value;
+		} else {
+			return "mailto:" + value;
+		}
+	}
+	function iodef_to_form (value) {
+		if (value.indexOf("mailto:") == 0) {
+			return value.substr(7);
+		} else {
+			return value;
+		}
+	}
 	function Policy (issue, issuewild, iodef) {
 		this.issue = issue;
 		this.issuewild = issuewild;
@@ -131,11 +145,11 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 			}
 			set_checkboxes("issue", this.issue);
 			set_checkboxes("issuewild", this.issuewild);
-			form["iodef"].value = this.iodef;
+			form["iodef"].value = iodef_to_form(this.iodef);
 		};
 	}
 	function make_policy_from_form () {
-		return new Policy(aggregate("issue"), aggregate("issuewild"), form["iodef"].value);
+		return new Policy(aggregate("issue"), aggregate("issuewild"), iodef_from_form(form["iodef"].value));
 	}
 	function InvalidRecordError (message) {
 		this.message = message;
