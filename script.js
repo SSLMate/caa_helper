@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_generic) {
+function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -37,6 +37,13 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 			return str;
 		}
 	}
+	function strip_trailing_dot (str) {
+		if (str.substr(-1) == ".") {
+			return str.substr(0, str.length - 1);
+		} else {
+			return str;
+		}
+	}
 	function quote (str) {
 		return '"' + str.replace(/\"/g, "\\\"") + '"';
 	}
@@ -48,6 +55,20 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 				str += "0";
 			}
 			str += hexStr;
+		}
+		return str;
+	}
+	function make_tinydns_generic_record (bytes) {
+		var str = "";
+		for (var i = 0; i < bytes.length; ++i) {
+			str += "\\";
+			var octalStr = bytes[i].toString(8);
+			if (octalStr.length == 1) {
+				str += "00";
+			} else if (octalStr.length == 2) {
+				str += "0";
+			}
+			str += octalStr;
 		}
 		return str;
 	}
@@ -231,11 +252,24 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		}
 		return text;
 	}
+	function format_tinydns_zone_file (domain, records) {
+		// see https://cr.yp.to/djbdns/tinydns-data.html
+		// see https://github.com/SSLMate/caa_helper/issues/21#issuecomment-293424734
+		// :example.com:257:\000\005\151\163\163\165\145\143\157\155\157\144\157\143\141\056\143\157\155
+		var text = "";
+		for (var i = 0; i < records.length; ++i) {
+			text += ":" + strip_trailing_dot(domain) + ":257:" + make_tinydns_generic_record(records[i].encode()) + "\n";
+		}
+		return text;
+	}
 	function create_zonefile_config (domain, records) {
 		return [ document.createTextNode(format_zone_file(domain, records)) ];
 	}
 	function create_rfc3597_config (domain, records) {
 		return [ document.createTextNode(format_rfc3597_zone_file(domain, records)) ];
+	}
+	function create_tinydns_config (domain, records) {
+		return [ document.createTextNode(format_tinydns_zone_file(domain, records)) ];
 	}
 	function create_generic_config (domain, records) {
 		var elts = [];
@@ -251,6 +285,7 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 	function display_records (domain, records) {
 		set_output(output_zonefile, create_zonefile_config(domain, records));
 		set_output(output_rfc3597, create_rfc3597_config(domain, records));
+		set_output(output_tinydns, create_tinydns_config(domain, records));
 		set_output(output_generic, create_generic_config(domain, records));
 		output.style.display = "block";
 	}

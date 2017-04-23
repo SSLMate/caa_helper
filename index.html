@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			window.onload = function() { init_caa_helper(document.getElementById('caa_form'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_generic')); };
+			window.onload = function() { init_caa_helper(document.getElementById('caa_form'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
 		</script>
 	</head>
 	<body>
@@ -203,6 +203,13 @@
 					</div>
 
 					<div>
+						<h2>tinydns (Generic Syntax)</h2>
+						<p class="software"></p>
+
+						<pre id="caa_output_tinydns"></pre>
+					</div>
+
+					<div>
 						<h2>Generic</h2>
 						<p class="software">For Google Cloud DNS, DNSimple</p>
 
@@ -292,6 +299,7 @@
 							<li>Constellix DNS</li>
 							<li>Simple DNS Plus &#x2265;6.0</li>
 							<li>Windows Server 2016 (use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
+							<li>tinydns (use generic record syntax)</li>
 						</ul>
 						<p>
 							Please
