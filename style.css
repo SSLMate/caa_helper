@@ -36,6 +36,7 @@ a, a:link, a:hover, a:visited, a:active { text-decoration: underline; }
 .caa_helper form .owner { font-size: 66%; font-variant: small-caps; color: #666; }
 .caa_helper form .owner:before { content: "("; }
 .caa_helper form .owner:after { content: ")"; }
+.caa_helper form .brands { font-size: 66%; display: block; color: #666; font-variant: small-caps; }
 .caa_helper h2 { margin: 0 0 0.5em 0; }
 .caa_helper td.nosupport { font-size: 83%; color: #555; }
 .caa_helper .output { display: none; }
