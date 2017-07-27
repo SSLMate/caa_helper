@@ -41,14 +41,11 @@
 					</p>
 
 					<p>
-						Note that some certificate authorities do not respect CAA records
-						and therefore cannot be unchecked.
-					</p>
-
-					<p>
-						Not all CAs are listed yet.  Please
-						<a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you know
-						whether an unlisted CA supports CAA or not.
+						Starting September 8, 2017, all publicly-trusted CAs will be required to respect CAA records.
+						Until then, only the CAs listed below are known to respect CAA records, and other
+						CAs may issue certificates regardless of a domain's CAA records.
+						Please <a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you know
+						of an unlisted CA that already supports CAA.
 					</p>
 				</div>
 
@@ -72,37 +69,42 @@
 							</tr>
 						</thead>
 						<tbody>
+							<!--
 							<tr>
 								<th>Amazon</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
 								<th>Certum</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
+							-->
 							<tr>
 								<th>Comodo</th>
 								<td><input type="checkbox" name="issue" value="comodoca.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
 								<td></td>
 							</tr>
+							<!--
 							<tr>
 								<th>DFN-PKI</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value="pki.dfn.de"/></td>
+								<td><input type="checkbox" name="issuewild" value="pki.dfn.de"/></td>
 								<td class="nosupport">Does not respect CAA</td>
-								<!-- pki.dfn.de -->
 							</tr>
+							-->
+							<!--
 							<tr>
 								<th>D-Trust</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
+							-->
 							<tr>
 								<th>DigiCert</th>
 								<td><input type="checkbox" name="issue" value="digicert.com"/></td>
@@ -115,18 +117,20 @@
 								<td><input type="checkbox" name="issuewild" value="entrust.net"/></td>
 								<td></td>
 							</tr>
+							<!--
 							<tr>
 								<th>GlobalSign</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
 								<th>GoDaddy <span class="brands">Starfield Technologies</span></th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
+							-->
 							<tr>
 								<th>Izenpe</th>
 								<td><input type="checkbox" name="issue" value="izenpe.com"/></td> <!-- TODO: confirm domain -->
@@ -139,37 +143,40 @@
 								<td><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
 								<td></td>
 							</tr>
+							<!--
 							<tr>
 								<th>QuoVadis</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
 							<tr>
 								<th>StartCom</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
+							-->
 							<tr>
 								<th>Symantec <span class="brands">GeoTrust, Thawte, RapidSSL</span></th>
 								<td><input type="checkbox" name="issue" value="symantec.com"/></td>
 								<td><input type="checkbox" name="issuewild" value="symantec.com"/></td>
 								<td></td>
 							</tr>
+							<!--
 							<tr>
 								<th>T-TeleSec</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value="telesec.de"/></td>
+								<td><input type="checkbox" name="issuewild" value="telesec.de"/></td>
 								<td class="nosupport">Does not respect CAA</td>
-								<!-- telesec.de -->
 							</tr>
 							<tr>
 								<th>Trustwave</th>
-								<td><input type="checkbox" name="issue" checked="checked" disabled="disabled"/></td>
-								<td><input type="checkbox" name="issuewild" checked="checked" disabled="disabled"/></td>
+								<td><input type="checkbox" name="issue" value=""/></td>
+								<td><input type="checkbox" name="issuewild" value=""/></td>
 								<td class="nosupport">Does not respect CAA</td>
 							</tr>
+							-->
 							<tr>
 								<th>WoSign</th>
 								<td><input type="checkbox" name="issue" value="wosign.com"/></td>
@@ -247,38 +254,11 @@
 						<h2>Who Supports CAA?</h2>
 
 						<p>
-							The following CAs respect CAA records.  "Hard" means the CA rejects requests
-							that don't comply with the CAA records.  "Soft" means they may issue non-compliant certificates
-							after further review.
+							Starting September 8, 2017, all CAs are required to respect CAA records
+							and reject certificate requests that do not satisfy a domain's published CAA policy.
+							Until then, only the CAs listed above are known to respect CAA, and they may nevertheless
+							issue non-compliant certificates after further review.
 						</p>
-						<!--
-						<table>
-							<thead>
-								<tr>
-									<th>CA</th>
-									<th>Policy</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Comodo</th>
-									<td>Soft</td>
-								</tr>
-								<tr>
-									<th>DigiCert</th>
-									<td>Soft</td>
-								</tr>
-							</tbody>
-						</table>
-						-->
-						<ul>
-							<li>Comodo (soft)</li>
-							<li>DigiCert (soft)</li>
-							<li>Entrust (soft)</li>
-							<li>Izenpe (soft)</li>
-							<li>Let's Encrypt (hard)</li>
-							<li>Symantec/GeoTrust/Thawte (unknown policy)</li>
-						</ul>
 
 						<p>
 							The following DNS server software supports
