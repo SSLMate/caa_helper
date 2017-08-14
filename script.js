@@ -236,18 +236,6 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		}
 		elt.appendChild(document.createTextNode(content));
 	}
-	function set_table_output (table, cells) {
-		while (table.rows.length > 0) {
-			table.deleteRow(0);
-		}
-		for (var i = 0; i < cells.length; ++i) {
-			var tr = table.insertRow(table.rows.length);
-			for (var j = 0; j < cells[i].length; ++j) {
-				var td = tr.insertCell(tr.cells.length);
-				td.appendChild(cells[i][j]);
-			}
-		}
-	}
 	function format_zone_file (domain, records) {
 		var text = "";
 		for (var i = 0; i < records.length; ++i) {
@@ -272,29 +260,30 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		}
 		return text;
 	}
-	function create_generic_config (domain, records) {
-		function make_span (content) {
+	function set_generic_table (table, domain, records) {
+		function add_cell (row, content) {
 			var span = document.createElement("span");
 			span.appendChild(document.createTextNode(content));
+			var cell = row.insertCell(row.cells.length);
+			cell.appendChild(span);
 			return span;
 		}
 
-		var rows = [];
-		for (var i = 0; i < records.length; ++i) {
-			var row = [
-				make_span(domain),
-				make_span("CAA"),
-				make_span(records[i].format())
-			];
-			rows.push(row);
+		while (table.rows.length > 0) {
+			table.deleteRow(0);
 		}
-		return rows;
+		for (var i = 0; i < records.length; ++i) {
+			var row = table.insertRow(table.rows.length);
+			add_cell(row, domain);
+			add_cell(row, "CAA");
+			add_cell(row, records[i].format());
+		}
 	}
 	function display_records (domain, records) {
 		set_text_output(output_zonefile, format_zone_file(domain, records));
 		set_text_output(output_rfc3597, format_rfc3597_zone_file(domain, records));
 		set_text_output(output_tinydns, format_tinydns_zone_file(domain, records));
-		set_table_output(output_generic, create_generic_config(domain, records));
+		set_generic_table(output_generic, domain, records);
 		output.style.display = "block";
 	}
 	function hide_output () {
