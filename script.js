@@ -261,10 +261,11 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		return text;
 	}
 	function set_generic_table (table, domain, records) {
-		function add_cell (row, content) {
+		function add_cell (row, rowSpan, content) {
 			var span = document.createElement("span");
 			span.appendChild(document.createTextNode(content));
 			var cell = row.insertCell(row.cells.length);
+			cell.rowSpan = rowSpan;
 			cell.appendChild(span);
 			return span;
 		}
@@ -274,9 +275,11 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		}
 		for (var i = 0; i < records.length; ++i) {
 			var row = table.insertRow(table.rows.length);
-			add_cell(row, domain);
-			add_cell(row, "CAA");
-			add_cell(row, records[i].format());
+			if (i == 0) {
+				add_cell(row, records.length, domain);
+				add_cell(row, records.length, "CAA");
+			}
+			add_cell(row, 1, records[i].format());
 		}
 	}
 	function display_records (domain, records) {
