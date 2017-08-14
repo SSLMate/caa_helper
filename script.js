@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Opsmate, Inc.
+ * Copyright (C) 2016-2017 Opsmate, Inc.
  * 
  * This Source Code Form is subject to the terms of the Mozilla
  * Public License, v. 2.0. If a copy of the MPL was not distributed
@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
+function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -230,12 +230,22 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 
 		return new Policy(issue, has_issuewild ? issuewild : issue, iodef);
 	}
-	function set_output (output, elts) {
-		while (output.hasChildNodes()) {
-			output.removeChild(output.firstChild);
+	function set_text_output (elt, content) {
+		while (elt.hasChildNodes()) {
+			elt.removeChild(elt.firstChild);
 		}
-		for (var i = 0; i < elts.length; ++i) {
-			output.appendChild(elts[i]);
+		elt.appendChild(document.createTextNode(content));
+	}
+	function set_table_output (table, cells) {
+		while (table.rows.length > 0) {
+			table.deleteRow(0);
+		}
+		for (var i = 0; i < cells.length; ++i) {
+			var tr = table.insertRow(table.rows.length);
+			for (var j = 0; j < cells[i].length; ++j) {
+				var td = tr.insertCell(tr.cells.length);
+				td.appendChild(cells[i][j]);
+			}
 		}
 	}
 	function format_zone_file (domain, records) {
@@ -262,31 +272,29 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 		}
 		return text;
 	}
-	function create_zonefile_config (domain, records) {
-		return [ document.createTextNode(format_zone_file(domain, records)) ];
-	}
-	function create_rfc3597_config (domain, records) {
-		return [ document.createTextNode(format_rfc3597_zone_file(domain, records)) ];
-	}
-	function create_tinydns_config (domain, records) {
-		return [ document.createTextNode(format_tinydns_zone_file(domain, records)) ];
-	}
 	function create_generic_config (domain, records) {
-		var elts = [];
-		for (var i = 0; i < records.length; ++i) {
-			var li = document.createElement("li");
+		function make_span (content) {
 			var span = document.createElement("span");
-			span.appendChild(document.createTextNode(records[i].format()));
-			li.appendChild(span);
-			elts.push(li);
+			span.appendChild(document.createTextNode(content));
+			return span;
 		}
-		return elts;
+
+		var rows = [];
+		for (var i = 0; i < records.length; ++i) {
+			var row = [
+				make_span(domain),
+				make_span("CAA"),
+				make_span(records[i].format())
+			];
+			rows.push(row);
+		}
+		return rows;
 	}
 	function display_records (domain, records) {
-		set_output(output_zonefile, create_zonefile_config(domain, records));
-		set_output(output_rfc3597, create_rfc3597_config(domain, records));
-		set_output(output_tinydns, create_tinydns_config(domain, records));
-		set_output(output_generic, create_generic_config(domain, records));
+		set_text_output(output_zonefile, format_zone_file(domain, records));
+		set_text_output(output_rfc3597, format_rfc3597_zone_file(domain, records));
+		set_text_output(output_tinydns, format_tinydns_zone_file(domain, records));
+		set_table_output(output_generic, create_generic_config(domain, records));
 		output.style.display = "block";
 	}
 	function hide_output () {
@@ -300,17 +308,58 @@ function init_caa_helper (form, output, output_zonefile, output_rfc3597, output_
 			hide_output();
 		}
 	}
+	function apply_ca_filter () {
+		var ca_filter = form["ca_filter"].value.toLowerCase();
+		for (var i = 0; i < ca_table.tBodies[0].rows.length; ++i) {
+			var row = ca_table.tBodies[0].rows[i];
+			if (row.cells[0].textContent.toLowerCase().indexOf(ca_filter) == -1) {
+				row.className = "hidden";
+			} else {
+				row.className = "";
+			}
+		}
+	}
+	function clear_ca_filter () {
+		form["ca_filter"].value = "";
+		apply_ca_filter();
+	}
+	function empty_policy () {
+		new Policy([], [], "").to_form();
+		refresh();
+	}
+	function use_sslmate_policy () {
+		var sslmate_cas = [ 'comodoca.com', 'globalsign.com', 'letsencrypt.org' ];
+		new Policy(sslmate_cas, sslmate_cas, "").to_form();
+		refresh();
+	}
+	function autogenerate_policy () { // TODO
+	}
+	function load_policy () { // TODO
+	}
 
 	for (var i = 0; i < form.elements.length; ++i) {
 		var elt = form.elements[i];
 		if (elt.name == "issue" || elt.name == "issuewild") {
 			elt.onclick = refresh;
-		}
-		if (elt.name == "domain" || elt.name == "iodef") {
+		} else if (elt.name == "domain" || elt.name == "iodef") {
 			elt.onchange = refresh;
 			elt.onkeyup = refresh;
+		} else if (elt.name == "ca_filter") {
+			elt.onchange = apply_ca_filter;
+			elt.onkeyup = apply_ca_filter;
+		} else if (elt.name == "clear_ca_filter") {
+			elt.onclick = clear_ca_filter;
+		} else if (elt.name == "empty_policy") {
+			elt.onclick = empty_policy;
+		} else if (elt.name == "use_sslmate_policy") {
+			elt.onclick = use_sslmate_policy;
+		} else if (elt.name == "autogenerate_policy") {
+			elt.onclick = autogenerate_policy;
+		} else if (elt.name == "load_policy") {
+			elt.onclick = load_policy;
 		}
 	}
 
 	refresh();
+	apply_ca_filter();
 }

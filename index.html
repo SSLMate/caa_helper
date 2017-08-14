@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<!--
-		Copyright (C) 2016 Opsmate, Inc.
+		Copyright (C) 2016-2017 Opsmate, Inc.
 
 		This Source Code Form is subject to the terms of the Mozilla
 		Public License, v. 2.0. If a copy of the MPL was not distributed
@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			window.onload = function() { init_caa_helper(document.getElementById('caa_form'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
+			window.onload = function() { init_caa_helper(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
 		</script>
 	</head>
 	<body>
@@ -30,269 +30,189 @@
 				<p class="by">By <a href="https://sslmate.com">SSLMate</a></p>
 			</div>
 
-			<div class="caa_helper">
-				<div class="overview">
-					<p>
-						CAA is a type of DNS record that lets you control which certificate authorities
-						can issue certificates for your domain.  Enter your domain name, check off the
-						certificate authorities that you authorize, and publish the generated DNS
-						records.  You can separately authorize the ability to issue wildcard and non-wildcard
-						certificates.
-					</p>
+			<div class="generator">
+				<form id="generator_form">
+					<div class="overview">
+						<p>
+							CAA is a type of DNS record that lets you control which certificate authorities (CAs)
+							can issue SSL certificates for your domain.  This tool helps you set up CAA
+							for your domain. <a href="about">Learn More</a>
+						</p>
 
-					<p>
-						Starting September 8, 2017, all publicly-trusted CAs will be required to respect CAA records.
-						Until then, only the CAs listed below are known to respect CAA records, and other
-						CAs may issue certificates regardless of a domain's CAA records.
-						Please <a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you know
-						of an unlisted CA that already supports CAA.
-					</p>
-				</div>
+						<p>
+							As of September 8, 2017, all public certificate authorities are required to respect CAA records.
+						</p>
+					</div>
 
-				<form id="caa_form">
-					<p>
-						<label>Domain name: </label><input type="text" name="domain" value="example.com"/>
-					</p>
+					<div class="section">
+						<h2>1. Enter Your Domain Name</h2>
 
-					<table>
-						<thead>
+						<p>
+							<label>Domain name: </label><input type="text" name="domain" value="example.com" size="30"/>
+						</p>
+
+						<table class="policy_selection">
 							<tr>
-								<td></td>
-								<td colspan="2">Type of certificate</td>
-								<td></td>
+								<td><button type="button" name="empty_policy">Empty Policy</button></td>
+								<td>You'll start with an empty policy.</td>
 							</tr>
 							<tr>
-								<td></td>
-								<th>Non-Wildcard</th>
-								<th>Wildcard</th>
-								<td></td>
-							</tr>
-						</thead>
-						<tbody>
-							<!--
-							<tr>
-								<th>Amazon</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
+								<td><button type="button" name="use_sslmate_policy">SSLMate Policy</button></td>
+								<td>Your policy will allow only the CAs used by <a href="https://sslmate.com">SSLMate</a>.</td>
 							</tr>
 							<tr>
-								<th>Certum</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<tr>
-								<th>Comodo</th>
-								<td><input type="checkbox" name="issue" value="comodoca.com"/></td>
-								<td><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
-								<td></td>
-							</tr>
-							<!--
-							<tr>
-								<th>DFN-PKI</th>
-								<td><input type="checkbox" name="issue" value="pki.dfn.de"/></td>
-								<td><input type="checkbox" name="issuewild" value="pki.dfn.de"/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<!--
-							<tr>
-								<th>D-Trust</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<tr>
-								<th>DigiCert</th>
-								<td><input type="checkbox" name="issue" value="digicert.com"/></td>
-								<td><input type="checkbox" name="issuewild" value="digicert.com"/></td>
-								<td></td>
+								<td><button type="button" name="autogenerate_policy">Auto-Generate Policy</button></td>
+								<td>We'll use <a href="https://www.certificate-transparency.org/">Certificate Transparency</a> to see which CAs you're currently using.</td>
 							</tr>
 							<tr>
-								<th>Entrust</th>
-								<td><input type="checkbox" name="issue" value="entrust.net"/></td>
-								<td><input type="checkbox" name="issuewild" value="entrust.net"/></td>
-								<td></td>
+								<td><button type="button" name="load_policy">Load Current Policy</button></td>
+								<td>We'll load your existing CAA record set so you can make adjustments.</td>
 							</tr>
-							<!--
-							<tr>
-								<th>GlobalSign</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							<tr>
-								<th>GoDaddy <span class="brands">Starfield Technologies</span></th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<tr>
-								<th>Izenpe</th>
-								<td><input type="checkbox" name="issue" value="izenpe.com"/></td> <!-- TODO: confirm domain -->
-								<td><input type="checkbox" name="issuewild" value="izenpe.com"/></td>
-								<td></td>
-							</tr>
-							<tr>
-								<th>Let's Encrypt</th>
-								<td><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
-								<td><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
-								<td></td>
-							</tr>
-							<!--
-							<tr>
-								<th>QuoVadis</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							<tr>
-								<th>StartCom</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<tr>
-								<th>Symantec <span class="brands">GeoTrust, Thawte, RapidSSL</span></th>
-								<td><input type="checkbox" name="issue" value="symantec.com"/></td>
-								<td><input type="checkbox" name="issuewild" value="symantec.com"/></td>
-								<td></td>
-							</tr>
-							<!--
-							<tr>
-								<th>T-TeleSec</th>
-								<td><input type="checkbox" name="issue" value="telesec.de"/></td>
-								<td><input type="checkbox" name="issuewild" value="telesec.de"/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							<tr>
-								<th>Trustwave</th>
-								<td><input type="checkbox" name="issue" value=""/></td>
-								<td><input type="checkbox" name="issuewild" value=""/></td>
-								<td class="nosupport">Does not respect CAA</td>
-							</tr>
-							-->
-							<tr>
-								<th>WoSign</th>
-								<td><input type="checkbox" name="issue" value="wosign.com"/></td>
-								<td><input type="checkbox" name="issuewild" value="wosign.com"/></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-					<p>
-						<label>Send incident reports to (email or URL): </label><input type="text" name="iodef"/> (optional)
-					</p>
+						</table>
+					</div>
+
+					<div class="section">
+						<h2>2. Select Authorized Certificate Authorities</h2>
+
+						<p class="instructions">
+							Check off the certificate authorities which you authorize to issue certificates.
+							You can separately authorize the issuance of wildcard and non-wildcard certificates.
+						</p>
+
+						<div class="ca_selector">
+							<p>
+								<label>Filter by CA name: </label>
+								<input type="text" name="ca_filter" value="" size="40"/>
+								<button type="button" name="clear_ca_filter" class="link">Clear Filter</button>
+							</p>
+
+							<table id="ca_table">
+								<thead>
+									<tr>
+										<td class="name_col"></td>
+										<td class="type_col" colspan="2">Type of certificate</td>
+									</tr>
+									<tr>
+										<td class="name_col"></td>
+										<th class="nonwild_col">Non-Wildcard</th>
+										<th class="wild_col">Wildcard</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th class="name_col">Comodo</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="comodoca.com"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
+									</tr>
+									<!--
+									<tr>
+										<th>DFN-PKI</th>
+										<td><input type="checkbox" name="issue" value="pki.dfn.de"/></td>
+										<td><input type="checkbox" name="issuewild" value="pki.dfn.de"/></td>
+									</tr>
+									-->
+									<tr>
+										<th class="name_col">DigiCert</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="digicert.com"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="digicert.com"/></td>
+									</tr>
+									<tr>
+										<th class="name_col">Entrust</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="entrust.net"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="entrust.net"/></td>
+									</tr>
+									<tr>
+										<th class="name_col">Izenpe</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="izenpe.com"/></td> <!-- TODO: confirm domain -->
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="izenpe.com"/></td>
+									</tr>
+									<tr>
+										<th class="name_col">Let's Encrypt</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
+									</tr>
+									<tr>
+										<th class="name_col">Symantec <span class="brands">GeoTrust, Thawte, RapidSSL</span></th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="symantec.com"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="symantec.com"/></td>
+									</tr>
+									<!--
+									<tr>
+										<th>T-TeleSec</th>
+										<td><input type="checkbox" name="issue" value="telesec.de"/></td>
+										<td><input type="checkbox" name="issuewild" value="telesec.de"/></td>
+									</tr>
+									-->
+									<tr>
+										<th class="name_col">WoSign</th>
+										<td class="nonwild_col"><input type="checkbox" name="issue" value="wosign.com"/></td>
+										<td class="wild_col"><input type="checkbox" name="issuewild" value="wosign.com"/></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="section">
+						<h2>3. Incident Reporting (Optional)</h2>
+
+						<p class="instructions">
+							You can specify an email address or URL for reporting certificate issue
+							requests or cases of certificate issue that violate your CAA policy.
+							Reports will be provided in <a href="https://tools.ietf.org/html/rfc5070">iodef</a> format.
+						</p>
+
+						<p>
+							<label>Email address or URL: </label><input type="text" name="iodef" size="40"/>
+						</p>
+					</div>
+
+					<div class="section">
+						<h2>4. Publish Your CAA Records</h2>
+
+						<p class="instructions">
+							Publishing CAA records requires your DNS to be hosted with a service that supports CAA.
+							<!-- TODO: link to DNS provider page -->
+						</p>
+
+						<div class="output" id="caa_output">
+							<div>
+								<h3>Standard BIND Zone File</h3>
+								<p class="software">For BIND &#x2265;9.9.6, PowerDNS &#x2265;4.0.0, NSD &#x2265;4.0.1, Knot DNS &#x2265;2.2.0</p>
+
+								<pre id="caa_output_zonefile"></pre>
+							</div>
+
+							<div>
+								<h3>Legacy Zone File (<a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> Syntax)</h3>
+								<p class="software">For BIND &lt;9.9.6, NSD &lt;4.0.1</p>
+
+								<pre id="caa_output_rfc3597"></pre>
+							</div>
+
+							<div>
+								<h3>tinydns</h3>
+								<p class="software"></p>
+
+								<pre id="caa_output_tinydns"></pre>
+							</div>
+
+							<div>
+								<h3>Generic</h3>
+								<p class="software">For Google Cloud DNS, DNSimple</p>
+
+								<table>
+									<thead>
+										<th>Record Name</th>
+										<th>Record Type</th>
+										<th>Record Value</th>
+									</thead>
+									<tbody id="caa_output_generic"></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</form>
-
-				<div class="output" id="caa_output">
-					<div>
-						<h2>Standard BIND Zone File</h2>
-						<p class="software">For BIND &#x2265;9.9.6, PowerDNS &#x2265;4.0.0, NSD &#x2265;4.0.1, Knot DNS &#x2265;2.2.0</p>
-
-						<pre id="caa_output_zonefile"></pre>
-					</div>
-
-					<div>
-						<h2>Legacy Zone File (<a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> Syntax)</h2>
-						<p class="software">For BIND &lt;9.9.6, NSD &lt;4.0.1</p>
-
-						<pre id="caa_output_rfc3597"></pre>
-					</div>
-
-					<div>
-						<h2>tinydns</h2>
-						<p class="software"></p>
-
-						<pre id="caa_output_tinydns"></pre>
-					</div>
-
-					<div>
-						<h2>Generic</h2>
-						<p class="software">For Google Cloud DNS, DNSimple</p>
-
-						<ul id="caa_output_generic"></ul>
-					</div>
-				</div>
-
-				<div id="about" class="about">
-					<div>
-						<h2>What is CAA?</h2>
-
-						<p>
-							CAA is a <a href="https://tools.ietf.org/html/rfc6844">standard</a>
-							that lets you control what certificate
-							authorities (CAs) are allowed to issue certificates for your domain.
-							You can use CAA to reduce your exposure to vulnerabilities in
-							certificate authority validation systems and to enforce
-							certificate procurement policies.
-						</p>
-
-						<p>
-							To use CAA, you publish a set of CAA records in
-							your domain's DNS that list the CAs which
-							you authorize to issue certificates.  Before issuing
-							a certificate, the CA checks your CAA records
-							and blocks the request if they are not listed.
-						</p>
-
-						<p>
-							This page helps you set up CAA for your domain.  Enter
-							your domain name above and check off which CAs
-							you authorize.  You can separately authorize
-							the ability to issue wildcard and non-wildcard
-							certificates.
-						</p>
-					</div>
-
-					<div id="support">
-						<h2>Who Supports CAA?</h2>
-
-						<p>
-							The following DNS server software supports
-							CAA records:
-						</p>
-						<ul>
-							<li>BIND (Prior to version 9.9.6 use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
-							<li>NSD (Prior to version 4.0.1 use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
-							<li>PowerDNS &#x2265;4.0.0</li>
-							<li>Knot DNS &#x2265;2.2.0</li>
-							<li>Simple DNS Plus &#x2265;6.0</li>
-							<li>Windows Server 2016 (use <a href="https://tools.ietf.org/html/rfc3597">RFC 3597</a> syntax)</li>
-							<li>tinydns (use generic record syntax)</li>
-							<li>ldns &#x2265;1.6.17</li>
-							<li>OpenDNSSEC (with ldns &#x2265;1.6.17)</li>
-						</ul>
-
-						<p>
-							The following DNS services support CAA records:
-						</p>
-						<ul>
-							<li>Google Cloud DNS (but not Google Domains DNS)</li>
-							<li>DNSimple</li>
-							<li>DNS Made Easy</li>
-							<li>Constellix DNS</li>
-							<li>Cloudflare (in beta; ask support to enable)</li>
-							<li>Dyn Managed DNS</li>
-							<li>ClouDNS</li>
-							<li>Afraid.org Free DNS</li>
-							<li>Neustar UltraDNS</li>
-							<li>Gandi</li>
-							<li>Domeneshop (Domainnameshop)</li>
-						</ul>
-
-						<p>
-							Please
-							<a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you have
-							an addition to this list.
-						</p>
-					</div>
-				</div>
 			</div>
 		</div>
 	</body>
