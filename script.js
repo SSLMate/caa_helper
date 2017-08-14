@@ -299,6 +299,8 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		} else {
 			hide_output();
 		}
+		form["autogenerate_policy"].disabled = (domain == "");
+		form["load_policy"].disabled = (domain == "");
 	}
 	function apply_ca_filter () {
 		var ca_filter = form["ca_filter"].value.toLowerCase();
