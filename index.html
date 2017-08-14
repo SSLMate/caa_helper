@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			window.onload = function() { init_caa_helper(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
+			window.onload = function() { init_caa_helper(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
 		</script>
 	</head>
 	<body>
@@ -48,7 +48,7 @@
 						<h2>1. Enter Your Domain Name</h2>
 
 						<p>
-							<label>Domain name: </label><input type="text" name="domain" value="example.com" size="30"/>
+							<label>Domain name: </label><input type="text" name="domain" size="30"/>
 						</p>
 
 						<table class="policy_selection">
@@ -175,7 +175,7 @@
 							<!-- TODO: link to DNS provider page -->
 						</p>
 
-						<div class="output" id="caa_output">
+						<div class="output">
 							<div>
 								<h3>Generic</h3>
 								<p class="software">For Google Cloud DNS, DNSimple, and other hosted DNS services</p>

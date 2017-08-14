@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
+function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -287,18 +287,10 @@ function init_caa_helper (form, ca_table, output, output_zonefile, output_rfc359
 		set_text_output(output_rfc3597, format_rfc3597_zone_file(domain, records));
 		set_text_output(output_tinydns, format_tinydns_zone_file(domain, records));
 		set_generic_table(output_generic, domain, records);
-		output.style.display = "block";
-	}
-	function hide_output () {
-		output.style.display = "none";
 	}
 	function refresh () {
 		var domain = form["domain"].value;
-		if (domain != "") {
-			display_records(ensure_trailing_dot(domain), make_policy_from_form().make_records());
-		} else {
-			hide_output();
-		}
+		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
 		form["autogenerate_policy"].disabled = (domain == "");
 		form["load_policy"].disabled = (domain == "");
 	}
