@@ -9,6 +9,7 @@
  * See the Mozilla Public License for details.
  */
 function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
+	var lookup_endpoint = 'http://localhost:56844';
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -309,6 +310,51 @@ function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, outpu
 		form["ca_filter"].value = "";
 		apply_ca_filter();
 	}
+
+	function handle_lookup_result (result) {
+		var domain = strip_trailing_dot(result["domain"]);
+		if (result["status"] == "success") {
+			try {
+				var policy = make_policy_from_records(result["records"]);
+				if (policy) {
+					policy.to_form();
+					refresh();
+				} else {
+					alert(domain + " does not have a CAA policy.");
+				}
+			} catch (e) {
+				if (e instanceof InvalidRecordError) {
+					alert(domain + " has an invalid CAA record: " + e.message);
+				} else if (e instanceof PolicyCompatError) {
+					alert(domain + " has a complicated CAA policy that this tool doesn't support: " + e.message);
+				} else {
+					throw e;
+				}
+			}
+		} else if (result["status"] == "nxdomain") {
+			alert(domain + " does not exist.");
+		} else if (result["status"] == "broken") {
+			alert(domain + " has broken DNS servers that do not handle CAA properly.");
+		} else if (result["status"] == "servfail") {
+			alert("There was an error looking up the DNS records for " + domain);
+		}
+	}
+
+	var lookup_xhr = new XMLHttpRequest();
+	lookup_xhr.onreadystatechange = function() {
+		if (lookup_xhr.readyState == 4) {
+			if (lookup_xhr.status == 0) {
+				alert("Unable to lookup policy because there was an error communicating with the server.");
+			} else if (lookup_xhr.status != 200) {
+				alert("Unable to lookup policy: " + lookup_xhr.responseText);
+			} else if (lookup_xhr.getResponseHeader("Content-Type") != "application/json") {
+				alert("Unable to lookup policy because the server sent us a bad response.");
+			} else {
+				handle_lookup_result(eval("(" + lookup_xhr.responseText + ")"));
+			}
+		}
+	};
+
 	function empty_policy () {
 		new Policy([], [], "").to_form();
 		refresh();
@@ -318,9 +364,13 @@ function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, outpu
 		new Policy(sslmate_cas, sslmate_cas, "").to_form();
 		refresh();
 	}
-	function autogenerate_policy () { // TODO
+	function autogenerate_policy () {
+		lookup_xhr.open("GET", lookup_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		lookup_xhr.send();
 	}
-	function load_policy () { // TODO
+	function load_policy () {
+		lookup_xhr.open("GET", lookup_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		lookup_xhr.send();
 	}
 
 	for (var i = 0; i < form.elements.length; ++i) {
