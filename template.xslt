@@ -31,21 +31,21 @@
 		</xsl:copy>
 	</xsl:template>
 	<xsl:template match="/" priority="20">
-		<xsl:apply-templates select="/page"/>
+		<xsl:apply-templates select="/caa:page"/>
 	</xsl:template>
-	<xsl:template match="page">
+	<xsl:template match="caa:page">
 		<html xml:lang="en" lang="en">
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<title><xsl:value-of select="title"/></title>
+				<title><xsl:value-of select="caa:title"/></title>
 				<meta name="robots" content="noarchive" />
 				<link rel="icon" type="image/png" href="https://sslmate.com/assets/img/favicon.png" />
 				<link rel="stylesheet" type="text/css" href="style.css" />
 				<script type="text/javascript">
 					var caa_endpoint = '<xsl:value-of select="$endpoint"/>';
 				</script>
-				<xsl:apply-templates mode="copy" select="head/node()"/>
+				<xsl:apply-templates mode="copy" select="caa:head/node()"/>
 			</head>
 			<body>
 				<a id="github_ribbon" href="https://github.com/SSLMate/caa_helper"></a>
@@ -60,7 +60,7 @@
 						</ul>
 					</div>
 
-					<xsl:apply-templates mode="copy" select="body/node()"/>
+					<xsl:apply-templates mode="copy" select="caa:body/node()"/>
 				</div>
 			</body>
 		</html>
