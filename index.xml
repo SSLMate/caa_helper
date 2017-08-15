@@ -11,9 +11,9 @@
 	-->
 	<title>CAA Record Generator</title>
 	<head>
-		<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="script.js"></script>
+		<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="generator.js"></script>
 		<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
-			window.onload = function() { init_caa_helper(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
+			window.onload = function() { init_caa_generator(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
 		</script>
 	</head>
 	<body>

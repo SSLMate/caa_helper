@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
+function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];

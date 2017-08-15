@@ -23,8 +23,8 @@ ifneq ($(DESTDIR),)
 install: $(FILES)
 	install -m 644 index.html $(DESTDIR)/index.html
 	gzip -n9 < $(DESTDIR)/index.html > $(DESTDIR)/index.htmlgz
-	yui-compressor --type js --nomunge < script.js > $(DESTDIR)/script.js
-	gzip -n9 < $(DESTDIR)/script.js > $(DESTDIR)/script.jsgz
+	yui-compressor --type js --nomunge < generator.js > $(DESTDIR)/generator.js
+	gzip -n9 < $(DESTDIR)/generator.js > $(DESTDIR)/generator.jsgz
 	yui-compressor --type css < style.css > $(DESTDIR)/style.css
 	gzip -n9 < $(DESTDIR)/style.css > $(DESTDIR)/style.cssgz
 	install -m 644 github_ribbon.png $(DESTDIR)/github_ribbon.png
