@@ -51,8 +51,13 @@
 				<a id="github_ribbon" href="https://github.com/SSLMate/caa_helper"></a>
 				<div id="root">
 					<div id="masthead">
-						<h1>CAA Record Generator</h1>
+						<h1>CAA Record Helper</h1>
 						<p class="by">By <a href="https://sslmate.com">SSLMate</a></p>
+						<ul class="nav">
+							<li><a href="generate">Generate CAA Record</a></li>
+							<li><a href="support">Who Supports CAA?</a></li>
+							<li><a href="about">About CAA</a></li>
+						</ul>
 					</div>
 
 					<xsl:apply-templates mode="copy" select="body/node()"/>
