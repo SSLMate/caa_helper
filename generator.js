@@ -9,16 +9,6 @@
  * See the Mozilla Public License for details.
  */
 function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
-	function aggregate (input_name) {
-		var items = [];
-		var inputs = form[input_name];
-		for (var i = 0; i < inputs.length; ++i) {
-			if (inputs[i].checked && !inputs[i].disabled) {
-				items.push(inputs[i].value);
-			}
-		}
-		return items;
-	}
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -170,7 +160,17 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		};
 	}
 	function make_policy_from_form () {
-		return new Policy(aggregate("issue"), aggregate("issuewild"), iodef_from_form(form["iodef"].value));
+		function get_checkboxes (input_name) {
+			var items = [];
+			var inputs = form[input_name];
+			for (var i = 0; i < inputs.length; ++i) {
+				if (inputs[i].checked && !inputs[i].disabled) {
+					items.push(inputs[i].value);
+				}
+			}
+			return items;
+		}
+		return new Policy(get_checkboxes("issue"), get_checkboxes("issuewild"), iodef_from_form(form["iodef"].value));
 	}
 	function InvalidRecordError (message) {
 		this.message = message;
