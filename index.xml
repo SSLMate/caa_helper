@@ -23,8 +23,8 @@
 					<div class="overview">
 						<p>
 							CAA is a type of DNS record that lets you control which certificate authorities (CAs)
-							can issue SSL certificates for your domain.  This tool helps you set up CAA
-							for your domain. <a href="about">Learn More</a>
+							can issue SSL certificates for your domain.  This tool helps you set up CAA.
+							<a href="about">Learn More</a>
 						</p>
 
 						<p>
