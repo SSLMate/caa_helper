@@ -21,6 +21,7 @@ clean:
 
 ifneq ($(DESTDIR),)
 install: $(FILES)
+	install -m 755 -d $(DESTDIR)
 	install -m 644 index.html $(DESTDIR)/index.html
 	gzip -n9 < $(DESTDIR)/index.html > $(DESTDIR)/index.htmlgz
 	yui-compressor --type js --nomunge < generator.js > $(DESTDIR)/generator.js
