@@ -61,19 +61,3 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 .generator .output table th { padding: 0 0.7em 0.4em 0.7em; font-weight: bold; text-align: left; }
 .generator .output table td { padding: 0 0.7em; vertical-align: top; }
 .generator .output table span { white-space: pre; font-family: monospace; }
-/*
-.generator .output table span { white-space: pre; font-family: monospace; background: #f3f3f3; border: solid #bbb 1px; border-radius: 3px; padding: 0 0.2em; display: block; }
-*/
-/*
-.generator .output ul { padding: 0 0 0 1em; }
-.generator .output li { padding: 0; margin: 0.5em 0; }
-.generator .output li span { white-space: pre; font-family: monospace; background: #f3f3f3; border: solid #bbb 1px; border-radius: 3px; padding: 0 0.2em; }
-*/
-
-
-/*
-.generator .about { text-align: justify; }
-.generator .about p { line-height: 170%; text-align: justify; }
-.generator .about li { margin: 0.4em 0; }
-.generator .about > div { margin: 0 0 2em 0; }
-*/
