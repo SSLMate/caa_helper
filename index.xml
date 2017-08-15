@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<page id="index">
 	<!--
 		Copyright (C) 2016-2017 Opsmate, Inc.
 
@@ -10,26 +9,15 @@
 		This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 		See the Mozilla Public License for details.
 	-->
+	<title>CAA Record Generator</title>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>CAA Record Generator</title>
-		<meta name="robots" content="noarchive" />
-		<link rel="icon" type="image/png" href="https://sslmate.com/assets/img/favicon.png" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+		<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="script.js"></script>
+		<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
 			window.onload = function() { init_caa_helper(document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_generic')); };
 		</script>
 	</head>
 	<body>
-		<a id="github_ribbon" href="https://github.com/SSLMate/caa_helper"></a>
-		<div id="root">
-			<div id="masthead">
-				<h1>CAA Record Generator</h1>
-				<p class="by">By <a href="https://sslmate.com">SSLMate</a></p>
-			</div>
-
+		<div xmlns="http://www.w3.org/1999/xhtml">
 			<div class="generator">
 				<form id="generator_form">
 					<div class="overview">
@@ -222,4 +210,4 @@
 			</div>
 		</div>
 	</body>
-</html>
+</page>

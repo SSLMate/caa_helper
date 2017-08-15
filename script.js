@@ -9,7 +9,6 @@
  * See the Mozilla Public License for details.
  */
 function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
-	var lookup_endpoint = 'http://localhost:56844';
 	function aggregate (input_name) {
 		var items = [];
 		var inputs = form[input_name];
@@ -365,11 +364,11 @@ function init_caa_helper (form, ca_table, output_zonefile, output_rfc3597, outpu
 		refresh();
 	}
 	function autogenerate_policy () {
-		lookup_xhr.open("GET", lookup_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		lookup_xhr.open("GET", caa_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
-		lookup_xhr.open("GET", lookup_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		lookup_xhr.open("GET", caa_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
 		lookup_xhr.send();
 	}
 
