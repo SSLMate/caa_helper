@@ -7,7 +7,7 @@
 # This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 # See the Mozilla Public License for details.
 
-ENDPOINT = https://caarecord.org
+ENDPOINT = https://caarecord.org/api
 
 -include config.mk
 
