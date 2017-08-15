@@ -150,7 +150,10 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 				var inputs = form[input_name];
 				for (var i = 0; i < inputs.length; ++i) {
 					if (!inputs[i].disabled) {
-						inputs[i].checked = items.indexOf(inputs[i].value) != -1;
+						var values = inputs[i].value.split(' ');
+						for (var j = 0; j < values.length; ++j) {
+							inputs[i].checked = items.indexOf(values[j]) != -1;
+						}
 					}
 				}
 			}
@@ -165,7 +168,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			var inputs = form[input_name];
 			for (var i = 0; i < inputs.length; ++i) {
 				if (inputs[i].checked && !inputs[i].disabled) {
-					items.push(inputs[i].value);
+					items.push(inputs[i].value.split(' ')[0]);
 				}
 			}
 			return items;
