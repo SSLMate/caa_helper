@@ -95,8 +95,7 @@
 					<h2>4. Publish Your CAA Records</h2>
 
 					<p class="instructions">
-						Publishing CAA records requires your DNS to be hosted with a service that supports CAA.
-						<!-- TODO: link to DNS provider page -->
+						Publishing CAA records requires your DNS to be hosted with a <a href="support">service that supports CAA</a>.
 					</p>
 
 					<div class="output">
