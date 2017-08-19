@@ -136,6 +136,16 @@
 
 					</div>
 				</div>
+
+				<div class="section">
+					<h2>5. Monitor Your Domain (Optional)</h2>
+
+					<p class="instructions">
+						Even if you publish a CAA record, a noncompliant certificate authority
+						can ignore your CAA records.  Use <a href="https://sslmate.com/signup?for=certspotter">Cert Spotter</a>
+						to monitor Certificate Transparency logs so you'll get an email if this happens.
+					</p>
+				</div>
 			</form>
 		</div>
 	</caa:body>
