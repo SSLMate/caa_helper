@@ -151,9 +151,14 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 				for (var i = 0; i < inputs.length; ++i) {
 					if (!inputs[i].disabled) {
 						var values = inputs[i].value.split(' ');
+						var checked = false;
 						for (var j = 0; j < values.length; ++j) {
-							inputs[i].checked = items.indexOf(values[j]) != -1;
+							if (items.indexOf(values[j]) != -1) {
+								checked = true;
+								break;
+							}
 						}
+						inputs[i].checked = checked;
 					}
 				}
 			}
