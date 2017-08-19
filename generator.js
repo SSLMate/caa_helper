@@ -299,8 +299,6 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 	function refresh () {
 		var domain = form["domain"].value;
 		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
-		form["autogenerate_policy"].disabled = (domain == "");
-		form["load_policy"].disabled = (domain == "");
 	}
 	function apply_ca_filter () {
 		var ca_filter = form["ca_filter"].value.toLowerCase();
@@ -372,11 +370,23 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		refresh();
 	}
 	function autogenerate_policy () {
-		lookup_xhr.open("GET", caa_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		var domain = form["domain"].value;
+		if (domain == "") {
+			alert("Please enter a domain name.");
+			form["domain"].focus();
+			return;
+		}
+		lookup_xhr.open("GET", caa_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
-		lookup_xhr.open("GET", caa_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(form["domain"].value)));
+		var domain = form["domain"].value;
+		if (domain == "") {
+			alert("Please enter a domain name.");
+			form["domain"].focus();
+			return;
+		}
+		lookup_xhr.open("GET", caa_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 
