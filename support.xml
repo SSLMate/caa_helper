@@ -16,128 +16,134 @@
 		<div class="support">
 			<h2>Who Supports CAA?</h2>
 
-			<p>
-				If you want to publish a CAA record, your domain's DNS software (or provider) needs to support CAA.
-				This page tells you which DNS software and providers support CAA.
-			</p>
+			<div class="overview">
+				<p>
+					If you want to publish a CAA record, your domain's DNS software (or provider) needs to support CAA.
+					This page tells you which DNS software and providers support CAA.
+				</p>
 
-			<p>
-				If you don't want to publish a CAA record, it shouldn't matter whether or not your
-				domain's DNS software supports CAA, since the DNS protocol provides a way to add
-				new record types in a backwards compatible way.  Unfortunately, some DNS software
-				is broken and mishandles unsupported record types such as CAA.  If your domain
-				uses such DNS software, you may have trouble getting certificates for your domain.
-			</p>
+				<p>
+					If you don't want to publish a CAA record, it shouldn't matter whether or not your
+					domain's DNS software supports CAA, since the DNS protocol provides a way to add
+					new record types in a backwards compatible way.  Unfortunately, some DNS software
+					is broken and mishandles unsupported record types such as CAA.  If your domain
+					uses such DNS software, you may have trouble getting certificates for your domain.
+				</p>
 
-			<p>
-				Please <a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you have
-				an addition to this page.
-			</p>
+				<p>
+					Please <a href="https://github.com/SSLMate/caa_helper/issues">open an issue</a> if you have
+					an addition to this page.
+				</p>
+			</div>
 
-			<h3>Software</h3>
+			<div class="section">
+				<h3>Software</h3>
 
-			<support xmlns="http://xmlns.sslmate.com/caa">
-				<software>
-					<name>BIND</name>
-					<comments>Prior to version 9.9.6 use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
-				</software>
-				<software>
-					<name>NSD</name>
-					<comments>Prior to version 4.0.1 use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
-				</software>
-				<software>
-					<name>PowerDNS</name>
-					<version>4.0.0</version>
-					<comments>Versions 4.0.3 and below are <xhtml:a href="https://github.com/PowerDNS/pdns/issues/5546">buggy when DNSSEC is enabled</xhtml:a>.</comments>
-				</software>
-				<software>
-					<name>Knot DNS</name>
-					<version>2.2.0</version>
-				</software>
-				<software>
-					<name>Simple DNS Plus</name>
-					<version>6.0</version>
-				</software>
-				<software>
-					<name>Windows Server 2016</name>
-					<comments>Use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
-				</software>
-				<software>
-					<name>tinydns</name>
-					<comments>Use generic record syntax</comments>
-				</software>
-				<software>
-					<name>ldns</name>
-					<version>1.6.17</version>
-				</software>
-				<software>
-					<name>OpenDNSSEC</name>
-					<comments>With ldns &#x2265;1.6.17</comments>
-				</software>
-			</support>
+				<support xmlns="http://xmlns.sslmate.com/caa">
+					<software>
+						<name>BIND</name>
+						<comments>Prior to version 9.9.6 use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
+					</software>
+					<software>
+						<name>NSD</name>
+						<comments>Prior to version 4.0.1 use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
+					</software>
+					<software>
+						<name>PowerDNS</name>
+						<version>4.0.0</version>
+						<comments>Versions 4.0.3 and below are <xhtml:a href="https://github.com/PowerDNS/pdns/issues/5546">buggy when DNSSEC is enabled</xhtml:a>.</comments>
+					</software>
+					<software>
+						<name>Knot DNS</name>
+						<version>2.2.0</version>
+					</software>
+					<software>
+						<name>Simple DNS Plus</name>
+						<version>6.0</version>
+					</software>
+					<software>
+						<name>Windows Server 2016</name>
+						<comments>Use <xhtml:a href="https://tools.ietf.org/html/rfc3597">RFC 3597 syntax</xhtml:a></comments>
+					</software>
+					<software>
+						<name>tinydns</name>
+						<comments>Use generic record syntax</comments>
+					</software>
+					<software>
+						<name>ldns</name>
+						<version>1.6.17</version>
+					</software>
+					<software>
+						<name>OpenDNSSEC</name>
+						<comments>With ldns &#x2265;1.6.17</comments>
+					</software>
+				</support>
+			</div>
 
-			<h3>Providers</h3>
+			<div class="section">
+				<h3>Providers</h3>
 
-			<support xmlns="http://xmlns.sslmate.com/caa">
-				<provider>
-					<name>Google Cloud DNS</name>
-				</provider>
-				<provider support="no">
-					<name>Google Domains DNS</name>
-				</provider>
-				<provider support="no">
-					<name>Route 53</name>
-					<comments>Support is "<xhtml:a href="https://forums.aws.amazon.com/ann.jspa?annID=4799">coming soon</xhtml:a>"</comments>
-				</provider>
-				<provider>
-					<name>DNSimple</name>
-				</provider>
-				<provider>
-					<name>DNS Made Easy</name>
-				</provider>
-				<provider>
-					<name>Constellix DNS</name>
-				</provider>
-				<provider>
-					<name>Cloudflare</name>
-					<comments>In beta; ask support to enable</comments>
-				</provider>
-				<provider>
-					<name>Dyn Managed DNS</name>
-				</provider>
-				<provider>
-					<name>ClouDNS</name>
-				</provider>
-				<provider>
-					<name>Afraid.org Free DNS</name>
-				</provider>
-				<provider>
-					<name>Neustar UltraDNS</name>
-				</provider>
-				<provider>
-					<name>Gandi</name>
-				</provider>
-				<provider>
-					<name>Domeneshop (Domainnameshop)</name>
-				</provider>
-				<provider>
-					<name>Hurricane Electric Free DNS</name>
-				</provider>
-				<provider>
-					<name>BuddyNS</name>
-				</provider>
-				<provider>
-					<name>NS1</name>
-				</provider>
-				<provider support="broken">
-					<name>NameBright</name>
-					<comments><xhtml:a href="https://community.letsencrypt.org/t/caa-servfails-from-namebrightdns-com/38748">Returns invalid response to CAA queries</xhtml:a></comments>
-				</provider>
-				<provider support="broken">
-					<name>ezyreg.com (Netregistry)</name>
-					<comments><xhtml:a href="https://community.letsencrypt.org/t/dns-problem-query-timed-out-looking-up-caa-using-netregistry/32817/28">Does not respond to CAA queries over UDP</xhtml:a></comments>
-				</provider>
-			</support>
+				<support xmlns="http://xmlns.sslmate.com/caa">
+					<provider>
+						<name>Google Cloud DNS</name>
+					</provider>
+					<provider support="no">
+						<name>Google Domains DNS</name>
+					</provider>
+					<provider support="no">
+						<name>Route 53</name>
+						<comments>Support is "<xhtml:a href="https://forums.aws.amazon.com/ann.jspa?annID=4799">coming soon</xhtml:a>"</comments>
+					</provider>
+					<provider>
+						<name>DNSimple</name>
+					</provider>
+					<provider>
+						<name>DNS Made Easy</name>
+					</provider>
+					<provider>
+						<name>Constellix DNS</name>
+					</provider>
+					<provider>
+						<name>Cloudflare</name>
+						<comments>In beta; ask support to enable</comments>
+					</provider>
+					<provider>
+						<name>Dyn Managed DNS</name>
+					</provider>
+					<provider>
+						<name>ClouDNS</name>
+					</provider>
+					<provider>
+						<name>Afraid.org Free DNS</name>
+					</provider>
+					<provider>
+						<name>Neustar UltraDNS</name>
+					</provider>
+					<provider>
+						<name>Gandi</name>
+					</provider>
+					<provider>
+						<name>Domeneshop (Domainnameshop)</name>
+					</provider>
+					<provider>
+						<name>Hurricane Electric Free DNS</name>
+					</provider>
+					<provider>
+						<name>BuddyNS</name>
+					</provider>
+					<provider>
+						<name>NS1</name>
+					</provider>
+					<provider support="broken">
+						<name>NameBright</name>
+						<comments><xhtml:a href="https://community.letsencrypt.org/t/caa-servfails-from-namebrightdns-com/38748">Returns invalid response to CAA queries</xhtml:a></comments>
+					</provider>
+					<provider support="broken">
+						<name>ezyreg.com (Netregistry)</name>
+						<comments><xhtml:a href="https://community.letsencrypt.org/t/dns-problem-query-timed-out-looking-up-caa-using-netregistry/32817/28">Does not respond to CAA queries over UDP</xhtml:a></comments>
+					</provider>
+				</support>
+			</div>
 		</div>
 	</caa:body>
 </caa:page>

@@ -65,6 +65,8 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 .generator .output table span { white-space: pre; font-family: monospace; }
 
 div.support p { line-height: 150%; text-align: justify; }
+div.support div.overview { margin-bottom: 1.5em; }
+div.support div.section { margin-bottom: 2em; }
 div.support table.support { width: 100%; border-collapse: collapse; margin: 0; padding: 0; }
 div.support table.support td, div.support table.support th { padding: 0.4em; border: solid black 1px; }
 div.support table.support td.support { text-align: center; }
