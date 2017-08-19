@@ -115,5 +115,5 @@
 			<xsl:value-of select="."/>
 			<xsl:if test="position() != last()"><xsl:value-of select="$separator"/></xsl:if>
 		</xsl:for-each>
-</xsl:template>
+	</xsl:template>
 </xsl:stylesheet>
