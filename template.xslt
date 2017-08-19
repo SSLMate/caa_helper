@@ -12,8 +12,7 @@
 	exclude-result-prefixes="caa xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
-	xmlns:caa="http://xmlns.sslmate.com/caa"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns:caa="http://xmlns.sslmate.com/caa">
 
 	<xsl:output
 		method="html"
@@ -25,6 +24,11 @@
 	<xsl:param name="endpoint"/>
 
 	<xsl:template mode="copy" match="comment()" priority="11"/>
+	<xsl:template mode="copy" match="xhtml:*" priority="11">
+		<xsl:element name="{local-name()}">
+			<xsl:apply-templates mode="copy" select="@*|node()"/>
+		</xsl:element>
+	</xsl:template>
 	<xsl:template mode="copy" match="@*|node()" priority="10">
 		<xsl:copy>
 			<xsl:apply-templates mode="copy" select="@*|node()"/>
@@ -34,7 +38,7 @@
 		<xsl:apply-templates select="/caa:page"/>
 	</xsl:template>
 	<xsl:template match="caa:page">
-		<html xml:lang="en" lang="en">
+		<html lang="en">
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
