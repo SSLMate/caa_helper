@@ -63,3 +63,15 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 .generator .output table th { padding: 0 0.5em 0.4em 0.5em; font-weight: bold; text-align: left; }
 .generator .output table td { padding: 0 0.5em 0 0.5em; vertical-align: top; }
 .generator .output table span { white-space: pre; font-family: monospace; }
+
+div.support p { line-height: 150%; text-align: justify; }
+div.support table.support { width: 100%; border-collapse: collapse; margin: 0; padding: 0; }
+div.support table.support td, div.support table.support th { padding: 0.4em; border: solid black 1px; }
+div.support table.support td.support { text-align: center; }
+div.support table.support thead tr { background: #d6d6d6; }
+/*
+div.support table.support tbody tr:nth-child(even) { background: #f3f3f3; }
+*/
+div.support table.support tr.broken td.support { background: #f99; }
+div.support table.support tr.supported td.support { background: #9f9; }
+div.support table.support tr.unsupported td.support { background: #ff9; }

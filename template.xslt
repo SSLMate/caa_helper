@@ -112,6 +112,41 @@
 			<td class="wild_col"><input type="checkbox" name="issuewild" value="{$identifiers}"/></td>
 		</tr>
 	</xsl:template>
+	<xsl:template mode="copy" match="caa:support" priority="20">
+		<table class="support">
+			<thead>
+				<th class="name">Software/Provider</th>
+				<th class="support">Support</th>
+				<th class="comments">Comments</th>
+			</thead>
+			<tbody>
+				<xsl:apply-templates mode="support_table_row" select="caa:software|caa:provider">
+					<xsl:sort select="translate(caa:name, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+				</xsl:apply-templates>
+			</tbody>
+		</table>
+	</xsl:template>
+	<xsl:template mode="support_table_row" match="caa:software|caa:provider">
+		<tr>
+			<xsl:attribute name="class">
+				<xsl:choose>
+					<xsl:when test="@support='no'">unsupported</xsl:when>
+					<xsl:when test="@support='broken'">broken</xsl:when>
+					<xsl:otherwise>supported</xsl:otherwise>
+				</xsl:choose>
+			</xsl:attribute>
+			<td class="name"><xsl:value-of select="caa:name"/></td>
+			<td class="support">
+				<xsl:choose>
+					<xsl:when test="@support='no'">No</xsl:when>
+					<xsl:when test="@support='broken'">Broken</xsl:when>
+					<xsl:when test="caa:version">&#x2265;<xsl:value-of select="caa:version"/></xsl:when>
+					<xsl:otherwise>Yes</xsl:otherwise>
+				</xsl:choose>
+			</td>
+			<td class="comments"><xsl:apply-templates mode="copy" select="caa:comments/node()"/></td>
+		</tr>
+	</xsl:template>
 	<xsl:template name="join_strings">
 		<xsl:param name="strings" select="/.."/>
 		<xsl:param name="separator" select="' '"/>
