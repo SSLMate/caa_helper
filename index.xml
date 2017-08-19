@@ -81,8 +81,8 @@
 					<h2>3. Incident Reporting (Optional)</h2>
 
 					<p class="instructions">
-						You can specify an email address or URL for reporting certificate issue
-						requests or cases of certificate issue that violate your CAA policy.
+						You can specify an email address or URL for reporting certificate
+						requests or issued certificates that violate your CAA policy.
 						Reports will be provided in <a href="https://tools.ietf.org/html/rfc5070">iodef</a> format.
 					</p>
 
