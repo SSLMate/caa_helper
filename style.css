@@ -58,8 +58,8 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 .generator .output > div { margin: 0 0 1.5em 0; }
 .generator .output h3 { margin-bottom: 0.5em; font-size: 110%; font-weight: bold; }
 .generator .output p.software { font-style: italic; margin: 0.4em 0 1em 0; font-size: 83%; }
-.generator .output pre { background: #eee; padding: 0.4em; overflow: auto; border: solid #999 1px; border-radius: 3px; font-size: 83%; margin: 0; }
+.generator .output pre { background: #eee; padding: 0.4em 0.5em; overflow: auto; border: solid #999 1px; border-radius: 3px; font-size: 83%; margin: 0; }
 .generator .output table { background: #eee; padding: 0.4em 0; border: solid #999 1px; border-radius: 3px; font-size: 83%; margin: 0; }
-.generator .output table th { padding: 0 0.7em 0.4em 0.7em; font-weight: bold; text-align: left; }
-.generator .output table td { padding: 0 0.7em; vertical-align: top; }
+.generator .output table th { padding: 0 0.5em 0.4em 0.5em; font-weight: bold; text-align: left; }
+.generator .output table td { padding: 0 0.5em 0 0.5em; vertical-align: top; }
 .generator .output table span { white-space: pre; font-family: monospace; }
