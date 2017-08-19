@@ -45,7 +45,7 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 .generator .ca_selector tbody .wild_col { width: 11em; }
 .generator .ca_selector .type_col { width: 20em; }
 .generator .ca_selector thead tr { display: block; position: relative; }
-.generator .ca_selector tbody { display: block; overflow: auto; height: 10em; width: 100%; }
+.generator .ca_selector tbody { display: block; overflow: auto; height: 500px; width: 100%; }
 .generator .ca_selector tbody th { text-align: right; }
 .generator .ca_selector thead th { text-align: center; }
 .generator .ca_selector thead th { border-bottom: solid #333 1px; }
