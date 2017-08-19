@@ -73,75 +73,7 @@
 							<button type="button" name="clear_ca_filter" class="link">Clear Filter</button>
 						</p>
 
-						<table id="ca_table">
-							<thead>
-								<tr>
-									<td class="name_col"></td>
-									<td class="type_col" colspan="2">Type of certificate</td>
-								</tr>
-								<tr>
-									<td class="name_col"></td>
-									<th class="nonwild_col">Non-Wildcard</th>
-									<th class="wild_col">Wildcard</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th class="name_col">Comodo</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="comodoca.com"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="comodoca.com"/></td>
-								</tr>
-								<!--
-								<tr>
-									<th>DFN-PKI</th>
-									<td><input type="checkbox" name="issue" value="pki.dfn.de"/></td>
-									<td><input type="checkbox" name="issuewild" value="pki.dfn.de"/></td>
-								</tr>
-								-->
-								<tr>
-									<th class="name_col">DigiCert</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="digicert.com"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="digicert.com"/></td>
-								</tr>
-								<tr>
-									<th class="name_col">Entrust</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="entrust.net"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="entrust.net"/></td>
-								</tr>
-								<tr>
-									<th class="name_col">GlobalSign</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="globalsign.com"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="globalsign.com"/></td>
-								</tr>
-								<tr>
-									<th class="name_col">Izenpe</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="izenpe.com"/></td> <!-- TODO: confirm domain -->
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="izenpe.com"/></td>
-								</tr>
-								<tr>
-									<th class="name_col">Let's Encrypt</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="letsencrypt.org"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="letsencrypt.org"/></td>
-								</tr>
-								<tr>
-									<th class="name_col">Symantec <span class="brands">GeoTrust, Thawte, RapidSSL</span></th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="symantec.com"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="symantec.com"/></td>
-								</tr>
-								<!--
-								<tr>
-									<th>T-TeleSec</th>
-									<td><input type="checkbox" name="issue" value="telesec.de"/></td>
-									<td><input type="checkbox" name="issuewild" value="telesec.de"/></td>
-								</tr>
-								-->
-								<tr>
-									<th class="name_col">WoSign</th>
-									<td class="nonwild_col"><input type="checkbox" name="issue" value="wosign.com"/></td>
-									<td class="wild_col"><input type="checkbox" name="issuewild" value="wosign.com"/></td>
-								</tr>
-							</tbody>
-						</table>
+						<caa:ca_table id="ca_table" src="cas.xml"/>
 					</div>
 				</div>
 

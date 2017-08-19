@@ -65,4 +65,55 @@
 			</body>
 		</html>
 	</xsl:template>
+	<xsl:template mode="copy" match="caa:ca_table" priority="20">
+		<xsl:variable name="cas" select="document(@src, /)/caa:cas"/>
+		<table id="{@id}">
+			<thead>
+				<tr>
+					<td class="name_col"></td>
+					<td class="type_col" colspan="2">Type of certificate</td>
+				</tr>
+				<tr>
+					<td class="name_col"></td>
+					<th class="nonwild_col">Non-Wildcard</th>
+					<th class="wild_col">Wildcard</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:apply-templates mode="ca_table_row" select="$cas/caa:ca">
+					<xsl:sort select="translate(caa:name, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+				</xsl:apply-templates>
+			</tbody>
+		</table>
+	</xsl:template>
+	<xsl:template mode="ca_table_row" match="caa:ca">
+		<xsl:variable name="identifiers">
+			<xsl:call-template name="join_strings">
+				<xsl:with-param name="strings" select="caa:caa"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<tr>
+			<th class="name_col">
+				<xsl:value-of select="caa:name"/>
+				<xsl:if test="caa:aka">
+					<span class="brands">
+						<xsl:call-template name="join_strings">
+							<xsl:with-param name="separator">, </xsl:with-param>
+							<xsl:with-param name="strings" select="caa:aka"/>
+						</xsl:call-template>
+					</span>
+				</xsl:if>
+			</th>
+			<td class="nonwild_col"><input type="checkbox" name="issue" value="{$identifiers}"/></td>
+			<td class="wild_col"><input type="checkbox" name="issuewild" value="{$identifiers}"/></td>
+		</tr>
+	</xsl:template>
+	<xsl:template name="join_strings">
+		<xsl:param name="strings" select="/.."/>
+		<xsl:param name="separator" select="' '"/>
+		<xsl:for-each select="$strings">
+			<xsl:value-of select="."/>
+			<xsl:if test="position() != last()"><xsl:value-of select="$separator"/></xsl:if>
+		</xsl:for-each>
+</xsl:template>
 </xsl:stylesheet>

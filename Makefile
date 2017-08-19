@@ -13,8 +13,14 @@ ENDPOINT = https://caarecord.org/api
 
 all: index.html
 
-index.html: index.xml template.xslt
+index.html: index.xml template.xslt cas.xml
 	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt index.xml > $@
+
+cas.xml: CAInformationReportCSVFormat mkcasxml.go
+	sed '1 d' < CAInformationReportCSVFormat | go run mkcasxml.go > cas.xml
+
+CAInformationReportCSVFormat:
+	curl -sS https://ccadb-public.secure.force.com/mozilla/CAInformationReportCSVFormat > CAInformationReportCSVFormat
 
 clean:
 	rm -f index.html
