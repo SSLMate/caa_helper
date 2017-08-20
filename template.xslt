@@ -100,7 +100,7 @@
 			<th class="name_col">
 				<xsl:value-of select="caa:name"/>
 				<xsl:if test="caa:aka">
-					<span class="brands">
+					<span class="aka">
 						<xsl:call-template name="join_strings">
 							<xsl:with-param name="separator">, </xsl:with-param>
 							<xsl:with-param name="strings" select="caa:aka"/>
