@@ -31,6 +31,7 @@ var canames = map[string][]string{
 	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },
 	"Dhimyotis / Certigna": { "Certigna" },
 	"DocuSign (OpenTrust/Keynectis)": { "DocuSign", "Keynectis", "OpenTrust", "Certplus" },
+	"GoDaddy": { "GoDaddy", "Starfield Technologies" },
 	"Government of Hong Kong (SAR), Hongkong Post, Certizen": { "Certizen", "Hongkong Post" },
 	"Government of Spain, Autoritat de Certificació de la Comunitat Valenciana (ACCV)": { "ACCV", "Government of Spain" },
 	"Government of Spain, Fábrica Nacional de Moneda y Timbre (FNMT)": { "FNMT", "Government of Spain" },
