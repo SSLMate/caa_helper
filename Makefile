@@ -7,7 +7,7 @@
 # This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 # See the Mozilla Public License for details.
 
-ENDPOINT = https://caarecord.org/api
+ENDPOINT = https://sslmate.com/caa/api
 
 -include config.mk
 
