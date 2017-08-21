@@ -90,9 +90,8 @@
 					<provider support="no">
 						<name>Google Domains DNS</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>Route 53</name>
-						<comments>Support is "<xhtml:a href="https://forums.aws.amazon.com/ann.jspa?annID=4799">coming soon</xhtml:a>"</comments>
 					</provider>
 					<provider>
 						<name>DNSimple</name>
