@@ -339,9 +339,9 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		} else if (result["status"] == "nxdomain") {
 			alert(domain + " does not exist.");
 		} else if (result["status"] == "broken") {
-			alert(domain + " has broken DNS servers that do not handle CAA properly.");
+			alert(domain + " has broken DNS servers that do not handle CAA properly: " + result["message"]);
 		} else if (result["status"] == "servfail") {
-			alert("There was an error looking up the DNS records for " + domain);
+			alert("Error looking up the DNS records for " + domain + ": " + result["message"]);
 		}
 	}
 
@@ -376,7 +376,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/autogenerate?domain=" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caa_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
@@ -386,7 +386,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/lookup?domain=" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caa_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 
