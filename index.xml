@@ -101,7 +101,7 @@
 					<div class="output">
 						<div>
 							<h3>Generic</h3>
-							<p class="software">For Google Cloud DNS, DNSimple, and other hosted DNS services</p>
+							<p class="software">For Google Cloud DNS, Route 53, DNSimple, and other hosted DNS services</p>
 
 							<table>
 								<thead>
