@@ -1,0 +1,133 @@
+<caa:page xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:caa="http://xmlns.sslmate.com/caa" id="about">
+	<!--
+		Copyright (C) 2016-2017 Opsmate, Inc.
+
+		This Source Code Form is subject to the terms of the Mozilla
+		Public License, v. 2.0. If a copy of the MPL was not distributed
+		with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+		This software is distributed WITHOUT A WARRANTY OF ANY KIND.
+		See the Mozilla Public License for details.
+	-->
+	<caa:title>About CAA</caa:title>
+	<caa:head>
+	</caa:head>
+	<caa:body>
+		<div class="about">
+			<h2>About CAA</h2>
+
+			<p>
+				There are nearly a hundred organizations, called certificate authorities,
+				that can issue SSL certificates which vouch for the
+				identity of your domain.  If you're like most domain owners, you
+				probably get your certificates from only a handful of certificate
+				authorities.  CAA (Certificate Authority Authorization) lets you declare
+				which certificate authorities you actually use, forbidding the others
+				from issuing certificates for your domain.
+			</p>
+			
+			<p>
+				Here are some reasons for you to use CAA:
+			</p>
+
+			<ul>
+				<li>
+					You want to reduce your risk from insecure certificate authorities.
+					You can use CAA to limit your domain to certificate authorities which
+					you trust not to issue unauthorized certificates.
+				</li>
+				<li>
+					You want to stop your employees from obtaining certificates from
+					unauthorized vendors.
+				</li>
+			</ul>
+
+			<p>
+				Setting up CAA is easy.  Use the handy <a href=".">CAA generator</a>
+				to check off the certificate authorities which you authorize.
+				Then publish the generated DNS records in your domain's DNS.
+				Your domain needs to be hosted with a <a href="support">DNS provider
+				that supports CAA</a>.  Fortunately, many major DNS providers now support CAA.
+			</p>
+
+			<p>
+				CAA is an IETF standard defined by
+				<a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a>.  Starting September 8, 2017,
+				all public certificate authorities will be required to respect CAA records.  Before
+				issuing a certificate for a domain, they must check the domain for CAA
+				records, and refuse to issue if the CAA record set doesn't authorize them.
+				(If there is no CAA record, they are allowed to issue.)
+			</p>
+
+			<h3>CAA and Sub-domains</h3>
+
+			<p>
+				The CAA record set for a domain also applies to all sub-domains.
+				If a sub-domain has its own CAA record set, it takes precedence.
+			</p>
+
+			<p>
+				For example, before a certificate authority issues a certificate for www.example.com,
+				it will query domains for CAA record sets in the following order, and use the first
+				record set it finds:
+			</p>
+
+			<ol>
+				<li>www.example.com</li>
+				<li>example.com</li>
+			</ol>
+
+			<!--
+			<p>
+				For example, if there are CAA record sets for example.com and blog.example.com,
+				the example.com record set is consulted when issuing certificates for example.com and
+				www.example.com, and the blog.example.com record set is consulted when issuing certificates
+				for blog.example.com and www.blog.example.com.
+			</p>
+			-->
+
+			<h3>CAA and CNAME</h3>
+
+			<p>
+				If a domain name is a CNAME (also known as an alias) for another domain, then
+				the certificate authority also looks for CAA record sets at the CNAME target,
+				as well as all parent domains of the target.  If no CAA record set is found,
+				the certificate authority continues searching parent domains of the original
+				domain name.
+			</p>
+
+			<p>
+				For example, if blog.example.com is a CNAME for blog.example.net, then
+				the certificate authority looks for CAA record sets in the following order:
+			</p>
+
+			<ol>
+				<li>blog.example.net</li>
+				<li>example.net</li>
+				<li>example.com</li>
+			</ol>
+
+			<h3>Limitations</h3>
+
+			<p>
+				A certificate authority that goes rogue or is totally compromised
+				can issue a certificate for your domain regardless of what CAA says.  Also,
+				DNS records can be spoofed by a powerful attacker to trick a certificate authority
+				into thinking that it is authorized.
+			</p>
+			
+			<p>
+				However, in practice CAA would have protected
+				domain owners from many of the recent security vulnerabilities
+				in certificate authorities.  Publishing a CAA policy is a very
+				sensible security measure despite its limitations.
+			</p>
+
+			<p>
+				For added protection, use a Certificate Transparency monitor such as
+				<a href="https://sslmate.com/certspotter">Cert Spotter</a> to alert you if
+				a certificate is issued that violates your CAA policy.
+			</p>
+		</div>
+	</caa:body>
+</caa:page>

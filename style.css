@@ -79,3 +79,7 @@ div.support table.support tbody tr:nth-child(even) { background: #f3f3f3; }
 div.support table.support tr.broken td.support { background: #f99; }
 div.support table.support tr.supported td.support { background: #9f9; }
 div.support table.support tr.unsupported td.support { background: #ff9; }
+
+div.about p { line-height: 150%; text-align: justify; }
+div.about li { line-height: 150%; text-align: justify; margin-right: 2em; margin-bottom: 0.5em; }
+div.about h3 { margin-top: 1.5em; }

@@ -11,13 +11,16 @@ ENDPOINT = https://sslmate.com/caa/api
 
 -include config.mk
 
-all: index.html support.html
+all: index.html support.html about.html
 
 index.html: index.xml template.xslt cas.xml
 	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt index.xml > $@
 
 support.html: support.xml template.xslt
 	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt support.xml > $@
+
+about.html: about.xml template.xslt
+	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt about.xml > $@
 
 cas.xml: CAInformationReportCSVFormat mkcasxml.go
 	sed '1 d' < CAInformationReportCSVFormat | go run mkcasxml.go > cas.xml
@@ -35,6 +38,8 @@ install: $(FILES)
 	gzip -n9 < $(DESTDIR)/index.html > $(DESTDIR)/index.htmlgz
 	install -m 644 support.html $(DESTDIR)/support.html
 	gzip -n9 < $(DESTDIR)/support.html > $(DESTDIR)/support.htmlgz
+	install -m 644 about.html $(DESTDIR)/about.html
+	gzip -n9 < $(DESTDIR)/about.html > $(DESTDIR)/about.htmlgz
 	yui-compressor --type js --nomunge < generator.js > $(DESTDIR)/generator.js
 	gzip -n9 < $(DESTDIR)/generator.js > $(DESTDIR)/generator.jsgz
 	yui-compressor --type css < style.css > $(DESTDIR)/style.css
