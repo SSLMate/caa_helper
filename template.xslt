@@ -65,6 +65,10 @@
 					</div>
 
 					<xsl:apply-templates mode="copy" select="caa:body/node()"/>
+
+					<div id="footer">
+						<p>&#169; 2017 Opsmate, Inc.</p>
+					</div>
 				</div>
 			</body>
 		</html>

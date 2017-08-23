@@ -21,7 +21,9 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 #masthead h1 { font-size: 150%; margin: 0; }
 #masthead ul.nav { margin: 0.7em 0; padding: 0; display: block; }
 #masthead ul.nav li { margin: 0 0.5em; padding: 0; display: inline; }
-#root { max-width: 50em; margin: 0 auto; font-size: 13pt; padding: 1.5em 2em 1em 2em; }
+#footer { margin-top: 3em; text-align: center; color: #777; font-size: 85%; }
+#footer p { margin: 0; }
+#root { max-width: 50em; margin: 0 auto; font-size: 13pt; padding: 1.5em 2em 0.5em 2em; }
 #github_ribbon { display: block; position: absolute; top: 0; right: 0; width: 149px; height: 149px; background: url(github_ribbon.png) left; }
 #github_ribbon:hover { background-position: right; }
 
