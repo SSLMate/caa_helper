@@ -16,7 +16,7 @@ a:active, .link:active { color: #669; }
 a, a:link, a:hover, a:visited, a:active, .link { text-decoration: underline; }
 button.link { display: inline; padding: 0; margin: 0; border: none; background: none; outline: none; }
 
-#masthead { text-align: center; margin: 0 0 1.5em 0; border-bottom: solid black 1px; }
+#masthead { text-align: center; margin: 0 0 1.5em 0; border-bottom: solid black 1px; position: relative; z-index: 10; }
 #masthead p.by { margin: 0.5em 0; }
 #masthead h1 { font-size: 150%; margin: 0; }
 #masthead ul.nav { margin: 0.7em 0; padding: 0; display: block; }
@@ -24,8 +24,11 @@ button.link { display: inline; padding: 0; margin: 0; border: none; background: 
 #footer { margin-top: 3em; text-align: center; color: #777; font-size: 85%; }
 #footer p { margin: 0; }
 #root { max-width: 50em; margin: 0 auto; font-size: 13pt; padding: 1.5em 2em 0.5em 2em; }
-#github_ribbon { display: block; position: absolute; top: 0; right: 0; width: 149px; height: 149px; background: url(github_ribbon.png) left; }
+#github_ribbon { display: block; position: absolute; top: 0; right: 0; width: 149px; height: 149px; background: url(github_ribbon.png) left; z-index: 9; }
 #github_ribbon:hover { background-position: right; }
+@media (max-width: 500px) {
+	#github_ribbon { display: none; }
+}
 
 .generator .instructions, .generator .overview p { line-height: 150%; text-align: justify; }
 .generator .overview { margin-bottom: 1.5em; }
