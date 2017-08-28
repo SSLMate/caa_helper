@@ -58,8 +58,8 @@
 						<h1>CAA Record Helper</h1>
 						<p class="by">By <a href="https://sslmate.com">SSLMate</a></p>
 						<ul class="nav">
-							<li><a href=".">Generate CAA Record</a></li>
-							<li><a href="support">Who Supports CAA?</a></li>
+							<li><a href=".">Generate CAA Record</a></li><xsl:text> </xsl:text>
+							<li><a href="support">Who Supports CAA?</a></li><xsl:text> </xsl:text>
 							<li><a href="about">About CAA</a></li>
 						</ul>
 					</div>
