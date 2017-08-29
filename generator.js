@@ -325,7 +325,11 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 					policy.to_form();
 					refresh();
 				} else {
-					alert(domain + " does not have a CAA policy.");
+					if (result["operation"] == "lookup") {
+						alert(domain + " does not have a CAA policy.");
+					} else if (result["operation"] == "autogenerate") {
+						alert("No unexpired certificates for " + domain + " were found in Certificate Transparency logs.");
+					}
 				}
 			} catch (e) {
 				if (e instanceof InvalidRecordError) {
