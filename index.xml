@@ -41,7 +41,7 @@
 					<table class="policy_selection">
 						<tr>
 							<td><button type="button" name="empty_policy">Empty Policy</button></td>
-							<td>You'll start with an empty policy.</td>
+							<td>You'll start with an empty policy that prohibits all CAs.</td>
 						</tr>
 						<!--
 						<tr>
