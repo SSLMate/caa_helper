@@ -297,7 +297,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		set_generic_table(output_generic, domain, records);
 	}
 	function refresh () {
-		var domain = form["domain"].value;
+		var domain = form["domain"].value.toLowerCase();
 		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
 	}
 	function apply_ca_filter () {
@@ -374,7 +374,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		refresh();
 	}
 	function autogenerate_policy () {
-		var domain = form["domain"].value;
+		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
 			form["domain"].focus();
@@ -384,7 +384,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		lookup_xhr.send();
 	}
 	function load_policy () {
-		var domain = form["domain"].value;
+		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
 			form["domain"].focus();
