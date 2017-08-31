@@ -21,13 +21,18 @@
 			<form id="generator_form">
 				<div class="overview">
 					<p>
-						CAA is a type of DNS record that lets you control which certificate authorities (CAs)
-						can issue SSL certificates for your domain.  This tool helps you set up CAA.
-						<a href="about">Learn More</a>
+						Over a hundred certificate authorities (CAs) have the power to issue
+						certificates which vouch for the identity of your website.  Certificate
+						Authority Authorization (CAA) is a way for you to whitelist the CAs you
+						actually use so you can minimize your risk from security vulnerabilities
+						in all the others.
 					</p>
 
 					<p>
-						Starting September 8, 2017, all public certificate authorities will be required to respect CAA records.
+						Beginning September 8, 2017, all certificate authorities will be
+						required to respect your CAA policy, so now is the perfect time to
+						set up CAA.  Setting up CAA using this tool is an easy way to improve
+						your website's security.  <a href="about">Learn More</a>
 					</p>
 				</div>
 
@@ -64,8 +69,8 @@
 					<h2>2. Select Authorized Certificate Authorities</h2>
 
 					<p class="instructions">
-						Check off the certificate authorities which you authorize to issue certificates.
-						You can separately authorize the issuance of wildcard and non-wildcard certificates.
+						Check off the certificate authorities which you authorize to issue certificates
+						for your domain.  You can separately authorize the issuance of wildcard and non-wildcard certificates.
 					</p>
 
 					<div class="ca_selector">
@@ -94,10 +99,12 @@
 				</div>
 
 				<div class="section">
-					<h2>4. Publish Your CAA Records</h2>
+					<h2>4. Publish Your CAA Policy</h2>
 
 					<p class="instructions">
-						Publishing CAA records requires your DNS to be hosted with a <a href="support">service that supports CAA</a>.
+						Add the following CAA records to your
+						domain's DNS.  Your DNS must be hosted with a
+						<a href="support">service that supports CAA</a>.
 					</p>
 
 					<div class="output">
