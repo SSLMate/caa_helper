@@ -136,6 +136,9 @@
 					<provider>
 						<name>Zilore</name>
 					</provider>
+					<provider>
+						<name>Nucleus NV</name>
+					</provider>
 					<provider support="broken">
 						<name>NameBright</name>
 						<comments><xhtml:a href="https://community.letsencrypt.org/t/caa-servfails-from-namebrightdns-com/38748">Returns invalid response to CAA queries</xhtml:a></comments>
