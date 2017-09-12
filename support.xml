@@ -150,6 +150,28 @@
 						<name>ezyreg.com (Netregistry)</name>
 						<comments><xhtml:a href="https://community.letsencrypt.org/t/dns-problem-query-timed-out-looking-up-caa-using-netregistry/32817/28">Does not respond to CAA queries over UDP</xhtml:a></comments>
 					</provider>
+					<provider support="broken">
+						<name>LM Data</name>
+						<comments>Responds to CAA queries with a NOTIMP error</comments>
+					</provider>
+					<provider>
+						<name>core-networks.de</name>
+					</provider>
+					<provider>
+						<name>CloudXNS</name>
+					</provider>
+					<provider support="no">
+						<name>Namecheap</name>
+					</provider>
+					<provider support="no">
+						<name>Hetzner</name>
+					</provider>
+					<provider support="no">
+						<name>STRATO</name>
+					</provider>
+					<provider support="no">
+						<name>http.net</name>
+					</provider>
 				</support>
 			</div>
 		</div>
