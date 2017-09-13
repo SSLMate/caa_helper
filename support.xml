@@ -172,6 +172,10 @@
 					<provider support="no">
 						<name>http.net</name>
 					</provider>
+					<provider support="broken">
+						<name>Internap</name>
+						<comments>Responds to CAA queries with a SERVFAIL error</comments>
+					</provider>
 				</support>
 			</div>
 		</div>
