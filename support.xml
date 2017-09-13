@@ -176,6 +176,9 @@
 						<name>Internap</name>
 						<comments>Responds to CAA queries with a SERVFAIL error</comments>
 					</provider>
+					<provider>
+						<name>Vultr</name>
+					</provider>
 				</support>
 			</div>
 		</div>
