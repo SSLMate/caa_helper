@@ -19,6 +19,10 @@ import (
 	"regexp"
 )
 
+var overrides = map[string]string {
+	"Comodo": "comodoca.com",
+}
+
 var canames = map[string][]string{
 	"AS Sertifitseerimiskeskuse (SK)": { "Sertifitseerimiskeskuse" },
 	"Asseco Data Systems S.A. (previously Unizeto Certum)": {"Asseco", "Unizeto", "Certum"},
@@ -93,9 +97,16 @@ func main() {
 			fmt.Printf("\t\t<aka>%s</aka>\n", escapexml(aka))
 		}
 
+		override := overrides[name]
+		if override != "" {
+			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(override))
+		}
 		caas := strings.Split(row[5], ",")
 		for _, caa := range caas {
-			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(strings.TrimSpace(caa)))
+			caa := strings.TrimSpace(caa)
+			if caa != override {
+				fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(caa))
+			}
 		}
 		fmt.Printf("\t</ca>\n")
 	}

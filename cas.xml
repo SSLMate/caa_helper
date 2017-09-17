@@ -70,8 +70,8 @@
 	</ca>
 	<ca>
 		<name>Comodo</name>
-		<caa>comodo.com</caa>
 		<caa>comodoca.com</caa>
+		<caa>comodo.com</caa>
 		<caa>usertrust.com</caa>
 		<caa>trust-provider.com</caa>
 	</ca>
