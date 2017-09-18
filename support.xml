@@ -179,6 +179,9 @@
 					<provider>
 						<name>Vultr</name>
 					</provider>
+					<provider>
+						<name>Digital Ocean</name>
+					</provider>
 				</support>
 			</div>
 		</div>
