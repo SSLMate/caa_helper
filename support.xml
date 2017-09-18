@@ -182,6 +182,9 @@
 					<provider>
 						<name>Digital Ocean</name>
 					</provider>
+					<provider>
+						<name>INWX</name>
+					</provider>
 				</support>
 			</div>
 		</div>
