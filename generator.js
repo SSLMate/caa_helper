@@ -149,17 +149,15 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			function set_checkboxes (input_name, items) {
 				var inputs = form[input_name];
 				for (var i = 0; i < inputs.length; ++i) {
-					if (!inputs[i].disabled) {
-						var values = inputs[i].value.split(' ');
-						var checked = false;
-						for (var j = 0; j < values.length; ++j) {
-							if (items.indexOf(values[j]) != -1) {
-								checked = true;
-								break;
-							}
+					var values = inputs[i].value.split(' ');
+					var checked = false;
+					for (var j = 0; j < values.length; ++j) {
+						if (items.indexOf(values[j]) != -1) {
+							checked = true;
+							break;
 						}
-						inputs[i].checked = checked;
 					}
+					inputs[i].checked = checked;
 				}
 			}
 			set_checkboxes("issue", this.issue);
@@ -172,7 +170,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			var items = [];
 			var inputs = form[input_name];
 			for (var i = 0; i < inputs.length; ++i) {
-				if (inputs[i].checked && !inputs[i].disabled) {
+				if (inputs[i].checked) {
 					items.push(inputs[i].value.split(' ')[0]);
 				}
 			}
