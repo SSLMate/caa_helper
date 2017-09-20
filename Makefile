@@ -13,8 +13,9 @@ ENDPOINT = https://sslmate.com/caa/api
 
 all: index.html support.html about.html
 
-index.html: index.xml template.xslt cas.xml
-	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt index.xml > $@
+index.html: index.xml template.xslt cas.xml extra_cas.xml
+	xsltproc --xinclude --stringparam endpoint "$(ENDPOINT)" template.xslt index.xml > $@
+
 
 support.html: support.xml template.xslt
 	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt support.xml > $@

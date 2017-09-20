@@ -69,13 +69,6 @@
 		<caa>0800080412.com.tw</caa>
 	</ca>
 	<ca>
-		<name>Comodo</name>
-		<caa>comodoca.com</caa>
-		<caa>comodo.com</caa>
-		<caa>usertrust.com</caa>
-		<caa>trust-provider.com</caa>
-	</ca>
-	<ca>
 		<name>CATCert</name>
 		<aka>Consorci AOC</aka>
 		<caa>aoc.cat</caa>
@@ -221,13 +214,6 @@
 		<caa>stratossl.digitalcertvalidation.com</caa>
 		<caa>intermediatecertificate.digitalcertvalidation.com</caa>
 		<caa>1and1.digitalcertvalidation.com</caa>
-	</ca>
-	<ca>
-		<name>T-Systems</name>
-		<aka>DFN-PKI</aka>
-		<caa>telesec.de</caa>
-		<caa>pki.dfn.de</caa>
-		<caa>dfn.de</caa>
 	</ca>
 	<ca>
 		<name>Telia</name>

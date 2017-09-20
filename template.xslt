@@ -74,7 +74,6 @@
 		</html>
 	</xsl:template>
 	<xsl:template mode="copy" match="caa:ca_table" priority="20">
-		<xsl:variable name="cas" select="document(@src, /)/caa:cas"/>
 		<table id="{@id}">
 			<thead>
 				<tr>
@@ -88,7 +87,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<xsl:apply-templates mode="ca_table_row" select="$cas/caa:ca">
+				<xsl:apply-templates mode="ca_table_row" select="caa:ca">
 					<xsl:sort select="translate(caa:name, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
 				</xsl:apply-templates>
 			</tbody>

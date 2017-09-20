@@ -19,10 +19,6 @@ import (
 	"regexp"
 )
 
-var overrides = map[string]string {
-	"Comodo": "comodoca.com",
-}
-
 var canames = map[string][]string{
 	"AS Sertifitseerimiskeskuse (SK)": { "Sertifitseerimiskeskuse" },
 	"Asseco Data Systems S.A. (previously Unizeto Certum)": {"Asseco", "Unizeto", "Certum"},
@@ -30,6 +26,7 @@ var canames = map[string][]string{
 	"Certinomis / Docapost": { "Certinomis", "Docapost" },
 	"China Financial Certification Authority (CFCA)": { "CFCA", "China Financial" },
 	"China Internet Network Information Center (CNNIC)": { "CNNIC" },
+	"Comodo": nil, // defined in extra_cas.xml so we can prioritize comodoca.com over comodo.com
 	"Consorci Administració Oberta de Catalunya (Consorci AOC, CATCert)": { "CATCert", "Consorci AOC" },
 	"Cybertrust Japan / JCSI": { "Cybertrust Japan" },
 	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },
@@ -46,10 +43,10 @@ var canames = map[string][]string{
 	"SECOM Trust Systems Co. Ltd.": { "SECOM" },
 	"Start Commercial (StartCom) Ltd.": { "StartCom" },
 	"Symantec": {"Symantec","GeoTrust","Thawte","RapidSSL"},
-	"Symantec / GeoTrust": nil,
-	"Symantec / Thawte": nil,
-	"Symantec / VeriSign": nil,
-	"T-Systems International GmbH (Deutsche Telekom)": { "T-Systems", "DFN-PKI" },
+	"Symantec / GeoTrust": nil, // redundant with Symantec
+	"Symantec / Thawte": nil, // redundant with Symantec
+	"Symantec / VeriSign": nil, // redundant with Symantec
+	"T-Systems International GmbH (Deutsche Telekom)": nil, // defined in extra_cas.xml so we can separate out DFN-PKI
 }
 
 var parenregex = regexp.MustCompile(`\s+\([^)]*\)`)
@@ -97,16 +94,9 @@ func main() {
 			fmt.Printf("\t\t<aka>%s</aka>\n", escapexml(aka))
 		}
 
-		override := overrides[name]
-		if override != "" {
-			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(override))
-		}
 		caas := strings.Split(row[5], ",")
 		for _, caa := range caas {
-			caa := strings.TrimSpace(caa)
-			if caa != override {
-				fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(caa))
-			}
+			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(strings.TrimSpace(caa)))
 		}
 		fmt.Printf("\t</ca>\n")
 	}

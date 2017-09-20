@@ -1,0 +1,23 @@
+<cas xmlns="http://xmlns.sslmate.com/caa">
+	<ca>
+		<name>Comodo</name>
+		<caa>comodoca.com</caa>
+		<caa>comodo.com</caa>
+		<caa>usertrust.com</caa>
+		<caa>trust-provider.com</caa>
+	</ca>
+	<ca>
+		<name>T-Systems</name>
+		<caa>telesec.de</caa>
+	</ca>
+	<ca>
+		<name>DFN-PKI</name>
+		<caa>pki.dfn.de</caa>
+		<caa>dfn.de</caa>
+	</ca>
+	<ca>
+		<name>Trust Provider B.V.</name>
+		<aka>Networking4all</aka>
+		<caa>trustproviderbv.digitalcertvalidation.com</caa>
+	</ca>
+</cas>

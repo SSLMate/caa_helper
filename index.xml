@@ -1,4 +1,4 @@
-<caa:page xmlns="http://www.w3.org/1999/xhtml" xmlns:caa="http://xmlns.sslmate.com/caa" id="index">
+<caa:page xmlns="http://www.w3.org/1999/xhtml" xmlns:caa="http://xmlns.sslmate.com/caa" xmlns:xi="http://www.w3.org/2003/XInclude" id="index">
 	<!--
 		Copyright (C) 2016-2017 Opsmate, Inc.
 
@@ -80,7 +80,10 @@
 							<button type="button" name="clear_ca_filter" class="link">Clear Filter</button>
 						</p>
 
-						<caa:ca_table id="ca_table" src="cas.xml"/>
+						<caa:ca_table id="ca_table">
+							<xi:include href="cas.xml" xpointer="xmlns(caa=http://xmlns.sslmate.com/caa)xpointer(/caa:cas/caa:ca)"/>
+							<xi:include href="extra_cas.xml" xpointer="xmlns(caa=http://xmlns.sslmate.com/caa)xpointer(/caa:cas/caa:ca)"/>
+						</caa:ca_table>
 					</div>
 				</div>
 
