@@ -338,8 +338,6 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 					throw e;
 				}
 			}
-		} else if (result["status"] == "nxdomain") {
-			alert(domain + " does not exist.");
 		} else if (result["status"] == "broken") {
 			alert(domain + " has broken DNS servers that do not handle CAA properly: " + result["message"]);
 		} else if (result["status"] == "servfail") {
