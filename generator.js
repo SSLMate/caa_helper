@@ -324,7 +324,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 					refresh();
 				} else {
 					if (result["operation"] == "lookup") {
-						alert(domain + " does not have a CAA policy.");
+						alert(domain + " does not have a CAA policy.  Any certificate authority can issue certificates.");
 					} else if (result["operation"] == "autogenerate") {
 						alert("No unexpired certificates for " + domain + " were found in Certificate Transparency logs.");
 					}
