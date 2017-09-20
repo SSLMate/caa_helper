@@ -34,6 +34,13 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			return str;
 		}
 	}
+	function make_dictionary (items) {
+		var dict = {};
+		for (var i = 0; i < items.length; ++i) {
+			dict[items[i]] = true;
+		}
+		return dict;
+	}
 	function quote (str) {
 		return '"' + str.replace(/\"/g, "\\\"") + '"';
 	}
@@ -102,6 +109,32 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		var value = decode_string(bytes.slice(2 + tag_len));
 		return new Record(flags, tag, value);
 	}
+	function add_unknown_ca_to_form (identifier, allow_issue, allow_issuewild) {
+		function create_name_col () {
+			var th = document.createElement("th");
+			th.className = "name_col";
+			th.appendChild(document.createTextNode(identifier));
+			return th;
+		}
+		function create_checkbox_col (className, inputName, checked) {
+			var td = document.createElement("td");
+			td.className = className;
+			var input = document.createElement("input");
+			input.type = "checkbox";
+			input.name = inputName;
+			input.value = identifier;
+			input.checked = checked;
+			input.onclick = refresh;
+			td.appendChild(input);
+			return td;
+		}
+
+		var tr = document.createElement("tr");
+		tr.appendChild(create_name_col());
+		tr.appendChild(create_checkbox_col("nonwild_col", "issue", allow_issue));
+		tr.appendChild(create_checkbox_col("wild_col", "issuewild", allow_issuewild));
+		ca_table.tBodies[0].appendChild(tr);
+	}
 	function iodef_from_form (value) {
 		if (value == "" || value.indexOf("mailto:") == 0 || value.indexOf("http:") == 0 || value.indexOf("https:") == 0) {
 			return value;
@@ -146,22 +179,27 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			return records;
 		};
 		this.to_form = function () {
-			function set_checkboxes (input_name, items) {
+			function set_checkboxes (input_name, identifiers) {
 				var inputs = form[input_name];
 				for (var i = 0; i < inputs.length; ++i) {
 					var values = inputs[i].value.split(' ');
 					var checked = false;
 					for (var j = 0; j < values.length; ++j) {
-						if (items.indexOf(values[j]) != -1) {
+						var identifier = values[j];
+						if (identifier in identifiers) {
 							checked = true;
+							delete identifiers[identifier];
 							break;
 						}
 					}
 					inputs[i].checked = checked;
 				}
+				for (identifier in identifiers) {
+					add_unknown_ca_to_form(identifier, input_name == "issue", input_name == "issuewild");
+				}
 			}
-			set_checkboxes("issue", this.issue);
-			set_checkboxes("issuewild", this.issuewild);
+			set_checkboxes("issue", make_dictionary(this.issue));
+			set_checkboxes("issuewild", make_dictionary(this.issuewild));
 			form["iodef"].value = iodef_to_form(this.iodef);
 		};
 	}
