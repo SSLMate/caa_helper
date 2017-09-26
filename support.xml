@@ -185,6 +185,12 @@
 					<provider>
 						<name>INWX</name>
 					</provider>
+					<provider>
+						<name>schokokeks.org</name>
+					</provider>
+					<provider>
+						<name>easyDNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
