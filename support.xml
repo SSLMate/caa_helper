@@ -191,6 +191,9 @@
 					<provider>
 						<name>easyDNS</name>
 					</provider>
+					<provider>
+						<name>Linode</name>
+					</provider>
 				</support>
 			</div>
 		</div>
