@@ -194,6 +194,9 @@
 					<provider>
 						<name>Linode</name>
 					</provider>
+					<provider>
+						<name>GratisDNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
