@@ -52,8 +52,8 @@
 
 			<p>
 				CAA is an IETF standard defined by
-				<a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a>.  Starting September 8, 2017,
-				all public certificate authorities will be required to respect CAA records.  Before
+				<a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a>.  As of September 8, 2017,
+				all public certificate authorities are required to respect CAA records.  Before
 				issuing a certificate for a domain, they must check the domain for CAA
 				records, and refuse to issue if the CAA record set doesn't authorize them.
 				(If there is no CAA record, they are allowed to issue.)
