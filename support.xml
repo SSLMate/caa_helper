@@ -87,7 +87,7 @@
 					<provider>
 						<name>Google Cloud DNS</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>Google Domains DNS</name>
 					</provider>
 					<provider>
