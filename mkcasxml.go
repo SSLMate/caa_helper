@@ -96,7 +96,7 @@ func main() {
 
 		caas := strings.Split(row[5], ",")
 		for _, caa := range caas {
-			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(strings.TrimSpace(caa)))
+			fmt.Printf("\t\t<caa>%s</caa>\n", escapexml(strings.ToLower(strings.TrimSpace(caa))))
 		}
 		fmt.Printf("\t</ca>\n")
 	}
