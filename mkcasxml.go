@@ -25,14 +25,15 @@ var canames = map[string][]string{
 	"Autoridad de Certificacion Firmaprofesional": { "Firmaprofesional" },
 	"Certinomis / Docapost": { "Certinomis", "Docapost" },
 	"China Financial Certification Authority (CFCA)": { "CFCA", "China Financial" },
-	"China Internet Network Information Center (CNNIC)": { "CNNIC" },
 	"Comodo": nil, // defined in extra_cas.xml so we can prioritize comodoca.com over comodo.com
 	"Consorci Administració Oberta de Catalunya (Consorci AOC, CATCert)": { "CATCert", "Consorci AOC" },
 	"Cybertrust Japan / JCSI": { "Cybertrust Japan" },
 	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },
 	"Dhimyotis / Certigna": { "Certigna" },
+	"DigiCert": {"DigiCert","Symantec","GeoTrust","Thawte","RapidSSL"},
 	"DocuSign (OpenTrust/Keynectis)": { "DocuSign", "Keynectis", "OpenTrust", "Certplus" },
-	"GoDaddy": { "GoDaddy", "Starfield Technologies" },
+	"Global Digital Cybersecurity Authority Co., Ltd. (Formerly Guang Dong Certificate Authority (GDCA))": { "GDCA" },
+	"Go Daddy": { "GoDaddy", "Starfield Technologies" },
 	"Government of Hong Kong (SAR), Hongkong Post, Certizen": { "Certizen", "Hongkong Post" },
 	"Government of Spain, Autoritat de Certificació de la Comunitat Valenciana (ACCV)": { "ACCV", "Government of Spain" },
 	"Government of Spain, Fábrica Nacional de Moneda y Timbre (FNMT)": { "FNMT", "Government of Spain" },
@@ -41,8 +42,7 @@ var canames = map[string][]string{
 	"Government of Turkey, Kamu Sertifikasyon Merkezi (Kamu SM)": { "Kamu SM" },
 	"Internet Security Research Group (ISRG)": { "Let's Encrypt" },
 	"SECOM Trust Systems Co. Ltd.": { "SECOM" },
-	"Start Commercial (StartCom) Ltd.": { "StartCom" },
-	"Symantec": {"Symantec","GeoTrust","Thawte","RapidSSL"},
+	"Symantec": nil, // redundant with Symantec
 	"Symantec / GeoTrust": nil, // redundant with Symantec
 	"Symantec / Thawte": nil, // redundant with Symantec
 	"Symantec / VeriSign": nil, // redundant with Symantec

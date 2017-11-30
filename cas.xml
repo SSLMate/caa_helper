@@ -82,7 +82,20 @@
 	</ca>
 	<ca>
 		<name>DigiCert</name>
+		<aka>Symantec</aka>
+		<aka>GeoTrust</aka>
+		<aka>Thawte</aka>
+		<aka>RapidSSL</aka>
 		<caa>digicert.com</caa>
+		<caa>symantec.com</caa>
+		<caa>geotrust.com</caa>
+		<caa>rapidssl.com</caa>
+		<caa>thawte.com</caa>
+		<caa>digitalcertvalidation.com</caa>
+		<caa>volusion.digitalcertvalidation.com</caa>
+		<caa>stratossl.digitalcertvalidation.com</caa>
+		<caa>intermediatecertificate.digitalcertvalidation.com</caa>
+		<caa>1and1.digitalcertvalidation.com</caa>
 	</ca>
 	<ca>
 		<name>DocuSign</name>
@@ -97,14 +110,13 @@
 		<caa>e-tugra.com.tr</caa>
 	</ca>
 	<ca>
-		<name>EDICOM</name>
-		<caa>edicomgroup.com</caa>
-		<caa>acedicom.edicomgroup.com</caa>
-	</ca>
-	<ca>
 		<name>Entrust</name>
 		<caa>entrust.net</caa>
 		<caa>affirmtrust.com</caa>
+	</ca>
+	<ca>
+		<name>GDCA</name>
+		<caa>gdca.com.cn</caa>
 	</ca>
 	<ca>
 		<name>GlobalSign</name>
@@ -181,10 +193,6 @@
 		<caa>netlock.eu</caa>
 	</ca>
 	<ca>
-		<name>PROCERT</name>
-		<caa>procert.net.ve</caa>
-	</ca>
-	<ca>
 		<name>QuoVadis</name>
 		<caa>quovadisglobal.com</caa>
 	</ca>
@@ -193,33 +201,18 @@
 		<caa>secomtrust.net</caa>
 	</ca>
 	<ca>
-		<name>StartCom</name>
-		<caa>startcomca.com</caa>
-		<caa>startssl.com</caa>
-	</ca>
-	<ca>
 		<name>SwissSign</name>
 		<caa>swisssign.com</caa>
-	</ca>
-	<ca>
-		<name>Symantec</name>
-		<aka>GeoTrust</aka>
-		<aka>Thawte</aka>
-		<aka>RapidSSL</aka>
-		<caa>symantec.com</caa>
-		<caa>thawte.com</caa>
-		<caa>geotrust.com</caa>
-		<caa>rapidssl.com</caa>
-		<caa>volusion.digitalcertvalidation.com</caa>
-		<caa>stratossl.digitalcertvalidation.com</caa>
-		<caa>intermediatecertificate.digitalcertvalidation.com</caa>
-		<caa>1and1.digitalcertvalidation.com</caa>
 	</ca>
 	<ca>
 		<name>Telia</name>
 		<caa>telia.com</caa>
 		<caa>telia.fi</caa>
 		<caa>telia.se</caa>
+	</ca>
+	<ca>
+		<name>TrustCor Systems</name>
+		<caa>trustcor.ca</caa>
 	</ca>
 	<ca>
 		<name>Trustwave</name>
@@ -236,9 +229,5 @@
 		<caa>hightrusted.com</caa>
 		<caa>certifyid.com</caa>
 		<caa>oiste.org</caa>
-	</ca>
-	<ca>
-		<name>WoSign</name>
-		<caa>wosign.com</caa>
 	</ca>
 </cas>
