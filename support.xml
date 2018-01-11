@@ -196,6 +196,9 @@
 					<provider>
 						<name>GratisDNS</name>
 					</provider>
+					<provider support="no">
+						<name>Rackspace Cloud DNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
