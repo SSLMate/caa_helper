@@ -204,7 +204,7 @@
 					</provider>
 					<provider support="no">
 						<name>Dreamhost</name>
-						<comments><xhtml:a href="https://discussion.dreamhost.com/t/allow-caa-records-in-dhs-dns/64170/9">Feature request</xhtml:a></comments>
+						<comments><xhtml:a href="https://discussion.dreamhost.com/t/allow-caa-records-in-dhs-dns/64170">Feature request</xhtml:a></comments>
 					</provider>
 					<provider>
 						<name>UD Media</name>
