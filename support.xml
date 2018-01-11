@@ -104,7 +104,6 @@
 					</provider>
 					<provider>
 						<name>Cloudflare</name>
-						<comments>In beta; ask support to enable</comments>
 					</provider>
 					<provider>
 						<name>Dyn Managed DNS</name>
