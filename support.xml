@@ -199,6 +199,9 @@
 					<provider support="no">
 						<name>Rackspace Cloud DNS</name>
 					</provider>
+					<provider>
+						<name>Azure</name>
+					</provider>
 				</support>
 			</div>
 		</div>
