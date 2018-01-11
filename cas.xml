@@ -16,15 +16,16 @@
 		<caa>aws.amazon.com</caa>
 	</ca>
 	<ca>
-		<name>Sertifitseerimiskeskuse</name>
-		<caa>sk.ee</caa>
-	</ca>
-	<ca>
 		<name>Asseco</name>
 		<aka>Unizeto</aka>
 		<aka>Certum</aka>
 		<caa>certum.pl</caa>
 		<caa>certum.eu</caa>
+		<caa>yandex.ru</caa>
+	</ca>
+	<ca>
+		<name>Atos</name>
+		<caa>atos.net</caa>
 	</ca>
 	<ca>
 		<name>Firmaprofesional</name>
@@ -56,17 +57,12 @@
 	</ca>
 	<ca>
 		<name>Chunghwa Telecom</name>
-		<caa>cht.com.tw</caa>
-		<caa>echt.com.tw</caa>
-		<caa>chtr.org.tw</caa>
-		<caa>hinet.net</caa>
-		<caa>xuite.net</caa>
-		<caa>emome.net</caa>
-		<caa>goodscome.com</caa>
-		<caa>ienet.net.tw</caa>
-		<caa>twgate.net</caa>
-		<caa>ucampro.com</caa>
-		<caa>0800080412.com.tw</caa>
+		<caa>pki.hinet.net</caa>
+		<caa>eca.hinet.net</caa>
+		<caa>publicca.hinet.net</caa>
+		<caa>ev.hinet.net</caa>
+		<caa>evssl.hinet.net</caa>
+		<caa>epki.com.tw</caa>
 	</ca>
 	<ca>
 		<name>CATCert</name>
@@ -75,10 +71,16 @@
 	</ca>
 	<ca>
 		<name>D-TRUST</name>
-		<caa>d-trust.net</caa>
+		<caa>dtrust.de</caa>
 		<caa>d-trust.de</caa>
-		<caa>d-trust.com</caa>
-		<caa>bdr.de</caa>
+		<caa>dtrust.net</caa>
+		<caa>d-trust.net</caa>
+		<caa>d-trust gmbh</caa>
+		<caa>d-trust</caa>
+	</ca>
+	<ca>
+		<name>Certigna</name>
+		<caa>certigna.fr</caa>
 	</ca>
 	<ca>
 		<name>DigiCert</name>
@@ -108,6 +110,10 @@
 		<name>e-tugra</name>
 		<caa>e-tugra.com</caa>
 		<caa>e-tugra.com.tr</caa>
+	</ca>
+	<ca>
+		<name>EDICOM</name>
+		<caa>edicomgroup.com</caa>
 	</ca>
 	<ca>
 		<name>Entrust</name>
@@ -183,6 +189,10 @@
 		<caa>izenpe.es</caa>
 	</ca>
 	<ca>
+		<name>Krajowa Izba Rozliczeniowa</name>
+		<caa>elektronicznypodpis.pl</caa>
+	</ca>
+	<ca>
 		<name>Microsec e-Szignó</name>
 		<caa>e-szigno.hu</caa>
 	</ca>
@@ -201,8 +211,20 @@
 		<caa>secomtrust.net</caa>
 	</ca>
 	<ca>
+		<name>SK ID Solutions AS</name>
+		<caa>sk.ee</caa>
+	</ca>
+	<ca>
+		<name>SSL.com</name>
+		<caa>ssl.com</caa>
+	</ca>
+	<ca>
 		<name>SwissSign</name>
 		<caa>swisssign.com</caa>
+	</ca>
+	<ca>
+		<name>Taiwan-CA</name>
+		<caa>twca.com.tw</caa>
 	</ca>
 	<ca>
 		<name>Telia</name>
