@@ -20,7 +20,6 @@ import (
 )
 
 var canames = map[string][]string{
-	"AS Sertifitseerimiskeskuse (SK)": { "Sertifitseerimiskeskuse" },
 	"Asseco Data Systems S.A. (previously Unizeto Certum)": {"Asseco", "Unizeto", "Certum"},
 	"Autoridad de Certificacion Firmaprofesional": { "Firmaprofesional" },
 	"Certinomis / Docapost": { "Certinomis", "Docapost" },
@@ -42,10 +41,6 @@ var canames = map[string][]string{
 	"Government of Turkey, Kamu Sertifikasyon Merkezi (Kamu SM)": { "Kamu SM" },
 	"Internet Security Research Group (ISRG)": { "Let's Encrypt" },
 	"SECOM Trust Systems Co. Ltd.": { "SECOM" },
-	"Symantec": nil, // redundant with DigiCert
-	"Symantec / GeoTrust": nil, // redundant with DigiCert
-	"Symantec / Thawte": nil, // redundant with DigiCert
-	"Symantec / VeriSign": nil, // redundant with DigiCert
 	"T-Systems International GmbH (Deutsche Telekom)": nil, // defined in extra_cas.xml so we can separate out DFN-PKI
 }
 
