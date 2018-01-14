@@ -104,6 +104,7 @@
 					</provider>
 					<provider>
 						<name>Cloudflare</name>
+						<comments>Cloudflare will add additional CAA records unless you disable Universal SSL</comments>
 					</provider>
 					<provider>
 						<name>Dyn Managed DNS</name>
