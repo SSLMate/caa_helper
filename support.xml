@@ -210,6 +210,9 @@
 					<provider>
 						<name>UD Media</name>
 					</provider>
+					<provider support="no">
+						<name>name.com</name>
+					</provider>
 				</support>
 			</div>
 		</div>
