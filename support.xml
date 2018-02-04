@@ -220,6 +220,9 @@
 					<provider>
 						<name>1&amp;1</name>
 					</provider>
+					<provider support="no">
+						<name>Enom/Tucows</name>
+					</provider>
 				</support>
 			</div>
 		</div>
