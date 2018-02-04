@@ -213,6 +213,10 @@
 					<provider support="no">
 						<name>name.com</name>
 					</provider>
+					<provider>
+						<name>OVH</name>
+						<comments>Must be added via API</comments>
+					</provider>
 				</support>
 			</div>
 		</div>
