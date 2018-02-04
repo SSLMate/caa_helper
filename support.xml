@@ -217,6 +217,9 @@
 						<name>OVH</name>
 						<comments>Must be added via API</comments>
 					</provider>
+					<provider>
+						<name>1&amp;1</name>
+					</provider>
 				</support>
 			</div>
 		</div>
