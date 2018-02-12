@@ -70,6 +70,10 @@
 						<comments>Use generic record syntax</comments>
 					</software>
 					<software>
+						<name>dnsmasq</name>
+						<comments>Use --dns-rr option with hex data</comments>
+					</software>
+					<software>
 						<name>ldns</name>
 						<version>1.6.17</version>
 					</software>
