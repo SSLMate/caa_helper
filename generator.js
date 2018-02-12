@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_generic) {
+function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -44,8 +44,8 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 	function quote (str) {
 		return '"' + str.replace(/\"/g, "\\\"") + '"';
 	}
-	function make_unknown_record (bytes) {
-		var str = "\\# " + bytes.length + " ";
+	function make_hex_string (bytes) {
+		var str = "";
 		for (var i = 0; i < bytes.length; ++i) {
 			var hexStr = bytes[i].toString(16).toUpperCase();
 			if (hexStr.length == 1) {
@@ -54,6 +54,9 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			str += hexStr;
 		}
 		return str;
+	}
+	function make_unknown_record (bytes) {
+		return "\\# " + bytes.length + " " + make_hex_string(bytes);
 	}
 	function make_tinydns_generic_record (bytes) {
 		var str = "";
@@ -304,6 +307,15 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		}
 		return text;
 	}
+	function format_dnsmasq_options (domain, records) {
+		// see http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
+		// --dns-rr=example.com,257,00056973737565636F6D6F646F63612E636F6D
+		var text = "";
+		for (var i = 0; i < records.length; ++i) {
+			text += "--dns-rr=" + strip_trailing_dot(domain) + ",257," + make_hex_string(records[i].encode()) + "\n";
+		}
+		return text;
+	}
 	function set_generic_table (table, domain, records) {
 		function add_cell (row, rowSpan, content) {
 			var span = document.createElement("span");
@@ -330,6 +342,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 		set_text_output(output_zonefile, format_zone_file(domain, records));
 		set_text_output(output_rfc3597, format_rfc3597_zone_file(domain, records));
 		set_text_output(output_tinydns, format_tinydns_zone_file(domain, records));
+		set_text_output(output_dnsmasq, format_dnsmasq_options(domain, records));
 		set_generic_table(output_generic, domain, records);
 	}
 	function refresh () {
