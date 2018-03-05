@@ -167,7 +167,7 @@
 					<provider support="no">
 						<name>Namecheap</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>Hetzner</name>
 					</provider>
 					<provider support="no">
