@@ -226,6 +226,9 @@
 					<provider support="no">
 						<name>Enom/Tucows</name>
 					</provider>
+					<provider>
+						<name>Netcup</name>
+					</provider>
 				</support>
 			</div>
 		</div>
