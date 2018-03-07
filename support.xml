@@ -232,6 +232,10 @@
 					<provider>
 						<name>34SP.com</name>
 					</provider>
+					<provider>
+						<name>iwantmyname</name>
+						<comments><xhtml:a href="https://help.iwantmyname.com/customer/en/portal/articles/2765180-do-you-support-caa-records-">Requires opening a support ticket</xhtml:a></comments>
+					</provider>
 				</support>
 			</div>
 		</div>
