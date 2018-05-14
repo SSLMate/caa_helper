@@ -1,6 +1,6 @@
 This is a simple single-page JavaScript application to help
 people generate a CAA policy.  It's available online at
-<https://sslmate.com/labs/caa>.
+<https://sslmate.com/caa>.
 
 If you know of a CA that supports CAA which is not listed here, please
 open an issue at <https://github.com/SSLMate/caa_helper/issues> or email
@@ -19,6 +19,6 @@ LIMITATIONS
 
 LEGALESE
 
-Copyright (C) 2016 Opsmate, Inc.
+Copyright (C) 2016-2018 Opsmate, Inc.
 
 Licensed under the MPL v2.0.  See LICENSE for details.
