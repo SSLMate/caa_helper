@@ -246,19 +246,20 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 
 		for (var i = 0; i < records.length; ++i) {
 			var record = records[i];
-			if (record.tag == "issue") {
+			var tag = record.tag.toLowerCase();
+			if (tag == "issue") {
 				var domain = parse_issue_property(record.value);
 				if (domain != "") {
 					issue.push(domain);
 				}
 				has_issue = true;
-			} else if (record.tag == "issuewild") {
+			} else if (tag == "issuewild") {
 				var domain = parse_issue_property(record.value);
 				if (domain != "") {
 					issuewild.push(domain);
 				}
 				has_issuewild = true;
-			} else if (record.tag == "iodef") {
+			} else if (tag == "iodef") {
 				if (iodef != "") {
 					throw new PolicyCompatError("At most one iodef property is supported");
 				}
