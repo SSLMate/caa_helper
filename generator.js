@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
+function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -428,7 +428,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
@@ -438,7 +438,7 @@ function init_caa_generator (form, ca_table, output_zonefile, output_rfc3597, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 
