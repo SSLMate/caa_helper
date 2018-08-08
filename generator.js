@@ -310,10 +310,10 @@ function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_r
 	}
 	function format_dnsmasq_options (domain, records) {
 		// see http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
-		// --dns-rr=example.com,257,00056973737565636F6D6F646F63612E636F6D
+		// dns-rr=example.com,257,00056973737565636F6D6F646F63612E636F6D
 		var text = "";
 		for (var i = 0; i < records.length; ++i) {
-			text += "--dns-rr=" + strip_trailing_dot(domain) + ",257," + make_hex_string(records[i].encode()) + "\n";
+			text += "dns-rr=" + strip_trailing_dot(domain) + ",257," + make_hex_string(records[i].encode()) + "\n";
 		}
 		return text;
 	}
