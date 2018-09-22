@@ -1,6 +1,6 @@
 <cas xmlns="http://xmlns.sslmate.com/caa">
 	<ca>
-		<name>Comodo</name>
+		<name>Comodo CA</name>
 		<caa>comodoca.com</caa>
 		<caa>comodo.com</caa>
 		<caa>usertrust.com</caa>
