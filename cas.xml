@@ -8,7 +8,7 @@
 		<caa>actalis.it</caa>
 	</ca>
 	<ca>
-		<name>Amazon</name>
+		<name>Amazon Trust Services</name>
 		<caa>amazon.com</caa>
 		<caa>amazontrust.com</caa>
 		<caa>awstrust.com</caa>
@@ -37,10 +37,6 @@
 		<caa>buypass.no</caa>
 	</ca>
 	<ca>
-		<name>CA Disig</name>
-		<caa>disig.sk</caa>
-	</ca>
-	<ca>
 		<name>Certinomis</name>
 		<aka>Docapost</aka>
 		<caa>www.certinomis.com</caa>
@@ -65,9 +61,20 @@
 		<caa>epki.com.tw</caa>
 	</ca>
 	<ca>
+		<name>ComSign</name>
+		<caa>comsign.co.il</caa>
+		<caa>comsign.co.uk</caa>
+		<caa>comsigneurope.com</caa>
+		<caa></caa>
+	</ca>
+	<ca>
 		<name>CATCert</name>
 		<aka>Consorci AOC</aka>
 		<caa>aoc.cat</caa>
+	</ca>
+	<ca>
+		<name>Cybertrust Japan</name>
+		<caa>cybertrust.ne.jp</caa>
 	</ca>
 	<ca>
 		<name>D-TRUST</name>
@@ -75,8 +82,6 @@
 		<caa>d-trust.de</caa>
 		<caa>dtrust.net</caa>
 		<caa>d-trust.net</caa>
-		<caa>d-trust gmbh</caa>
-		<caa>d-trust</caa>
 	</ca>
 	<ca>
 		<name>Certigna</name>
@@ -100,6 +105,10 @@
 		<caa>1and1.digitalcertvalidation.com</caa>
 	</ca>
 	<ca>
+		<name>Disig</name>
+		<caa>disig.sk</caa>
+	</ca>
+	<ca>
 		<name>DocuSign</name>
 		<aka>Keynectis</aka>
 		<aka>OpenTrust</aka>
@@ -107,7 +116,7 @@
 		<caa>docusign.fr</caa>
 	</ca>
 	<ca>
-		<name>e-tugra</name>
+		<name>E-Tugra</name>
 		<caa>e-tugra.com</caa>
 		<caa>e-tugra.com.tr</caa>
 	</ca>
@@ -161,7 +170,8 @@
 	</ca>
 	<ca>
 		<name>PKIoverheid</name>
-		<caa>www.pkioverheid.nl</caa>
+		<caa>pkioverheid.nl</caa>
+		<caa>logius.nl</caa>
 	</ca>
 	<ca>
 		<name>Kamu SM</name>
@@ -172,7 +182,7 @@
 		<caa>harica.gr</caa>
 	</ca>
 	<ca>
-		<name>IdenTrust</name>
+		<name>IdenTrust Services</name>
 		<caa>identrust.com</caa>
 		<caa>www.identrust.com</caa>
 	</ca>
@@ -193,7 +203,7 @@
 		<caa>elektronicznypodpis.pl</caa>
 	</ca>
 	<ca>
-		<name>Microsec e-Szignó</name>
+		<name>Microsec</name>
 		<caa>e-szigno.hu</caa>
 	</ca>
 	<ca>
@@ -221,6 +231,35 @@
 	<ca>
 		<name>SwissSign</name>
 		<caa>swisssign.com</caa>
+		<caa>swisssign.net</caa>
+		<caa>swissign.com</caa>
+		<caa>swisssign.ch</caa>
+		<caa>swisssign.li</caa>
+		<caa>swissign.li</caa>
+		<caa>swisssign.org</caa>
+		<caa>swisssign.biz</caa>
+		<caa>swisstsa.ch</caa>
+		<caa>swisstsa.li</caa>
+		<caa>digitalid.ch</caa>
+		<caa>digital-id.ch</caa>
+		<caa>zert.ch</caa>
+		<caa>rootsigning.com</caa>
+		<caa>root-signing.ch</caa>
+		<caa>ssl-certificate.ch</caa>
+		<caa>managed-pki.ch</caa>
+		<caa>managed-pki.de</caa>
+		<caa>swissstick.com</caa>
+		<caa>swisssigner.ch</caa>
+		<caa>pki-posta.ch</caa>
+		<caa>pki-poste.ch</caa>
+		<caa>pki-post.ch</caa>
+		<caa>trustdoc.ch</caa>
+		<caa>trustsign.ch</caa>
+		<caa>swisssigner.com</caa>
+		<caa>postsuisseid.ch</caa>
+		<caa>suisseid-service.ch</caa>
+		<caa>signdemo.com</caa>
+		<caa>sirb.com</caa>
 	</ca>
 	<ca>
 		<name>Taiwan-CA</name>

@@ -24,7 +24,7 @@ var canames = map[string][]string{
 	"Autoridad de Certificacion Firmaprofesional": { "Firmaprofesional" },
 	"Certinomis / Docapost": { "Certinomis", "Docapost" },
 	"China Financial Certification Authority (CFCA)": { "CFCA", "China Financial" },
-	"Comodo": nil, // defined in extra_cas.xml so we can prioritize comodoca.com over comodo.com
+	"Comodo CA": nil, // defined in extra_cas.xml so we can prioritize comodoca.com over comodo.com
 	"Consorci Administració Oberta de Catalunya (Consorci AOC, CATCert)": { "CATCert", "Consorci AOC" },
 	"Cybertrust Japan / JCSI": { "Cybertrust Japan" },
 	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },
@@ -40,12 +40,12 @@ var canames = map[string][]string{
 	"Government of The Netherlands, PKIoverheid (Logius)": { "PKIoverheid" },
 	"Government of Turkey, Kamu Sertifikasyon Merkezi (Kamu SM)": { "Kamu SM" },
 	"Internet Security Research Group (ISRG)": { "Let's Encrypt" },
-	"SECOM Trust Systems Co. Ltd.": { "SECOM" },
+	"SECOM Trust Systems CO., LTD.": { "SECOM" },
 	"T-Systems International GmbH (Deutsche Telekom)": nil, // defined in extra_cas.xml so we can separate out DFN-PKI
 }
 
 var parenregex = regexp.MustCompile(`\s+\([^)]*\)`)
-var fluffregex = regexp.MustCompile(`(\s+CA)?(,?\s+(S\.A\.|SA|Inc\.?|Ltd\.?|Limited|AG|Company|a\.s\.|Corporation))?$`)
+var fluffregex = regexp.MustCompile(`(\s+CA)?(,?\s+(S\.A\.|SA|Inc\.?|Ltd\.?|Limited|AG|Company|a\.s\.|Corporation|LLC))?$`)
 
 func escapexml(str string) string {
 	buf := bytes.NewBuffer(nil)
