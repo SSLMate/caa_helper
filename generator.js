@@ -417,7 +417,7 @@ function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_r
 		refresh();
 	}
 	function use_sslmate_policy () {
-		var sslmate_cas = [ 'comodoca.com', 'globalsign.com', 'letsencrypt.org' ];
+		var sslmate_cas = [ 'comodoca.com', 'letsencrypt.org' ];
 		new Policy(sslmate_cas, sslmate_cas, "").to_form();
 		refresh();
 	}
