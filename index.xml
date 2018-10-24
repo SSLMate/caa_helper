@@ -48,12 +48,10 @@
 							<td><button type="button" name="empty_policy">Empty Policy</button></td>
 							<td>You'll start with an empty policy that prohibits all CAs.</td>
 						</tr>
-						<!--
 						<tr>
 							<td><button type="button" name="use_sslmate_policy">SSLMate Policy</button></td>
 							<td>Your policy will allow only the CAs used by <a href="https://sslmate.com">SSLMate</a>.</td>
 						</tr>
-						-->
 						<tr>
 							<td><button type="button" name="autogenerate_policy">Auto-Generate Policy</button></td>
 							<td>We'll use <a href="https://www.certificate-transparency.org/">Certificate Transparency</a> to see which CAs you're currently using.</td>
