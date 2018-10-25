@@ -239,6 +239,9 @@
 					<provider>
 						<name>GoDaddy</name>
 					</provider>
+					<provider support="no">
+						<name>SoftLayer</name>
+					</provider>
 				</support>
 			</div>
 		</div>
