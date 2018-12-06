@@ -27,7 +27,6 @@ var canames = map[string][]string{
 	"Sectigo": { "Sectigo", "Comodo CA" },
 	"Consorci Administració Oberta de Catalunya (Consorci AOC, CATCert)": { "CATCert", "Consorci AOC" },
 	"Cybertrust Japan / JCSI": { "Cybertrust Japan" },
-	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },
 	"Dhimyotis / Certigna": { "Certigna" },
 	"DigiCert": {"DigiCert","Symantec","GeoTrust","Thawte","RapidSSL"},
 	"DocuSign (OpenTrust/Keynectis)": { "DocuSign", "Keynectis", "OpenTrust", "Certplus" },
