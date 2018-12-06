@@ -24,7 +24,7 @@ var canames = map[string][]string{
 	"Autoridad de Certificacion Firmaprofesional": { "Firmaprofesional" },
 	"Certinomis / Docapost": { "Certinomis", "Docapost" },
 	"China Financial Certification Authority (CFCA)": { "CFCA", "China Financial" },
-	"Comodo CA": nil, // defined in extra_cas.xml so we can prioritize comodoca.com over comodo.com
+	"Sectigo": { "Sectigo", "Comodo CA" },
 	"Consorci Administració Oberta de Catalunya (Consorci AOC, CATCert)": { "CATCert", "Consorci AOC" },
 	"Cybertrust Japan / JCSI": { "Cybertrust Japan" },
 	"Deutscher Sparkassen Verlag GmbH (S-TRUST, DSV-Gruppe)": { "S-TRUST" },

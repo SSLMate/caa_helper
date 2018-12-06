@@ -1,13 +1,5 @@
 <cas xmlns="http://xmlns.sslmate.com/caa">
 	<ca>
-		<name>Sectigo</name>
-		<aka>Comodo CA</aka>
-		<caa>comodoca.com</caa>
-		<caa>comodo.com</caa>
-		<caa>usertrust.com</caa>
-		<caa>trust-provider.com</caa>
-	</ca>
-	<ca>
 		<name>T-Systems</name>
 		<caa>telesec.de</caa>
 	</ca>

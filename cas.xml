@@ -221,6 +221,15 @@
 		<caa>secomtrust.net</caa>
 	</ca>
 	<ca>
+		<name>Sectigo</name>
+		<aka>Comodo CA</aka>
+		<caa>sectigo.com</caa>
+		<caa>comodo.com</caa>
+		<caa>comodoca.com</caa>
+		<caa>usertrust.com</caa>
+		<caa>trust-provider.com</caa>
+	</ca>
+	<ca>
 		<name>SK ID Solutions AS</name>
 		<caa>sk.ee</caa>
 	</ca>
