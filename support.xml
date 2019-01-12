@@ -242,6 +242,9 @@
 					<provider support="no">
 						<name>SoftLayer</name>
 					</provider>
+					<provider>
+						<name>CloudfloorDNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
