@@ -99,7 +99,7 @@
 				<xsl:with-param name="strings" select="caa:caa"/>
 			</xsl:call-template>
 		</xsl:variable>
-		<tr>
+		<tr data-identifiers="{$identifiers}">
 			<th class="name_col">
 				<xsl:value-of select="caa:name"/>
 				<xsl:if test="caa:aka">

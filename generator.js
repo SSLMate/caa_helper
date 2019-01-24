@@ -354,7 +354,7 @@ function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_r
 		var ca_filter = form["ca_filter"].value.toLowerCase();
 		for (var i = 0; i < ca_table.tBodies[0].rows.length; ++i) {
 			var row = ca_table.tBodies[0].rows[i];
-			if (row.cells[0].textContent.toLowerCase().indexOf(ca_filter) == -1) {
+			if (row.cells[0].textContent.toLowerCase().indexOf(ca_filter) == -1 && row.dataset.identifiers.indexOf(ca_filter) == -1) {
 				row.className = "hidden";
 			} else {
 				row.className = "";
