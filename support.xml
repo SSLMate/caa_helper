@@ -164,7 +164,7 @@
 					<provider>
 						<name>CloudXNS</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>Namecheap</name>
 					</provider>
 					<provider>
