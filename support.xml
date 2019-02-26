@@ -245,6 +245,15 @@
 					<provider>
 						<name>CloudfloorDNS</name>
 					</provider>
+					<provider>
+						<name>Hostwinds</name>
+					</provider>
+					<provider support="no">
+						<name>Hover</name>
+					</provider>
+					<provider support="no">
+						<name>123 Reg</name>
+					</provider>
 				</support>
 			</div>
 		</div>
