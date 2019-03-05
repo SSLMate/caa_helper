@@ -261,6 +261,9 @@
 						<name>Lightsail DNS</name>
 						<comments><xhtml:a href="https://forums.aws.amazon.com/thread.jspa?threadID=284063">Relevant forum thread</xhtml:a></comments>
 					</provider>
+					<provider>
+						<name>Crazy Domains</name>
+					</provider>
 				</support>
 			</div>
 		</div>
