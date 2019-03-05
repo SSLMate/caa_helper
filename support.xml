@@ -264,6 +264,9 @@
 					<provider>
 						<name>Crazy Domains</name>
 					</provider>
+					<provider>
+						<name>Alibaba Cloud DNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
