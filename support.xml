@@ -254,6 +254,9 @@
 					<provider support="no">
 						<name>123 Reg</name>
 					</provider>
+					<provider>
+						<name>Futureweb</name>
+					</provider>
 				</support>
 			</div>
 		</div>
