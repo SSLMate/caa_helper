@@ -8,7 +8,7 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
+function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -428,7 +428,7 @@ function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_r
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caa_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
@@ -438,33 +438,78 @@ function init_caa_generator (endpoint, form, ca_table, output_zonefile, output_r
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caa_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
+	function fetch_brands () {
+		return fetch(certspotter_endpoint + "/v1/brands").then(function(resp) { return resp.json(); });
+	}
+	function populate_ca_table (brands) {
+		function make_name_cell (name, aliases) {
+			var col = document.createElement("th");
+			col.className = "name_col";
+			col.appendChild(document.createTextNode(name));
+			if (aliases.length > 0) {
+				var aka = document.createElement("span");
+				aka.className = "aka";
+				aka.appendChild(document.createTextNode(aliases.join(", ")));
+				col.appendChild(aka);
+			}
+			return col;
+		}
+		function make_checkbox_cell (class_name, name, value) {
+			var checkbox = document.createElement("input");
+			checkbox.type = "checkbox";
+			checkbox.name = name;
+			checkbox.value = value;
 
-	for (var i = 0; i < form.elements.length; ++i) {
-		var elt = form.elements[i];
-		if (elt.name == "issue" || elt.name == "issuewild") {
-			elt.onclick = refresh;
-		} else if (elt.name == "domain" || elt.name == "iodef") {
-			elt.onchange = refresh;
-			elt.onkeyup = refresh;
-		} else if (elt.name == "ca_filter") {
-			elt.onchange = apply_ca_filter;
-			elt.onkeyup = apply_ca_filter;
-		} else if (elt.name == "clear_ca_filter") {
-			elt.onclick = clear_ca_filter;
-		} else if (elt.name == "empty_policy") {
-			elt.onclick = empty_policy;
-		} else if (elt.name == "use_sslmate_policy") {
-			elt.onclick = use_sslmate_policy;
-		} else if (elt.name == "autogenerate_policy") {
-			elt.onclick = autogenerate_policy;
-		} else if (elt.name == "load_policy") {
-			elt.onclick = load_policy;
+			var col = document.createElement("td");
+			col.className = class_name;
+			col.appendChild(checkbox);
+			return col;
+		}
+
+		for (var i = 0; i < brands.length; ++i) {
+			var brand = brands[i];
+			var identifiers = brand.caa_domains.join(" ");
+
+			var row = document.createElement("tr");
+			row.dataset.identifiers = identifiers;
+			row.appendChild(make_name_cell(brand.name, brand.aliases));
+			row.appendChild(make_checkbox_cell("nonwild_col", "issue", identifiers));
+			row.appendChild(make_checkbox_cell("wild_col", "issuewild", identifiers));
+
+			ca_table.tBodies[0].appendChild(row);
 		}
 	}
 
-	refresh();
-	apply_ca_filter();
+	fetch_brands().then(function(brands) {
+		populate_ca_table(brands);
+
+		for (var i = 0; i < form.elements.length; ++i) {
+			var elt = form.elements[i];
+			if (elt.name == "issue" || elt.name == "issuewild") {
+				elt.onclick = refresh;
+			} else if (elt.name == "domain" || elt.name == "iodef") {
+				elt.onchange = refresh;
+				elt.onkeyup = refresh;
+			} else if (elt.name == "ca_filter") {
+				elt.onchange = apply_ca_filter;
+				elt.onkeyup = apply_ca_filter;
+			} else if (elt.name == "clear_ca_filter") {
+				elt.onclick = clear_ca_filter;
+			} else if (elt.name == "empty_policy") {
+				elt.onclick = empty_policy;
+			} else if (elt.name == "use_sslmate_policy") {
+				elt.onclick = use_sslmate_policy;
+			} else if (elt.name == "autogenerate_policy") {
+				elt.onclick = autogenerate_policy;
+			} else if (elt.name == "load_policy") {
+				elt.onclick = load_policy;
+			}
+		}
+
+		refresh();
+		apply_ca_filter();
+	});
 }

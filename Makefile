@@ -7,27 +7,25 @@
 # This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 # See the Mozilla Public License for details.
 
-ENDPOINT = https://sslmate.com/caa/api
+CAA_ENDPOINT = https://sslmate.com/caa/api
+CERTSPOTTER_ENDPOINT = https://api.certspotter.com
 
 -include config.mk
 
+XSLTFLAGS = --xinclude \
+	--stringparam caa_endpoint "$(CAA_ENDPOINT)" \
+	--stringparam certspotter_endpoint "$(CERTSPOTTER_ENDPOINT)"
+
 all: index.html support.html about.html
 
-index.html: index.xml template.xslt cas.xml extra_cas.xml
-	xsltproc --xinclude --stringparam endpoint "$(ENDPOINT)" template.xslt index.xml > $@
-
+index.html: index.xml template.xslt
+	xsltproc $(XSLTFLAGS) template.xslt index.xml > $@
 
 support.html: support.xml template.xslt
-	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt support.xml > $@
+	xsltproc $(XSLTFLAGS) template.xslt support.xml > $@
 
 about.html: about.xml template.xslt
-	xsltproc --stringparam endpoint "$(ENDPOINT)" template.xslt about.xml > $@
-
-cas.xml: CAInformationReportCSVFormat mkcasxml.go
-	sed '1 d' < CAInformationReportCSVFormat | go run mkcasxml.go > cas.xml
-
-CAInformationReportCSVFormat:
-	curl -sS https://ccadb-public.secure.force.com/mozilla/CAInformationReportCSVFormat > CAInformationReportCSVFormat
+	xsltproc $(XSLTFLAGS) template.xslt about.xml > $@
 
 clean:
 	rm -f *.html

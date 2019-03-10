@@ -13,7 +13,7 @@
 	<caa:head>
 		<script type="text/javascript" src="generator.js"></script>
 		<script type="text/javascript">
-			window.onload = function() { init_caa_generator(caa_endpoint, document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_dnsmasq'), document.getElementById('caa_output_generic')); };
+			window.onload = function() { init_caa_generator(caa_endpoint, certspotter_endpoint, document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_dnsmasq'), document.getElementById('caa_output_generic')); };
 		</script>
 	</caa:head>
 	<caa:body>
@@ -78,10 +78,21 @@
 							<button type="button" name="clear_ca_filter" class="link">Clear Filter</button>
 						</p>
 
-						<caa:ca_table id="ca_table">
-							<xi:include href="cas.xml" xpointer="xmlns(caa=http://xmlns.sslmate.com/caa)xpointer(/caa:cas/caa:ca)"/>
-							<xi:include href="extra_cas.xml" xpointer="xmlns(caa=http://xmlns.sslmate.com/caa)xpointer(/caa:cas/caa:ca)"/>
-						</caa:ca_table>
+						<table id="ca_table">
+							<thead>
+								<tr>
+									<td class="name_col"></td>
+									<td class="type_col" colspan="2">Type of certificate</td>
+								</tr>
+								<tr>
+									<td class="name_col"></td>
+									<th class="nonwild_col">Non-Wildcard</th>
+									<th class="wild_col">Wildcard</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
 				</div>
 
