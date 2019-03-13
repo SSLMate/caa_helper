@@ -472,6 +472,9 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		for (var i = 0; i < brands.length; ++i) {
 			var brand = brands[i];
 			var identifiers = brand.caa_domains.join(" ");
+			if (brand.caa_domains.length === 0) {
+				continue;
+			}
 
 			var row = document.createElement("tr");
 			row.dataset.identifiers = identifiers;
