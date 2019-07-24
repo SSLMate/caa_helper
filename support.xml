@@ -267,6 +267,9 @@
 					<provider>
 						<name>Alibaba Cloud DNS</name>
 					</provider>
+					<provider>
+						<name>No-IP Dynamic DNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
