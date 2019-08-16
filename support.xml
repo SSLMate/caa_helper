@@ -106,9 +106,8 @@
 					<provider>
 						<name>Constellix DNS</name>
 					</provider>
-					<provider support="broken">
+					<provider>
 						<name>Cloudflare</name>
-						<comments>Does not return CNAME record when queried for a CAA record.<!-- Cloudflare will add additional CAA records unless you disable Universal SSL.--></comments>
 					</provider>
 					<provider>
 						<name>Dyn Managed DNS</name>
