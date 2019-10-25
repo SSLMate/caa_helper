@@ -270,6 +270,9 @@
 					<provider>
 						<name>No-IP Dynamic DNS</name>
 					</provider>
+					<provider>
+						<name>UKFast</name>
+					</provider>
 				</support>
 			</div>
 		</div>
