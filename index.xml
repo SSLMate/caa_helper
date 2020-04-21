@@ -13,7 +13,7 @@
 	<caa:head>
 		<script type="text/javascript" src="generator.js"></script>
 		<script type="text/javascript">
-			window.onload = function() { init_caa_generator(caa_endpoint, certspotter_endpoint, document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_dnsmasq'), document.getElementById('caa_output_generic')); };
+			document.addEventListener('DOMContentLoaded',function() { init_caa_generator(caa_endpoint, certspotter_endpoint, document.getElementById('generator_form'), document.getElementById('ca_table'), document.getElementById('caa_output_zonefile'), document.getElementById('caa_output_rfc3597'), document.getElementById('caa_output_tinydns'), document.getElementById('caa_output_dnsmasq'), document.getElementById('caa_output_generic')); });
 		</script>
 	</caa:head>
 	<caa:body>
