@@ -173,7 +173,7 @@
 					<provider support="no">
 						<name>STRATO</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>http.net</name>
 					</provider>
 					<provider support="broken">
