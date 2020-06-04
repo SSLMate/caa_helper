@@ -170,6 +170,9 @@
 					<provider>
 						<name>Hetzner</name>
 					</provider>
+					<provider>
+						<name>hosting.de</name>
+					</provider>
 					<provider support="no">
 						<name>STRATO</name>
 					</provider>
