@@ -33,7 +33,7 @@
 					<p>
 						Over a hundred certificate authorities (CAs) have the power to issue
 						certificates which vouch for the identity of your website.  Certificate
-						Authority Authorization (CAA) is a way for you to whitelist the CAs you
+						Authority Authorization (CAA) is a way for you to restrict issuance to the CAs you
 						actually use so you can minimize your risk from security vulnerabilities
 						in all the others.
 					</p>
