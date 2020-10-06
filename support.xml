@@ -278,6 +278,9 @@
 					<provider>
 						<name>NameSilo</name>
 					</provider>
+					<provider>
+						<name>Metaname</name>
+					</provider>
 				</support>
 			</div>
 		</div>
