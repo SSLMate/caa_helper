@@ -276,6 +276,9 @@
 					<provider>
 						<name>UKFast</name>
 					</provider>
+					<provider>
+						<name>Glauca HexDNS</name>
+					</provider>
 				</support>
 			</div>
 		</div>
