@@ -369,6 +369,9 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	function handle_lookup_result (result) {
 		var domain = strip_trailing_dot(result["domain"]);
 		if (result["status"] == "success") {
+			if (result["operation"] == "autogenerate" && result["has_unknown_ca"]) {
+				alert(domain + " has certificates that were issued by unknown CAs.  These certificates have been ignored and will not be reflected in the auto-generated policy.");
+			}
 			try {
 				var policy = make_policy_from_records(result["records"]);
 				if (policy) {
