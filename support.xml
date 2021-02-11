@@ -146,9 +146,8 @@
 					<provider>
 						<name>Mythic Beasts</name>
 					</provider>
-					<provider support="broken">
+					<provider support="no">
 						<name>NameBright</name>
-						<comments><xhtml:a href="https://community.letsencrypt.org/t/caa-servfails-from-namebrightdns-com/38748">Returns invalid response to CAA queries</xhtml:a></comments>
 					</provider>
 					<provider support="broken">
 						<name>ezyreg.com (Netregistry)</name>
