@@ -275,6 +275,9 @@
 					<provider>
 						<name>UKFast</name>
 					</provider>
+					<provider>
+						<name>NameSilo</name>
+					</provider>
 				</support>
 			</div>
 		</div>
