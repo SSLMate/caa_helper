@@ -284,6 +284,9 @@
 					<provider>
 						<name>Glauca HexDNS</name>
 					</provider>
+					<provider>
+						<name>DNSPod</name>
+					</provider>
 				</support>
 			</div>
 		</div>
