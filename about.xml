@@ -52,7 +52,7 @@
 
 			<p>
 				CAA is an IETF standard defined by
-				<a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a>.  As of September 8, 2017,
+				<a href="https://tools.ietf.org/html/rfc8659">RFC 8659</a>.  As of September 8, 2017,
 				all public certificate authorities are required to respect CAA records.  Before
 				issuing a certificate for a domain, they must check the domain for CAA
 				records, and refuse to issue if the CAA record set doesn't authorize them.
@@ -90,22 +90,26 @@
 
 			<p>
 				If a domain name is a CNAME (also known as an alias) for another domain, then
-				the certificate authority also looks for CAA record sets at the CNAME target,
-				as well as all parent domains of the target.  If no CAA record set is found,
+				the certificate authority looks for the CAA record set at the CNAME target
+				(just like any other DNS lookup).  If no CAA record set is found,
 				the certificate authority continues searching parent domains of the original
 				domain name.
 			</p>
 
 			<p>
-				For example, if blog.example.com is a CNAME for blog.example.net, then
+				For example, if blog.example.com is a CNAME for blogprovider.example, then
 				the certificate authority looks for CAA record sets in the following order:
 			</p>
 
 			<ol>
-				<li>blog.example.net</li>
-				<li>example.net</li>
+				<li>blogprovider.example</li>
 				<li>example.com</li>
 			</ol>
+
+			<p>
+				As with other DNS record types, it is not possible for a domain name to have
+				both a CNAME and a CAA record.
+			</p>
 
 			<h3>Limitations</h3>
 
