@@ -9,7 +9,6 @@
  * See the Mozilla Public License for details.
  */
 function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
-	var telemetry_timer = null;
 	var session_id = null;
 	try {
 		var random_bytes = new Uint8Array(16);
@@ -358,13 +357,6 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	function refresh () {
 		var domain = form["domain"].value.toLowerCase();
 		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
-		if (telemetry_timer != null) {
-			clearTimeout(telemetry_timer);
-		}
-		telemetry_timer = setTimeout(function() {
-			send_telemetry("refresh");
-			telemetry_timer = null;
-		}, 1000);
 	}
 	function apply_ca_filter () {
 		var ca_filter = form["ca_filter"].value.toLowerCase();
@@ -557,5 +549,10 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 
 	certspotter_link.addEventListener("click", function() {
 		send_telemetry("certspotter_link");
+	});
+	document.addEventListener("visibilitychange", function() {
+		if (document.visibilityState == "hidden") {
+			send_telemetry("end_session");
+		}
 	});
 }
