@@ -52,6 +52,10 @@
 					<p>
 						<label>Domain name: </label><input type="text" name="domain" size="30"/>
 					</p>
+				</div>
+
+				<div class="section">
+					<h2>2. Choose an Initial Policy</h2>
 
 					<table class="policy_selection">
 						<tr>
@@ -74,7 +78,7 @@
 				</div>
 
 				<div class="section">
-					<h2>2. Select Authorized Certificate Authorities</h2>
+					<h2>3. Select Authorized Certificate Authorities</h2>
 
 					<p class="instructions">
 						Check off the certificate authorities which you authorize to issue certificates
@@ -107,7 +111,7 @@
 				</div>
 
 				<div class="section">
-					<h2>3. Incident Reporting (Optional)</h2>
+					<h2>4. Incident Reporting (Optional)</h2>
 
 					<p class="instructions">
 						You can specify an email address or URL for reporting certificate
@@ -121,7 +125,7 @@
 				</div>
 
 				<div class="section">
-					<h2>4. Publish Your CAA Policy</h2>
+					<h2>5. Publish Your CAA Policy</h2>
 
 					<p class="instructions">
 						Add the following CAA records to your
