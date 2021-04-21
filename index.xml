@@ -22,7 +22,8 @@
 				                   document.getElementById('caa_output_rfc3597'),
 				                   document.getElementById('caa_output_tinydns'),
 				                   document.getElementById('caa_output_dnsmasq'),
-				                   document.getElementById('caa_output_generic'));
+				                   document.getElementById('caa_output_generic'),
+				                   document.getElementById('certspotter_link'));
 			});
 		</script>
 	</caa:head>
@@ -184,7 +185,7 @@
 
 					<p class="instructions">
 						Even if you publish a CAA record, a noncompliant certificate authority
-						can ignore your CAA records.  Use <a href="https://sslmate.com/signup?for=certspotter">Cert Spotter</a>
+						can ignore your CAA records.  Use <a href="https://sslmate.com/signup?for=certspotter" id="certspotter_link">Cert Spotter</a>
 						to monitor Certificate Transparency logs so you'll get an email if this happens.
 					</p>
 				</div>

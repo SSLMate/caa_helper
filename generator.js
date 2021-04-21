@@ -8,7 +8,16 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic) {
+function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
+	var telemetry_timer = null;
+	var session_id = null;
+	try {
+		var random_bytes = new Uint8Array(16);
+		window.crypto.getRandomValues(random_bytes);
+		session_id = Array.from(random_bytes).map(function(b) { return b.toString(16).padStart(2, "0") }).join("");
+	} catch (e) {
+	}
+
 	function array_equals (a, b) {
 		if (a.length != b.length) {
 			return false;
@@ -349,6 +358,13 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	function refresh () {
 		var domain = form["domain"].value.toLowerCase();
 		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
+		if (telemetry_timer != null) {
+			clearTimeout(telemetry_timer);
+		}
+		telemetry_timer = setTimeout(function() {
+			send_telemetry("refresh");
+			telemetry_timer = null;
+		}, 1000);
 	}
 	function apply_ca_filter () {
 		var ca_filter = form["ca_filter"].value.toLowerCase();
@@ -415,16 +431,35 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		}
 	};
 
+	function send_telemetry(action) {
+		try {
+			var data = {
+				domain:		form["domain"].value,
+				policy:		make_policy_from_form(),
+			};
+			navigator.sendBeacon(caa_endpoint + "/telemetry", new URLSearchParams({
+				session_id:	session_id,
+				action:		action,
+				data:		JSON.stringify(data),
+			}));
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
 	function empty_policy () {
+		send_telemetry("empty_policy");
 		new Policy([], [], "").to_form();
 		refresh();
 	}
 	function use_sslmate_policy () {
+		send_telemetry("use_sslmate_policy");
 		var sslmate_cas = [ 'sectigo.com', 'letsencrypt.org' ];
 		new Policy(sslmate_cas, sslmate_cas, "").to_form();
 		refresh();
 	}
 	function autogenerate_policy () {
+		send_telemetry("autogenerate_policy");
 		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
@@ -435,6 +470,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		lookup_xhr.send();
 	}
 	function load_policy () {
+		send_telemetry("load_policy");
 		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
@@ -517,5 +553,9 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 
 		refresh();
 		apply_ca_filter();
+	});
+
+	certspotter_link.addEventListener("click", function() {
+		send_telemetry("certspotter_link");
 	});
 }
