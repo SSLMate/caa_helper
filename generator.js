@@ -165,6 +165,9 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		this.issuewild = issuewild;
 		this.iodef = iodef;
 
+		this.is_empty = function () {
+			return this.issue.length == 0 && this.issuewild.length == 0 && this.iodef == "";
+		};
 		this.make_records = function () {
 			var records = [];
 			var i;
@@ -423,12 +426,15 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		}
 	};
 
-	function send_telemetry(action) {
+	function send_telemetry(action, send_empty) {
 		try {
 			var data = {
 				domain:		form["domain"].value,
 				policy:		make_policy_from_form(),
 			};
+			if (data.domain == "" && data.policy.is_empty() && !send_empty) {
+				return;
+			}
 			navigator.sendBeacon(caa_endpoint + "/telemetry", new URLSearchParams({
 				session_id:	session_id,
 				action:		action,
@@ -440,18 +446,18 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	}
 
 	function empty_policy () {
-		send_telemetry("empty_policy");
+		send_telemetry("empty_policy", true);
 		new Policy([], [], "").to_form();
 		refresh();
 	}
 	function use_sslmate_policy () {
-		send_telemetry("use_sslmate_policy");
+		send_telemetry("use_sslmate_policy", true);
 		var sslmate_cas = [ 'sectigo.com', 'letsencrypt.org' ];
 		new Policy(sslmate_cas, sslmate_cas, "").to_form();
 		refresh();
 	}
 	function autogenerate_policy () {
-		send_telemetry("autogenerate_policy");
+		send_telemetry("autogenerate_policy", true);
 		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
@@ -462,7 +468,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		lookup_xhr.send();
 	}
 	function load_policy () {
-		send_telemetry("load_policy");
+		send_telemetry("load_policy", true);
 		var domain = form["domain"].value.toLowerCase();
 		if (domain == "") {
 			alert("Please enter a domain name.");
@@ -548,11 +554,11 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	});
 
 	certspotter_link.addEventListener("click", function() {
-		send_telemetry("certspotter_link");
+		send_telemetry("certspotter_link", true);
 	});
 	document.addEventListener("visibilitychange", function() {
 		if (document.visibilityState == "hidden") {
-			send_telemetry("end_session");
+			send_telemetry("end_session", false);
 		}
 	});
 }
