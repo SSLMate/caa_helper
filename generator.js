@@ -63,6 +63,14 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		}
 		return str;
 	}
+	function canonicalize_domain (domain) {
+		var re = /^https?:\/\/([^\/]*)/;
+		var match = re.exec(domain);
+		if (match) {
+			domain = match[1];
+		}
+		return domain.toLowerCase();
+	}
 	function make_unknown_record (bytes) {
 		return "\\# " + bytes.length + " " + make_hex_string(bytes);
 	}
@@ -358,7 +366,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		set_generic_table(output_generic, domain, records);
 	}
 	function refresh () {
-		var domain = form["domain"].value.toLowerCase();
+		var domain = canonicalize_domain(form["domain"].value);
 		display_records(domain == "" ? "example.com." : ensure_trailing_dot(domain), make_policy_from_form().make_records());
 	}
 	function apply_ca_filter () {
@@ -429,7 +437,8 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	function send_telemetry(action, send_empty) {
 		try {
 			var data = {
-				domain:		form["domain"].value,
+				domain:		canonicalize_domain(form["domain"].value),
+				orig_domain:	form["domain"].value,
 				policy:		make_policy_from_form(),
 			};
 			if (data.domain == "" && data.policy.is_empty() && !send_empty) {
@@ -458,7 +467,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	}
 	function autogenerate_policy () {
 		send_telemetry("autogenerate_policy", true);
-		var domain = form["domain"].value.toLowerCase();
+		var domain = canonicalize_domain(form["domain"].value);
 		if (domain == "") {
 			alert("Please enter a domain name.");
 			form["domain"].focus();
@@ -469,7 +478,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	}
 	function load_policy () {
 		send_telemetry("load_policy", true);
-		var domain = form["domain"].value.toLowerCase();
+		var domain = canonicalize_domain(form["domain"].value);
 		if (domain == "") {
 			alert("Please enter a domain name.");
 			form["domain"].focus();
