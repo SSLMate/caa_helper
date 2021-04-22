@@ -437,6 +437,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 	function send_telemetry(action, send_empty) {
 		try {
 			var data = {
+				referer:	document.referer,
 				domain:		canonicalize_domain(form["domain"].value),
 				orig_domain:	form["domain"].value,
 				policy:		make_policy_from_form(),
