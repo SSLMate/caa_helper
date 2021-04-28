@@ -35,14 +35,8 @@
 						Over a hundred certificate authorities (CAs) have the power to issue
 						certificates which vouch for the identity of your website.  Certificate
 						Authority Authorization (CAA) is a way for you to restrict issuance to the CAs you
-						actually use so you can minimize your risk from security vulnerabilities
-						in all the others.
-					</p>
-
-					<p>
-						As of September 8, 2017, all certificate authorities are
-						required to respect your CAA policy, so now is the perfect time to
-						set up CAA.  Setting up CAA using this tool is an easy way to improve
+						actually use so you can reduce your risk from security vulnerabilities
+						in all the others.  Setting up CAA is an easy way to improve
 						your website's security.  <a href="about">Learn More</a>
 					</p>
 				</div>
@@ -186,7 +180,7 @@
 					<p class="instructions">
 						Even if you publish a CAA record, a noncompliant certificate authority
 						can ignore your CAA records.  Use <a href="https://sslmate.com/certspotter" id="certspotter_link">Cert Spotter</a>
-						to monitor Certificate Transparency logs so you'll get an email if this happens.
+						to monitor Certificate Transparency logs so you'll be notified if this happens.
 					</p>
 				</div>
 			</form>

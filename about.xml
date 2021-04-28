@@ -17,11 +17,17 @@
 			<h2>About CAA</h2>
 
 			<p>
-				There are over a hundred organizations, called certificate authorities,
+				There are over 100 organizations, called certificate authorities,
 				that can issue SSL certificates which vouch for the
-				identity of your domain.  If you're like most domain owners, you
-				probably get your certificates from only a handful of certificate
-				authorities.  CAA (Certificate Authority Authorization) lets you declare
+				identity of your domain.  If a certificate authority misbehaves
+				and gives a hacker a certificate for your domain, the hacker can
+				impersonate your website and intercept the data of your visitors.
+			</p>
+			<p>
+				If you're like most domain owners, you
+				get your certificates from only a handful of certificate
+				authorities.  CAA (Certificate Authority Authorization) is a type of DNS
+				record that lets you declare
 				which certificate authorities you actually use, forbidding the others
 				from issuing certificates for your domain.
 			</p>
@@ -62,8 +68,8 @@
 			<h3>CAA and Sub-domains</h3>
 
 			<p>
-				The CAA record set for a domain also applies to all sub-domains.
-				If a sub-domain has its own CAA record set, it takes precedence.
+				The CAA record set for a domain also applies to all sub-domains,
+				unless the sub-domain has its own CAA record set.
 			</p>
 
 			<p>
