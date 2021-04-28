@@ -185,7 +185,7 @@
 
 					<p class="instructions">
 						Even if you publish a CAA record, a noncompliant certificate authority
-						can ignore your CAA records.  Use <a href="https://sslmate.com/signup?for=certspotter" id="certspotter_link">Cert Spotter</a>
+						can ignore your CAA records.  Use <a href="https://sslmate.com/certspotter" id="certspotter_link">Cert Spotter</a>
 						to monitor Certificate Transparency logs so you'll get an email if this happens.
 					</p>
 				</div>
