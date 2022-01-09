@@ -20,7 +20,7 @@
 				There are over 100 organizations, called certificate authorities,
 				that can issue SSL certificates which vouch for the
 				identity of your domain.  If a certificate authority misbehaves
-				and gives a hacker a certificate for your domain, the hacker can
+				and gives an attacker a certificate for your domain, the attacker can
 				impersonate your website and intercept the data of your visitors.
 			</p>
 			<p>
