@@ -287,6 +287,9 @@
 					<provider>
 						<name>DNSPod</name>
 					</provider>
+					<provider>
+						<name>WebHostOne</name>
+					</provider>
 				</support>
 			</div>
 		</div>
