@@ -290,6 +290,9 @@
 					<provider>
 						<name>WebHostOne</name>
 					</provider>
+					<provider>
+						<name>Opalstack</name>
+					</provider>
 				</support>
 			</div>
 		</div>
