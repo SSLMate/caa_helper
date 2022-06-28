@@ -293,6 +293,9 @@
 					<provider>
 						<name>Opalstack</name>
 					</provider>
+					<provider>
+						<name>domaindiscount24</name>
+					</provider>
 				</support>
 			</div>
 		</div>
