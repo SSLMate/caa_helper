@@ -45,7 +45,7 @@
 					<h2>1. Enter Your Domain Name</h2>
 
 					<p>
-						<label>Domain name: </label><input type="text" name="domain" size="30"/>
+						<label for="domain_input">Domain name: </label><input id="domain_input" type="text" name="domain" size="30"/>
 					</p>
 				</div>
 
@@ -82,8 +82,8 @@
 
 					<div class="ca_selector">
 						<p>
-							<label>Filter by CA name: </label>
-							<input type="text" name="ca_filter" value="" size="40"/>
+							<label for="ca_filter_input">Filter by CA name: </label>
+							<input id="ca_filter_input" type="text" name="ca_filter" value="" size="40"/>
 							<button type="button" name="clear_ca_filter" class="link">Clear Filter</button>
 						</p>
 
@@ -115,7 +115,7 @@
 					</p>
 
 					<p>
-						<label>Email address or URL: </label><input type="text" name="iodef" size="40"/>
+						<label for="iodef_input">Email address or URL: </label><input id="iodef_input" type="text" name="iodef" size="40"/>
 					</p>
 				</div>
 
