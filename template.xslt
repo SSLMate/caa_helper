@@ -1,5 +1,5 @@
 <!--
-	Copyright (C) 2017-2021 Opsmate, Inc.
+	Copyright (C) 2017-2022 Opsmate, Inc.
 
 	This Source Code Form is subject to the terms of the Mozilla
 	Public License, v. 2.0. If a copy of the MPL was not distributed
@@ -69,7 +69,7 @@
 					<xsl:apply-templates mode="copy" select="caa:body/node()"/>
 
 					<div id="footer">
-						<p>&#169; 2021 Opsmate, Inc.</p>
+						<p>&#169; 2022 Opsmate, Inc.</p>
 					</div>
 				</div>
 			</body>
