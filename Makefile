@@ -7,14 +7,12 @@
 # This software is distributed WITHOUT A WARRANTY OF ANY KIND.
 # See the Mozilla Public License for details.
 
-CAA_ENDPOINT = https://sslmate.com/caa/api
-CERTSPOTTER_ENDPOINT = https://api.certspotter.com
+SSLMATE_DOMAIN = sslmate.com
 
 -include config.mk
 
 XSLTFLAGS = --xinclude \
-	--stringparam caa_endpoint "$(CAA_ENDPOINT)" \
-	--stringparam certspotter_endpoint "$(CERTSPOTTER_ENDPOINT)"
+	--stringparam sslmate_domain "$(SSLMATE_DOMAIN)"
 
 all: index.html support.html about.html
 

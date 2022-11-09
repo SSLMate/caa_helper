@@ -21,8 +21,7 @@
 		doctype-system="about:legacy-compat"
 		omit-xml-declaration="yes" />
 
-	<xsl:param name="caa_endpoint"/>
-	<xsl:param name="certspotter_endpoint"/>
+	<xsl:param name="sslmate_domain"/>
 
 	<xsl:template mode="copy" match="comment()" priority="11"/>
 	<xsl:template mode="copy" match="xhtml:*" priority="11">
@@ -47,13 +46,9 @@
 				<meta name="robots" content="noarchive" />
 				<link rel="icon" type="image/png" href="https://sslmate.com/assets/img/favicon.png" />
 				<link rel="stylesheet" type="text/css" href="style.css" />
-				<script type="text/javascript">
-					var caa_endpoint = '<xsl:value-of select="$caa_endpoint"/>';
-					var certspotter_endpoint = '<xsl:value-of select="$certspotter_endpoint"/>';
-				</script>
 				<xsl:apply-templates mode="copy" select="caa:head/node()"/>
 			</head>
-			<body>
+			<body data-sslmate-domain="{$sslmate_domain}">
 				<a id="github_ribbon" href="https://github.com/SSLMate/caa_helper"></a>
 				<div id="root">
 					<div id="masthead">

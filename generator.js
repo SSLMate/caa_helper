@@ -8,7 +8,10 @@
  * This software is distributed WITHOUT A WARRANTY OF ANY KIND.
  * See the Mozilla Public License for details.
  */
-function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
+function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
+	var legacy_endpoint = "https://" + sslmate_domain + "/caa/api";
+	var caahelper_endpoint = "https://httpd." + sslmate_domain + "/caahelper";
+
 	var session_id = null;
 	try {
 		var random_bytes = new Uint8Array(16);
@@ -445,7 +448,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 			if (data.domain == "" && data.policy.is_empty() && !send_empty) {
 				return;
 			}
-			navigator.sendBeacon(caa_endpoint + "/telemetry", new URLSearchParams({
+			navigator.sendBeacon(legacy_endpoint + "/telemetry", new URLSearchParams({
 				session_id:	session_id,
 				action:		action,
 				data:		JSON.stringify(data),
@@ -474,7 +477,7 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", legacy_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
@@ -485,13 +488,13 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", caa_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", legacy_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
-	function fetch_brands () {
-		return fetch(certspotter_endpoint + "/v1/brands").then(function(resp) { return resp.json(); });
+	function fetch_issuers () {
+		return fetch(caahelper_endpoint + "/issuers").then(function(resp) { return resp.json(); });
 	}
-	function populate_ca_table (brands) {
+	function populate_ca_table (issuers) {
 		function make_name_cell (name, aliases) {
 			var col = document.createElement("th");
 			col.className = "name_col";
@@ -516,16 +519,16 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 			return col;
 		}
 
-		for (var i = 0; i < brands.length; ++i) {
-			var brand = brands[i];
-			var identifiers = brand.caa_domains.join(" ");
-			if (brand.caa_domains.length === 0) {
+		for (var i = 0; i < issuers.length; ++i) {
+			var issuer = issuers[i];
+			var identifiers = issuer.domains.join(" ");
+			if (issuer.domains.length === 0) {
 				continue;
 			}
 
 			var row = document.createElement("tr");
 			row.dataset.identifiers = identifiers;
-			row.appendChild(make_name_cell(brand.name, brand.aliases));
+			row.appendChild(make_name_cell(issuer.name, issuer.aka));
 			row.appendChild(make_checkbox_cell("nonwild_col", "issue", identifiers));
 			row.appendChild(make_checkbox_cell("wild_col", "issuewild", identifiers));
 
@@ -533,8 +536,8 @@ function init_caa_generator (caa_endpoint, certspotter_endpoint, form, ca_table,
 		}
 	}
 
-	fetch_brands().then(function(brands) {
-		populate_ca_table(brands);
+	fetch_issuers().then(function(issuers) {
+		populate_ca_table(issuers);
 
 		for (var i = 0; i < form.elements.length; ++i) {
 			var elt = form.elements[i];

@@ -14,8 +14,7 @@
 		<script type="text/javascript" src="generator.js"></script>
 		<script type="text/javascript">
 			document.addEventListener('DOMContentLoaded', function() {
-				init_caa_generator(caa_endpoint,
-				                   certspotter_endpoint,
+				init_caa_generator(document.body.dataset.sslmateDomain,
 				                   document.getElementById('generator_form'),
 				                   document.getElementById('ca_table'),
 				                   document.getElementById('caa_output_zonefile'),
