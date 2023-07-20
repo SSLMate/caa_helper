@@ -419,6 +419,8 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 			alert(domain + " has broken DNS servers that do not handle CAA properly: " + result["message"]);
 		} else if (result["status"] == "servfail") {
 			alert("Error looking up the DNS records for " + domain + ": " + result["message"]);
+		} else if (result["status"] == "error") {
+			alert(result["message"]);
 		}
 	}
 
