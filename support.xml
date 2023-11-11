@@ -298,6 +298,9 @@
 					<provider>
 						<name>Pair Domains</name>
 					</provider>
+					<provider>
+						<name>deSEC</name>
+					</provider>
 				</support>
 			</div>
 		</div>
