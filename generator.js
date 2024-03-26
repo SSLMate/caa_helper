@@ -10,7 +10,7 @@
  */
 function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
 	var legacy_endpoint = "https://" + sslmate_domain + "/caa/api";
-	var caahelper_endpoint = "https://httpd." + sslmate_domain + "/caahelper";
+	var caahelper_endpoint = "https://web.api." + sslmate_domain + "/caahelper";
 
 	var session_id = null;
 	try {
