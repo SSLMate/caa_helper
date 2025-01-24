@@ -9,8 +9,8 @@
  * See the Mozilla Public License for details.
  */
 function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, output_rfc3597, output_tinydns, output_dnsmasq, output_generic, certspotter_link) {
-	var legacy_endpoint = "https://" + sslmate_domain + "/caa/api";
 	var caahelper_endpoint = "https://web.api." + sslmate_domain + "/caahelper";
+	var telemetry_endpoint = "https://web.api." + sslmate_domain + "/telemetry";
 
 	var session_id = null;
 	try {
@@ -270,13 +270,13 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 			var record = records[i];
 			var tag = record.tag.toLowerCase();
 			if (tag == "issue") {
-				var domain = parse_issue_property(record.value);
+				var domain = parse_issue_property(atob(record.value));
 				if (domain != "") {
 					issue.push(domain);
 				}
 				has_issue = true;
 			} else if (tag == "issuewild") {
-				var domain = parse_issue_property(record.value);
+				var domain = parse_issue_property(atob(record.value));
 				if (domain != "") {
 					issuewild.push(domain);
 				}
@@ -285,7 +285,7 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 				if (iodef != "") {
 					throw new PolicyCompatError("At most one iodef property is supported");
 				}
-				iodef = record.value;
+				iodef = atob(record.value);
 			} else {
 				throw new PolicyCompatError("The " + record.tag + " property is not supported (only issue, issuewild, and iodef are supported)");
 			}
@@ -450,9 +450,9 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 			if (data.domain == "" && data.policy.is_empty() && !send_empty) {
 				return;
 			}
-			navigator.sendBeacon(legacy_endpoint + "/telemetry", new URLSearchParams({
+			navigator.sendBeacon(telemetry_endpoint, new URLSearchParams({
 				session_id:	session_id,
-				action:		action,
+				action:		"caarecord:"+action,
 				data:		JSON.stringify(data),
 			}));
 		} catch (e) {
@@ -479,7 +479,7 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", legacy_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caahelper_endpoint + "/autogenerate/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function load_policy () {
@@ -490,7 +490,7 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 			form["domain"].focus();
 			return;
 		}
-		lookup_xhr.open("GET", legacy_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
+		lookup_xhr.open("GET", caahelper_endpoint + "/lookup/" + encodeURIComponent(ensure_trailing_dot(domain)));
 		lookup_xhr.send();
 	}
 	function fetch_issuers () {
