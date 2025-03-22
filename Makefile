@@ -37,9 +37,9 @@ install: $(FILES)
 	gzip -n9 < $(DESTDIR)/support.html > $(DESTDIR)/support.htmlgz
 	install -m 644 about.html $(DESTDIR)/about.html
 	gzip -n9 < $(DESTDIR)/about.html > $(DESTDIR)/about.htmlgz
-	yui-compressor --type js --nomunge < generator.js > $(DESTDIR)/generator.js
+	uglifyjs generator.js > $(DESTDIR)/generator.js
 	gzip -n9 < $(DESTDIR)/generator.js > $(DESTDIR)/generator.jsgz
-	yui-compressor --type css < style.css > $(DESTDIR)/style.css
+	minify --type css style.css > $(DESTDIR)/style.css
 	gzip -n9 < $(DESTDIR)/style.css > $(DESTDIR)/style.cssgz
 	install -m 644 github_ribbon.png $(DESTDIR)/github_ribbon.png
 else
