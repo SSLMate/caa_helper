@@ -523,8 +523,9 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 
 		for (var i = 0; i < issuers.length; ++i) {
 			var issuer = issuers[i];
-			var identifiers = issuer.domains.join(" ");
-			if (issuer.domains.length === 0) {
+			var domains = issuer.domains.filter(x => !issuer.delegated_domains.includes(x));
+			var identifiers = domains.join(" ");
+			if (domains.length === 0) {
 				continue;
 			}
 
