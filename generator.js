@@ -189,13 +189,11 @@ function init_caa_generator (sslmate_domain, form, ca_table, output_zonefile, ou
 					records.push(new Record(0, "issue", this.issue[i]));
 				}
 			}
-			if (!array_equals(this.issue, this.issuewild)) {
-				if (this.issuewild.length == 0) {
-					records.push(new Record(0, "issuewild", ";"));
-				} else {
-					for (i = 0; i < this.issuewild.length; ++i) {
-						records.push(new Record(0, "issuewild", this.issuewild[i]));
-					}
+			if (this.issuewild.length == 0) {
+				records.push(new Record(0, "issuewild", ";"));
+			} else {
+				for (i = 0; i < this.issuewild.length; ++i) {
+					records.push(new Record(0, "issuewild", this.issuewild[i]));
 				}
 			}
 			if (this.iodef != "") {
