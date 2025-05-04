@@ -252,7 +252,7 @@
 					<provider support="no">
 						<name>Hover</name>
 					</provider>
-					<provider support="no">
+					<provider>
 						<name>123 Reg</name>
 					</provider>
 					<provider>
