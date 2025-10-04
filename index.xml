@@ -44,7 +44,7 @@
 					<h2>1. Enter Your Domain Name</h2>
 
 					<p>
-						<label for="domain_input">Domain name: </label><input id="domain_input" type="text" name="domain" size="30"/>
+						<label for="domain_input">Domain name: </label><input id="domain_input" type="text" name="domain" size="30" autocapitalize="off"/>
 					</p>
 				</div>
 
@@ -114,7 +114,7 @@
 					</p>
 
 					<p>
-						<label for="iodef_input">Email address or URL: </label><input id="iodef_input" type="text" name="iodef" size="40"/>
+						<label for="iodef_input">Email address or URL: </label><input id="iodef_input" type="text" name="iodef" size="40" autocapitalize="off"/>
 					</p>
 				</div>
 
