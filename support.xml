@@ -92,7 +92,7 @@
 						<name>Google Cloud DNS</name>
 					</provider>
 					<provider>
-						<name>Google Domains DNS</name>
+						<name>Squarespace</name>
 					</provider>
 					<provider>
 						<name>Route 53</name>
